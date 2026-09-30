@@ -98,3 +98,25 @@ nav a[aria-current="page"]{color:var(--sage);text-decoration:underline;text-unde
 .footer-expanded .back-top{font-size:12px;width:auto;border:0;padding:0;white-space:nowrap;color:#46553f}
 @media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px}.footer-identity{grid-column:1/-1}}
 @media(max-width:620px){.site-footer.footer-expanded{padding-top:35px}.footer-grid{grid-template-columns:1fr;gap:28px}.footer-expanded .footer-brand{font-size:28px}.footer-bottom{flex-direction:column;align-items:flex-start;gap:16px}.footer-expanded .footer-nav{gap:8px}}
+
+/* Descubra: espaço para conhecer cada história. */
+.discover-page .book-grid{grid-template-columns:1fr;gap:44px}
+.discover-page .book-card{display:grid;grid-template-columns:minmax(240px,.7fr) minmax(0,1.3fr);gap:clamp(32px,5vw,80px);padding-bottom:44px;border-bottom:1px solid var(--line)}
+.discover-page .book-stage{height:370px}
+.discover-page .featured-book .book-stage{height:530px;background:#dfe5df;position:sticky;top:30px}
+.discover-page .featured-book .real-cover-link{height:400px;max-width:80%}
+.discover-page .book-info{padding-top:12px}
+.discover-page .book-info h3{font-size:clamp(32px,3.4vw,48px);margin-bottom:18px}
+.discover-page .book-info .preview-label{font-size:12px;display:inline-block;padding:7px 12px;border:1px solid #c6d0bd;border-radius:3px;color:#43553f;margin-bottom:24px}
+.discover-page .book-details{max-width:68ch;font-size:16px;line-height:1.9;padding-top:6px}
+.discover-page .book-info .button{font-size:14px;padding:18px 24px}
+.discover-page .catalog-note{margin-top:0;border-top:0}
+@media(max-width:760px){
+ .discover-page .book-card{grid-template-columns:1fr;gap:25px}
+ .discover-page .featured-book .book-stage{position:relative;top:auto;height:400px}
+ .discover-page .featured-book .real-cover-link{height:330px}
+ .discover-page .book-stage{height:330px}
+ .discover-page .book-info{padding-top:0}
+ .discover-page .book-details{font-size:15px}
+ .discover-page .catalog-section-heading{flex-wrap:wrap}
+}
