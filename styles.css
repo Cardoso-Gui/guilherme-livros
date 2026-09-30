@@ -177,3 +177,27 @@ nav a[aria-current="page"]{color:var(--sage);text-decoration:underline;text-unde
 .catalog-results{padding-left:4px;margin-top:20px;font-size:12px;letter-spacing:.2px}
 @media(max-width:850px){.catalog-filters{grid-template-columns:repeat(2,minmax(0,1fr));padding:24px;gap:20px}}
 @media(max-width:540px){.catalog-filters{padding:20px 16px;gap:18px 12px;border-radius:14px}.catalog-filters label{font-size:10px;letter-spacing:0}.catalog-filters select{font-size:12px;padding:10px 7px}.catalog-filters input{font-size:16px}.catalog-filters .catalog-search{padding-bottom:18px}}
+
+/* Cabeçalho editorial com navegação agrupada. */
+.site-header.main-header{min-height:96px;margin-top:22px;padding:14px 24px;background:#fdfcf8;border:1px solid #e1e5d9;border-radius:18px;box-shadow:0 6px 24px #303b3505;gap:24px}
+.main-header .brand{gap:14px;font-size:27px;letter-spacing:-.65px}
+.main-header .brand img{width:62px!important;height:62px!important}
+.main-header .brand-caption{font-size:8px;letter-spacing:2.5px;color:#7a866f;margin-top:9px}
+.main-header .header-actions{gap:22px}
+.main-header nav{gap:4px;padding:5px;background:#f0f2e9;border:1px solid #e7eadf;border-radius:28px}
+.main-header nav a{padding:10px 22px;border-radius:22px;font-size:13px;color:#68735f;transition:background .2s,color .2s}
+.main-header nav a:hover{background:#e5ebdd;color:#354b36}
+.main-header nav a[aria-current="page"]{background:#fffefb;color:#354b36;box-shadow:0 2px 6px #354b3610}
+.main-header .header-read{border-radius:25px;padding:14px 22px;gap:20px;background:#435b43;box-shadow:0 3px 8px #435b4312}
+.main-header .header-read:hover{background:#314731}
+@media(max-width:1000px){.main-header .brand{font-size:24px}.main-header .header-actions{gap:12px}.main-header nav a{padding:10px 17px}.site-header.main-header{padding-inline:18px}}
+@media(max-width:760px){
+ .site-header.main-header{margin-top:14px;padding:18px 14px;gap:18px;border-radius:16px}
+ .main-header .brand{font-size:25px;gap:12px}
+ .main-header .brand img{width:54px!important;height:54px!important}
+ .main-header .header-actions{flex-wrap:nowrap;gap:10px;width:100%;justify-content:center}
+ .main-header nav{padding:4px;gap:2px}
+ .main-header nav a{padding:9px 13px;font-size:12px}
+ .main-header .header-read{padding:12px 15px;font-size:12px;gap:10px}
+}
+@media(max-width:380px){.main-header .header-actions{flex-direction:row;gap:7px}.main-header nav a{padding:9px 10px}.main-header .header-read{padding:12px}.main-header .brand{font-size:23px}}
