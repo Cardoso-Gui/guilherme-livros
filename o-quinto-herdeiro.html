@@ -24,6 +24,19 @@
 @media(max-width:760px){.book-hero-copy .book-read-button{width:100%;gap:14px}}
 .book-hero-copy button:focus-visible{outline:3px solid #3c73ac;outline-offset:5px}
 @media(max-width:760px){.book-hero{grid-template-columns:minmax(0,1fr);gap:32px;padding-block:32px 48px}.book-hero-cover{padding:24px}.book-hero-cover img{width:min(100%,240px)}.book-hero-copy h1{font-size:clamp(38px,10vw,52px)}.book-hero-copy .cart-book-action .button{width:100%}.book-hero-copy .eyebrow{font-size:9px;letter-spacing:1.6px}}
+
+.book-about{border-top:1px solid var(--line);padding-block:64px 80px;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:clamp(32px,6vw,80px);align-items:start}
+.book-about .eyebrow{color:var(--sage);margin-bottom:12px}
+.book-about h2{font-size:clamp(30px,3.5vw,40px)}
+.book-full-synopsis{color:var(--muted);font-size:16px;line-height:1.9;max-width:62ch}
+.book-full-synopsis p{margin-bottom:18px}
+.book-full-synopsis p:last-child{font-family:var(--serif);font-size:22px;line-height:1.6;color:var(--sage);margin-bottom:0}
+.book-facts{background:#f4f7fc;border:1px solid var(--line);border-radius:20px;padding:28px;min-width:0}
+.book-facts h2{font-size:28px;margin-bottom:22px}
+.book-facts dl{margin:0}.book-facts dl>div{padding-block:14px;border-top:1px solid var(--line)}
+.book-facts dt{font-size:11px;letter-spacing:1px;color:var(--muted);margin-bottom:6px}
+.book-facts dd{margin:0;font-size:15px;line-height:1.6;overflow-wrap:anywhere}
+@media(max-width:760px){.book-about{grid-template-columns:minmax(0,1fr);padding-block:36px 48px;gap:32px}.book-facts{padding:24px}.book-full-synopsis{font-size:15px}}
 </style>
 </head>
 <body>
@@ -51,6 +64,25 @@
         </div>
         <a class="button book-read-button" href="./o-quinto-herdeiro-capitulo-1.html">Ler o primeiro capítulo grátis <span aria-hidden="true">↗</span></a>
       </div>
+    </section>
+
+    <section class="book-about wrap" aria-labelledby="synopsis-title">
+      <div>
+        <p class="eyebrow">POR DENTRO DA HISTÓRIA</p>
+        <h2 id="synopsis-title">Sinopse completa</h2>
+        <div class="book-full-synopsis"><p>Na Casa Ignavar, o fogo é motivo de orgulho. O nome, símbolo de poder. E o sangue, uma promessa de grandeza.</p><p>Kael é o quinto herdeiro.</p><p>Ainda assim, cresce cercado por silêncios que não compreende e regras que só parecem existir para ele. Há algo em sua marca que faz os olhares mudarem. Algo que precisa permanecer escondido.</p><p>Entre os muros de uma família que preza tanto o próprio legado, Kael aprende cedo a ocupar pouco espaço — e a guardar perguntas para as quais ninguém parece disposto a dar uma resposta.</p><p>O que pode haver em uma criança para que uma casa tão poderosa prefira não ser vista ao seu lado?</p></div>
+      </div>
+      <aside class="book-facts" aria-labelledby="book-facts-title">
+        <h2 id="book-facts-title">Detalhes da obra</h2>
+        <dl>
+          <div><dt>Título</dt><dd>O Quinto Herdeiro</dd></div>
+          <div><dt>Autor</dt><dd>Guilherme Cardoso</dd></div>
+          <div><dt>Saga</dt><dd>Legado Elemental</dd></div>
+          <div><dt>Volume</dt><dd>Livro I</dd></div>
+          <div><dt>Gênero</dt><dd>Fantasia</dd></div>
+          <div><dt>Formato</dt><dd>Digital</dd></div>
+        </dl>
+      </aside>
     </section>
   </main>
   <footer class="site-footer footer-expanded">
