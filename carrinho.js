@@ -38,4 +38,25 @@ document.querySelectorAll('[data-cart-add]').forEach(button=>button.addEventList
 }));
 window.addEventListener('storage',event=>{if(event.key===KEY||event.key===null){try{cart=clean(JSON.parse(localStorage.getItem(KEY)||'[]'));}catch(_){cart=[];}render();}});
 render();
+async function markOwned(){
+ const client=window.livrosAuthClient;if(!client)return;
+ try{
+  const identity=await client.auth.getUser();if(identity.error||!identity.data.user)return;
+  const access=await client.from('book_access').select('book_id');
+  if(access.error)return;
+  const owned=new Set(access.data.map(row=>row.book_id));
+  document.querySelectorAll('[data-cart-add]').forEach(button=>{
+   if(!owned.has(button.dataset.cartAdd))return;
+   button.removeAttribute('data-cart-add');button.textContent='Na sua biblioteca';
+   button.disabled=true;
+   const parent=button.parentElement;
+   const link=document.createElement('a');link.className='text-link';link.href='./biblioteca.html';link.textContent='Abrir minha biblioteca ↗';parent.append(link);
+  });
+  if(cart.some(id=>owned.has(id))){
+   cart=cart.filter(id=>!owned.has(id));save();render();
+   feedback('Um livro que você já possui foi removido do carrinho. Ele está em Minha biblioteca.');
+  }
+ }catch(_){}
+}
+markOwned();
 })();
