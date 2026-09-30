@@ -6,7 +6,7 @@
  const login=document.getElementById('checkout-login');
  const errors={login_required:'Entre na sua conta do site antes de continuar.',invalid_cart:'Confira os livros no carrinho e tente novamente.',too_many_attempts:'Aguarde um minuto antes de tentar novamente.',payment_provider_error:'O Mercado Pago não conseguiu abrir o teste. Tente novamente mais tarde.'};
  const params=new URLSearchParams(location.search);
- if(params.get('checkout')==='test')status.textContent='Você voltou do checkout de teste. O retorno não confirma o pagamento nem libera o livro.';
+
  let busy=false;
  button.disabled=false;
  button.addEventListener('click',async()=>{
@@ -27,4 +27,32 @@
   }catch(error){status.textContent=errors[error.message]||'Não foi possível abrir o checkout de teste. Tente novamente.';}
   finally{busy=false;button.disabled=false;button.textContent='Testar pagamento';}
  });
+
+ const resultStatus=document.getElementById('cart-feedback');
+ async function confirmReturn(){
+  if(params.get('checkout')!=='test')return;
+  const paymentId=params.get('payment_id')||params.get('collection_id');
+  if(!paymentId){resultStatus.textContent='Não recebemos o identificador do pagamento. O carrinho foi mantido.';return;}
+  resultStatus.textContent='Conferindo seu pagamento de teste...';
+  button.disabled=true;
+  try{
+   const {data,error}=await window.livrosAuthClient.auth.getSession();
+   if(error||!data.session){login.hidden=false;throw Error('Entre na mesma conta do site e atualize esta página para confirmar o pagamento.');}
+   const response=await fetch('https://xheqlilvylkoxefepbmn.supabase.co/functions/v1/mercado-pago-status-test',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+data.session.access_token},body:JSON.stringify({payment_id:paymentId}),signal:AbortSignal.timeout(30000)});
+   const result=await response.json();
+   if(!response.ok)throw Error('Não foi possível confirmar o pagamento agora. Atualize esta página para tentar novamente. Seu carrinho foi mantido.');
+   if(result.mode==='test'&&result.approved===true&&result.status==='approved'){
+    let cart=JSON.parse(localStorage.getItem('guilherme-livros-cart-v1')||'[]');
+    if(!Array.isArray(cart))cart=[];
+    localStorage.setItem('guilherme-livros-cart-v1',JSON.stringify(cart.filter(id=>id!==result.book_id)));
+    window.dispatchEvent(new StorageEvent('storage',{key:'guilherme-livros-cart-v1'}));
+    resultStatus.textContent='Pagamento de teste aprovado! O livro foi removido do carrinho. A liberação na biblioteca será ativada na próxima etapa.';
+   }else{
+    resultStatus.textContent=['pending','in_process','authorized'].includes(result.status)?'Pagamento de teste aguardando confirmação. O livro continua no carrinho.':'O pagamento de teste não está aprovado. O livro continua no carrinho.';
+   }
+  }catch(error){resultStatus.textContent=error.message||'Não foi possível confirmar o pagamento. Seu carrinho foi mantido.';}
+  finally{button.disabled=false;}
+ }
+ confirmReturn();
+
 })();
