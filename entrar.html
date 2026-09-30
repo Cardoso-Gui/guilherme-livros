@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Criar conta — Guilherme Cardoso</title><link rel="stylesheet" href="./styles.css?v=header-size-1">
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Entrar — Guilherme Cardoso</title><link rel="stylesheet" href="./styles.css?v=header-size-1">
 <style>
 .register-main{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,100px);align-items:center;padding-block:65px 80px;max-width:1160px}
 .register-story h1{font-size:clamp(40px,4.4vw,58px);max-width:12ch;line-height:1.14;margin-bottom:25px}
@@ -24,21 +24,21 @@
 <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 <header class="site-header main-header wrap">
     <a class="brand" href="./index.html" aria-label="Guilherme Cardoso, página inicial"><img src="./assets/logo-gc.png" alt="" width="76" height="76" style="width:76px;height:76px;object-fit:contain;flex-shrink:0"><span>Guilherme Cardoso<span class="brand-caption">AUTOR &amp; HISTÓRIAS</span></span></a>
-    <div class="header-actions"><nav aria-label="Navegação principal"><a href="./index.html">Início</a><a href="./descubra.html">Descubra</a><a href="./entrar.html">Entrar</a></nav>
+    <div class="header-actions"><nav aria-label="Navegação principal"><a href="./index.html">Início</a><a href="./descubra.html">Descubra</a><a href="./entrar.html" aria-current="page">Entrar</a></nav>
     <a class="button header-read" href="./o-quinto-herdeiro-capitulo-1.html">Leia grátis <span aria-hidden="true">↗</span></a></div>
   </header>
 <main id="conteudo" class="wrap register-main">
-<section class="register-story" aria-labelledby="register-title"><p class="eyebrow">UM NOVO CAPÍTULO COMEÇA AQUI</p><h1 id="register-title">Seu lugar entre <em>histórias.</em></h1><p>Estamos preparando um espaço para reunir suas próximas leituras. E você faz parte dessa história.</p><blockquote class="register-quote">Há mundos inteiros esperando por você.</blockquote></section>
-<section class="register-panel" aria-labelledby="form-title"><h2 id="form-title">Crie sua conta</h2><p class="register-intro">Vamos começar pelo seu nome.</p>
+<section class="register-story" aria-labelledby="register-title"><p class="eyebrow">BOM TER VOCÊ POR AQUI</p><h1 id="register-title">Sua próxima página <em>espera por você.</em></h1><p>Um espaço para voltar às histórias que acompanham você. Entre e continue de onde a curiosidade parou.</p><blockquote class="register-quote">Há mundos inteiros esperando por você.</blockquote></section>
+<section class="register-panel" aria-labelledby="form-title"><h2 id="form-title">Entre na sua conta</h2><p class="register-intro">Use seu e-mail e sua senha para entrar.</p>
 <form class="register-form">
-<div><label for="reader-name">Seu nome</label><input id="reader-name" name="name" autocomplete="name" placeholder="Como podemos chamar você?" required maxlength="100"></div>
+
 <div><label for="reader-email">E-mail</label><input id="reader-email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" required maxlength="254"></div>
-<div><label for="reader-password">Senha</label><div class="password-wrap"><input id="reader-password" name="password" type="password" autocomplete="new-password" minlength="8" required aria-describedby="password-hint"><button class="password-toggle" type="button" aria-controls="reader-password" aria-label="Mostrar senha" aria-pressed="false">Mostrar</button></div><p class="register-hint" id="password-hint">Use pelo menos 8 caracteres.</p></div>
-<div><label for="reader-confirm">Confirme a senha</label><div class="password-wrap"><input id="reader-confirm" name="confirm" type="password" autocomplete="new-password" required placeholder="Digite a senha novamente"><button class="password-toggle" type="button" aria-controls="reader-confirm" aria-label="Mostrar confirmação de senha" aria-pressed="false">Mostrar</button></div></div>
-<p class="register-notice">Prévia do cadastro: por enquanto, nenhum dado será enviado ou salvo.</p>
-<button class="button" type="submit">Criar minha conta <span aria-hidden="true">↗</span></button>
+<div><label for="reader-password">Senha</label><div class="password-wrap"><input id="reader-password" name="password" type="password" autocomplete="current-password" required><button class="password-toggle" type="button" aria-controls="reader-password" aria-label="Mostrar senha" aria-pressed="false">Mostrar</button></div></div>
+
+<p class="register-notice">Prévia do login: o acesso à conta ainda não está conectado. Nenhum dado será enviado ou salvo.</p>
+<button class="button" type="submit">Entrar <span aria-hidden="true">↗</span></button>
 <p class="register-status" role="status" aria-live="polite"></p>
-</form><p class="account-switch">Já tem uma conta? <a href="./entrar.html">Entrar</a></p><a class="register-back" href="./descubra.html">Continuar explorando os livros</a></section>
+</form><p class="account-switch">Não tem uma conta? <a href="./cadastro.html">Cadastre-se</a></p><a class="register-back" href="./descubra.html">Continuar explorando os livros</a></section>
 </main><footer class="site-footer footer-expanded">
     <div class="wrap footer-grid">
       <div class="footer-identity"><a class="footer-brand" href="./index.html">Guilherme Cardoso<span>.</span></a><p>Histórias para ler no seu tempo.</p></div>
@@ -48,11 +48,10 @@
     </div>
   </footer>
 <script>
-const form=document.querySelector('.register-form'),password=document.querySelector('#reader-password'),confirm=document.querySelector('#reader-confirm');
-function validate(){confirm.setCustomValidity(confirm.value && confirm.value!==password.value?'As senhas precisam ser iguais.':'');}
-password.addEventListener('input',validate);confirm.addEventListener('input',validate);
-document.querySelectorAll('.password-toggle').forEach(button=>button.addEventListener('click',()=>{
- const input=document.getElementById(button.getAttribute('aria-controls'));const reveal=input.type==='password';input.type=reveal?'text':'password';button.textContent=reveal?'Ocultar':'Mostrar';button.setAttribute('aria-pressed',String(reveal));button.setAttribute('aria-label',(reveal?'Ocultar':'Mostrar')+(input===password?' senha':' confirmação de senha'));
-}));
-form.addEventListener('submit',event=>{event.preventDefault();validate();if(!form.reportValidity())return;document.querySelector('.register-status').textContent='Tudo certo com os campos! Esta é uma prévia: sua conta ainda não foi criada. Nenhum dado foi enviado ou salvo.';});
+const form=document.querySelector('.register-form');
+document.querySelector('.password-toggle').addEventListener('click',event=>{
+ const button=event.currentTarget,input=document.querySelector('#reader-password'),reveal=input.type==='password';
+ input.type=reveal?'text':'password';button.textContent=reveal?'Ocultar':'Mostrar';button.setAttribute('aria-pressed',String(reveal));button.setAttribute('aria-label',reveal?'Ocultar senha':'Mostrar senha');
+});
+form.addEventListener('submit',event=>{event.preventDefault();document.querySelector('.register-status').textContent='Esta é uma prévia. O login ainda não está conectado e nenhum dado foi enviado ou salvo.';});
 </script></body></html>
