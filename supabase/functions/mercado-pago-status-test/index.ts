@@ -33,7 +33,17 @@ export async function handle(req:Request):Promise<Response>{
   const approved=payment.status==='approved';
   const saved=await call(base+'/rest/v1/checkout_test_orders?id=eq.'+order.id,{method:'PATCH',headers:adminHeaders,body:JSON.stringify({payment_id:String(payment.id),payment_status:payment.status,confirmed_at:approved?new Date().toISOString():null})});
   if(!saved.ok)throw Error('status_save');
-  return reply(200,{mode:'test',status:payment.status,approved,book_id:order.book_id,order_id:order.id});
+  let accessGranted=false;
+  if(approved){
+   const allowed=await call(base+'/rest/v1/checkout_test_readers?user_id=eq.'+encodeURIComponent(user.id)+'&select=user_id',{headers:adminHeaders});
+   if(!allowed.ok)throw Error('test_reader_lookup');
+   if((await allowed.json()).length){
+    const granted=await call(base+'/rest/v1/book_access?on_conflict=user_id,book_id',{method:'POST',headers:{...adminHeaders,Prefer:'resolution=ignore-duplicates'},body:JSON.stringify({user_id:user.id,book_id:order.book_id})});
+    if(!granted.ok)throw Error('access_grant');
+    accessGranted=true;
+   }
+  }
+  return reply(200,{mode:'test',status:payment.status,approved,book_id:order.book_id,order_id:order.id,access_granted:accessGranted});
  }catch{console.error('Test payment confirmation failed');return reply(503,{error:'confirmation_unavailable'});}
 }
 Deno.serve(handle);
