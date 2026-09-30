@@ -1,6 +1,19 @@
 (() => {
 'use strict';
 const el = id => document.getElementById(id);
+const sectionIds = ['dados-basicos','forma-de-pagamento','historico-de-compras','redefinir-senha'];
+function showSection(focusHeading = false) {
+ const requested = location.hash.slice(1);
+ const selected = sectionIds.includes(requested) ? requested : sectionIds[0];
+ sectionIds.forEach(id => { el(id).hidden = id !== selected; });
+ document.querySelectorAll('.account-sections a').forEach(link => {
+  if (link.getAttribute('href') === '#' + selected) link.setAttribute('aria-current','page');
+  else link.removeAttribute('aria-current');
+ });
+ if (focusHeading) el(selected + '-title').focus({preventScroll:true});
+}
+showSection();
+window.addEventListener('hashchange', () => showSection(true));
 const client = window.livrosAuthClient;
 const form = el('change-password'), button = form.querySelector('button');
 let user = null, busy = false;
