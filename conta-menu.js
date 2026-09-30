@@ -29,3 +29,45 @@
   label.textContent = 'Entrar';
  }
 })();
+
+
+/* Menu mobile compartilhado */
+(function initMobileMenu() {
+  const header = document.querySelector('.main-header');
+  const nav = header?.querySelector('nav[aria-label="Navegação principal"]');
+  if (!header || !nav || header.querySelector('.mobile-menu-toggle')) return;
+
+  const toggle = document.createElement('button');
+  toggle.className = 'mobile-menu-toggle';
+  toggle.type = 'button';
+  toggle.setAttribute('aria-label', 'Abrir menu');
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.innerHTML = '<span></span><span></span><span></span>';
+  nav.id = nav.id || 'menu-principal';
+  toggle.setAttribute('aria-controls', nav.id);
+  header.insertBefore(toggle, nav);
+
+  function closeMenu() {
+    header.classList.remove('menu-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Abrir menu');
+  }
+
+  toggle.addEventListener('click', () => {
+    const open = header.classList.toggle('menu-open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+  });
+
+  nav.addEventListener('click', (event) => {
+    if (event.target.closest('a')) closeMenu();
+  });
+
+  document.addEventListener('click', (event) => {
+    if (header.classList.contains('menu-open') && !header.contains(event.target)) closeMenu();
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 760) closeMenu();
+  });
+})();
