@@ -204,3 +204,21 @@ nav a[aria-current="page"]{color:var(--sage);text-decoration:underline;text-unde
 
 /* Harmoniza a marca com a paleta vinho sem alterar seu desenho. */
 .main-header .brand img{filter:grayscale(1) sepia(1) saturate(3) hue-rotate(170deg) brightness(.65)}
+
+/* Botões consistentes em todas as páginas. */
+body .button,body .main-header .header-read,body.discover-page .book-info .button{
+ border:1px solid #244b7b;border-radius:999px;padding:15px 24px;min-height:48px;gap:22px;
+ background:#244b7b;color:#fff;font:500 14px/1.5 Arial,sans-serif;
+ justify-content:center;text-align:center;box-shadow:0 4px 12px #244b7b18;
+ transition:background .18s,box-shadow .18s,transform .18s;cursor:pointer
+}
+body .button:hover,body .main-header .header-read:hover{background:#18365c;border-color:#18365c;box-shadow:0 6px 16px #244b7b26;transform:translateY(-1px)}
+body .button:active{transform:translateY(0);box-shadow:0 2px 5px #244b7b18}
+body .button:focus-visible,body button:focus-visible{outline:3px solid #6291c7;outline-offset:4px}
+body .main-header .header-read{font-size:13px;padding:12px 20px;gap:16px}
+body .catalog-filters .filter-clear{min-height:40px;padding:9px 18px;border:1px solid #cedbec;border-radius:999px;background:#eef4fb;color:#244b7b;font-size:12px;transition:background .18s,box-shadow .18s}
+body .catalog-filters .filter-clear:hover{background:#dfeaf8;box-shadow:0 2px 7px #244b7b0c}
+body .font-controls button{border-radius:50%;width:44px;height:44px;border:1px solid #cedbec;background:#f4f7fc;color:#244b7b;transition:background .18s}
+body .font-controls button:hover:not(:disabled){background:#dfeaf8}
+body .font-controls button:disabled{cursor:not-allowed;opacity:.4}
+@media(max-width:760px){body .main-header .header-read{font-size:12px;padding:11px 15px;gap:10px;min-height:44px}}
