@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Entrar — Guilherme Cardoso</title><link rel="stylesheet" href="./styles.css?v=header-size-1">
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Recuperar senha — Guilherme Cardoso</title><link rel="stylesheet" href="./styles.css?v=header-size-1">
 <style>
 .register-main{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,100px);align-items:center;padding-block:65px 80px;max-width:1160px}
 .register-story h1{font-size:clamp(40px,4.4vw,58px);max-width:12ch;line-height:1.14;margin-bottom:25px}
@@ -20,25 +20,25 @@
 .register-back{display:block;text-align:center;margin:20px 0 0;font-size:13px;color:#657080;text-decoration:underline;text-underline-offset:4px}
 @media(max-width:850px){.register-main{grid-template-columns:1fr;gap:30px;padding-block:40px}.register-story h1{max-width:22ch;font-size:40px}.register-quote{display:none}.register-story>p:not(.eyebrow){max-width:55ch}.register-panel{max-width:560px;width:100%;justify-self:center}}
 @media(max-width:540px){.register-panel{padding:24px 20px}.register-story h1{font-size:37px}.register-panel h2{font-size:29px}}
-</style><style>@media(max-width:760px){.main-header .header-actions{flex-wrap:wrap}.main-header nav a{min-width:60px}}.account-switch{text-align:center;font-size:14px;line-height:1.8;color:#657080;margin:22px 0 0}.account-switch a{color:#244b7b;text-decoration:underline;text-underline-offset:4px;font-weight:600}</style><style>[hidden]{display:none!important}.forgot-link{justify-self:end;color:#244b7b;font-size:13px;text-underline-offset:4px}.register-form button:disabled{opacity:.6;cursor:wait}.account-view p{line-height:1.8;color:#657080}.account-view .button{margin-top:18px}.recovery-steps{font-size:12px;color:#657080;line-height:1.8;margin-bottom:24px}.recovery-steps strong{color:#244b7b}.recovery-code{letter-spacing:.3em;font-size:24px!important}.secondary-action{background:none;border:0;color:#244b7b;text-decoration:underline;padding:8px;cursor:pointer}</style></head><body id="inicio" data-auth-page="login">
+</style><style>@media(max-width:760px){.main-header .header-actions{flex-wrap:wrap}.main-header nav a{min-width:60px}}.account-switch{text-align:center;font-size:14px;line-height:1.8;color:#657080;margin:22px 0 0}.account-switch a{color:#244b7b;text-decoration:underline;text-underline-offset:4px;font-weight:600}</style><style>[hidden]{display:none!important}.forgot-link{justify-self:end;color:#244b7b;font-size:13px;text-underline-offset:4px}.register-form button:disabled{opacity:.6;cursor:wait}.account-view p{line-height:1.8;color:#657080}.account-view .button{margin-top:18px}.recovery-steps{font-size:12px;color:#657080;line-height:1.8;margin-bottom:24px}.recovery-steps strong{color:#244b7b}.recovery-code{letter-spacing:.3em;font-size:24px!important}.secondary-action{background:none;border:0;color:#244b7b;text-decoration:underline;padding:8px;cursor:pointer}</style></head><body id="inicio" data-auth-page="recovery">
 <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 <header class="site-header main-header wrap">
     <a class="brand" href="./index.html" aria-label="Guilherme Cardoso, página inicial"><img src="./assets/logo-gc.png" alt="" width="76" height="76" style="width:76px;height:76px;object-fit:contain;flex-shrink:0"><span>Guilherme Cardoso<span class="brand-caption">AUTOR &amp; HISTÓRIAS</span></span></a>
     <div class="header-actions"><nav aria-label="Navegação principal"><a href="./index.html">Início</a><a href="./descubra.html">Descubra</a></nav>
-    <a class="button header-read" href="./entrar.html" aria-current="page">Entrar <span aria-hidden="true">↗</span></a></div>
+    <a class="button header-read" href="./entrar.html">Entrar <span aria-hidden="true">↗</span></a></div>
   </header>
 <main id="conteudo" class="wrap register-main">
-<section class="register-story" aria-labelledby="register-title"><p class="eyebrow">BOM TER VOCÊ POR AQUI</p><h1 id="register-title">Sua próxima página <em>espera por você.</em></h1><p>Um espaço para voltar às histórias que acompanham você. Entre e continue de onde a curiosidade parou.</p><blockquote class="register-quote">Há mundos inteiros esperando por você.</blockquote></section>
-<section class="register-panel" aria-labelledby="form-title"><h2 id="form-title">Entre na sua conta</h2><p class="register-intro">Use seu e-mail e sua senha para entrar.</p>
+<section class="register-story" aria-labelledby="register-title"><p class="eyebrow">VAMOS RETOMAR SUA HISTÓRIA</p><h1 id="register-title">Esqueceu a senha? <em>Acontece.</em></h1><p>Recupere seu acesso por e-mail e volte às suas próximas leituras.</p><blockquote class="register-quote">Há mundos inteiros esperando por você.</blockquote></section>
+<section class="register-panel" aria-labelledby="form-title"><h2 id="form-title">Recuperar sua senha</h2><p class="register-intro">Um código no seu e-mail. Uma nova senha. E a história continua.</p><div class="recovery-steps"><strong id="recovery-step">1. Seu e-mail</strong> &nbsp; · &nbsp; 2. Código &nbsp; · &nbsp; 3. Nova senha</div>
+<p class="register-notice" id="recovery-notice">Estamos configurando o envio de códigos por e-mail. A recuperação de senha ainda não está disponível.</p>
 <form class="register-form" data-auth-form method="post">
-
-<div><label for="reader-email">E-mail</label><input id="reader-email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" required maxlength="254"></div>
-<div><label for="reader-password">Senha</label><div class="password-wrap"><input id="reader-password" name="password" type="password" autocomplete="current-password" required><button class="password-toggle" type="button" aria-controls="reader-password" aria-label="Mostrar senha" aria-pressed="false">Mostrar</button></div></div>
-
-<a class="forgot-link" href="./recuperar-senha.html">Esqueci minha senha</a>
-<button class="button" type="submit" disabled>Entrar <span aria-hidden="true">↗</span></button>
+<div id="email-fields"><label for="reader-email">E-mail da sua conta</label><input id="reader-email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" maxlength="254" required></div>
+<div id="code-fields" hidden><label for="recovery-code">Código recebido por e-mail</label><input class="recovery-code" id="recovery-code" name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6,10}" minlength="6" maxlength="10" disabled><p class="register-hint">Digite o código enviado para seu e-mail.</p></div>
+<div id="password-fields" hidden><label for="reader-password">Nova senha</label><div class="password-wrap"><input id="reader-password" type="password" autocomplete="new-password" minlength="8" disabled><button class="password-toggle" type="button" aria-controls="reader-password" aria-label="Mostrar senha" aria-pressed="false">Mostrar</button></div><p class="register-hint">Use pelo menos 8 caracteres.</p><label for="reader-confirm" style="margin-top:18px">Confirme a nova senha</label><input id="reader-confirm" type="password" autocomplete="new-password" disabled></div>
+<button class="button" type="submit" id="recovery-submit" disabled>Enviar código ↗</button>
 <p class="register-status" role="status" aria-live="polite"></p>
-</form><div class="account-view" hidden><p id="account-greeting"></p><p>Sua conta está conectada. A biblioteca pessoal ainda está sendo preparada.</p><a class="button" href="./descubra.html">Descobrir histórias ↗</a><button type="button" class="secondary-action" id="sign-out">Sair da conta</button><p role="status" id="account-status"></p></div><p class="account-switch">Não tem uma conta? <a href="./cadastro.html">Cadastre-se</a></p><a class="register-back" href="./descubra.html">Continuar explorando os livros</a></section>
+<div id="code-actions" hidden><button type="button" class="secondary-action" id="resend-code">Reenviar código</button><button type="button" class="secondary-action" id="change-email">Alterar e-mail</button></div>
+</form><a class="register-back" href="./entrar.html">Voltar para entrar</a></section>
 </main><footer class="site-footer footer-expanded">
     <div class="wrap footer-grid">
       <div class="footer-identity"><a class="footer-brand" href="./index.html">Guilherme Cardoso<span>.</span></a><p>Histórias para ler no seu tempo.</p></div>

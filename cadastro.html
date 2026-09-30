@@ -20,7 +20,7 @@
 .register-back{display:block;text-align:center;margin:20px 0 0;font-size:13px;color:#657080;text-decoration:underline;text-underline-offset:4px}
 @media(max-width:850px){.register-main{grid-template-columns:1fr;gap:30px;padding-block:40px}.register-story h1{max-width:22ch;font-size:40px}.register-quote{display:none}.register-story>p:not(.eyebrow){max-width:55ch}.register-panel{max-width:560px;width:100%;justify-self:center}}
 @media(max-width:540px){.register-panel{padding:24px 20px}.register-story h1{font-size:37px}.register-panel h2{font-size:29px}}
-</style><style>@media(max-width:760px){.main-header .header-actions{flex-wrap:wrap}.main-header nav a{min-width:60px}}.account-switch{text-align:center;font-size:14px;line-height:1.8;color:#657080;margin:22px 0 0}.account-switch a{color:#244b7b;text-decoration:underline;text-underline-offset:4px;font-weight:600}</style></head><body id="inicio">
+</style><style>@media(max-width:760px){.main-header .header-actions{flex-wrap:wrap}.main-header nav a{min-width:60px}}.account-switch{text-align:center;font-size:14px;line-height:1.8;color:#657080;margin:22px 0 0}.account-switch a{color:#244b7b;text-decoration:underline;text-underline-offset:4px;font-weight:600}</style><style>[hidden]{display:none!important}.forgot-link{justify-self:end;color:#244b7b;font-size:13px;text-underline-offset:4px}.register-form button:disabled{opacity:.6;cursor:wait}.account-view p{line-height:1.8;color:#657080}.account-view .button{margin-top:18px}.recovery-steps{font-size:12px;color:#657080;line-height:1.8;margin-bottom:24px}.recovery-steps strong{color:#244b7b}.recovery-code{letter-spacing:.3em;font-size:24px!important}.secondary-action{background:none;border:0;color:#244b7b;text-decoration:underline;padding:8px;cursor:pointer}</style></head><body id="inicio" data-auth-page="signup">
 <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 <header class="site-header main-header wrap">
     <a class="brand" href="./index.html" aria-label="Guilherme Cardoso, página inicial"><img src="./assets/logo-gc.png" alt="" width="76" height="76" style="width:76px;height:76px;object-fit:contain;flex-shrink:0"><span>Guilherme Cardoso<span class="brand-caption">AUTOR &amp; HISTÓRIAS</span></span></a>
@@ -30,13 +30,13 @@
 <main id="conteudo" class="wrap register-main">
 <section class="register-story" aria-labelledby="register-title"><p class="eyebrow">UM NOVO CAPÍTULO COMEÇA AQUI</p><h1 id="register-title">Seu lugar entre <em>histórias.</em></h1><p>Estamos preparando um espaço para reunir suas próximas leituras. E você faz parte dessa história.</p><blockquote class="register-quote">Há mundos inteiros esperando por você.</blockquote></section>
 <section class="register-panel" aria-labelledby="form-title"><h2 id="form-title">Crie sua conta</h2><p class="register-intro">Vamos começar pelo seu nome.</p>
-<form class="register-form">
+<form class="register-form" data-auth-form method="post">
 <div><label for="reader-name">Seu nome</label><input id="reader-name" name="name" autocomplete="name" placeholder="Como podemos chamar você?" required maxlength="100"></div>
 <div><label for="reader-email">E-mail</label><input id="reader-email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" required maxlength="254"></div>
 <div><label for="reader-password">Senha</label><div class="password-wrap"><input id="reader-password" name="password" type="password" autocomplete="new-password" minlength="8" required aria-describedby="password-hint"><button class="password-toggle" type="button" aria-controls="reader-password" aria-label="Mostrar senha" aria-pressed="false">Mostrar</button></div><p class="register-hint" id="password-hint">Use pelo menos 8 caracteres.</p></div>
 <div><label for="reader-confirm">Confirme a senha</label><div class="password-wrap"><input id="reader-confirm" name="confirm" type="password" autocomplete="new-password" required placeholder="Digite a senha novamente"><button class="password-toggle" type="button" aria-controls="reader-confirm" aria-label="Mostrar confirmação de senha" aria-pressed="false">Mostrar</button></div></div>
-<p class="register-notice">Prévia do cadastro: por enquanto, nenhum dado será enviado ou salvo.</p>
-<button class="button" type="submit">Criar minha conta <span aria-hidden="true">↗</span></button>
+<p class="register-notice">Cadastro em fase de testes. A confirmação por e-mail ainda está limitada aos endereços autorizados no projeto.</p>
+<button class="button" type="submit" disabled>Criar minha conta <span aria-hidden="true">↗</span></button>
 <p class="register-status" role="status" aria-live="polite"></p>
 </form><p class="account-switch">Já tem uma conta? <a href="./entrar.html">Entrar</a></p><a class="register-back" href="./descubra.html">Continuar explorando os livros</a></section>
 </main><footer class="site-footer footer-expanded">
@@ -47,12 +47,4 @@
       <div class="footer-bottom"><small>© 2026 Guilherme Cardoso. Todos os direitos reservados.</small><a class="back-top" href="#">Voltar ao topo ↑</a></div>
     </div>
   </footer>
-<script>
-const form=document.querySelector('.register-form'),password=document.querySelector('#reader-password'),confirm=document.querySelector('#reader-confirm');
-function validate(){confirm.setCustomValidity(confirm.value && confirm.value!==password.value?'As senhas precisam ser iguais.':'');}
-password.addEventListener('input',validate);confirm.addEventListener('input',validate);
-document.querySelectorAll('.password-toggle').forEach(button=>button.addEventListener('click',()=>{
- const input=document.getElementById(button.getAttribute('aria-controls'));const reveal=input.type==='password';input.type=reveal?'text':'password';button.textContent=reveal?'Ocultar':'Mostrar';button.setAttribute('aria-pressed',String(reveal));button.setAttribute('aria-label',(reveal?'Ocultar':'Mostrar')+(input===password?' senha':' confirmação de senha'));
-}));
-form.addEventListener('submit',event=>{event.preventDefault();validate();if(!form.reportValidity())return;document.querySelector('.register-status').textContent='Tudo certo com os campos! Esta é uma prévia: sua conta ainda não foi criada. Nenhum dado foi enviado ou salvo.';});
-</script></body></html>
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.js"></script><script defer src="./auth.js?v=1"></script></body></html>
