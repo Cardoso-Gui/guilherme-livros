@@ -10,9 +10,17 @@
    {auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storageKey:'livros-auth'}}
   );
   window.livrosAuthClient = client;
+  let revision = 0;
+  const render = session => { label.textContent = session?.user ? 'Minha conta' : 'Entrar'; };
   client.auth.onAuthStateChange((_event, session) => {
-   label.textContent = session?.user ? 'Minha conta' : 'Entrar';
+   revision++;
+   render(session);
   });
+  // Read persisted state too; never overwrite a newer login/logout event.
+  const initialRevision = revision;
+  client.auth.getSession().then(({data, error}) => {
+   if (!error && revision === initialRevision) render(data.session);
+  }).catch(() => {});
  } catch (_) {
   label.textContent = 'Entrar';
  }

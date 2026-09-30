@@ -111,6 +111,8 @@ client = (page !== 'recovery' && window.livrosAuthClient) || window.supabase.cre
 if (page !== 'recovery') submit.disabled = false;
 function showAccount(user) {
  if (!user) return;
+ const accountLabel = document.querySelector('[data-account-label]');
+ if (accountLabel) accountLabel.textContent = 'Minha conta';
  form.hidden = true;
  document.querySelector('.account-view').hidden = false;
  document.querySelector('.account-switch').hidden = true;
