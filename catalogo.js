@@ -8,7 +8,9 @@
  const empty = document.querySelector('#catalog-empty');
  const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR').trim();
  for (const [select, key] of [[theme, 'theme'], [saga, 'saga'], [year, 'year']]) {
-   const values = [...new Set(cards.flatMap(card => key === 'theme' ? card.dataset.theme.split('|') : [card.dataset[key]]))];
+   const catalogValues = cards.flatMap(card => key === 'theme' ? card.dataset.theme.split('|') : [card.dataset[key]]);
+   const mainThemes = ["Ação","Autoajuda","Autobiografia","Aventura","Biografia","Ciência","Contos","Crônicas","Distopia","Drama","Ensaios","Espiritualidade","Fantasia","Ficção científica","Ficção histórica","Filosofia","História","Humor","Infantil","Juvenil","Magia","Mistério","Mitologia","Poesia","Policial","Romance","Suspense","Terror"];
+   const values = [...new Set(key === 'theme' ? [...mainThemes, ...catalogValues] : catalogValues)];
    values.sort((a, b) => key === 'year' ? (Number(b) || 0) - (Number(a) || 0) : a.localeCompare(b, 'pt-BR'));
    values.forEach(value => { const option = document.createElement('option'); option.value = value; option.textContent = value; select.append(option); });
  }
