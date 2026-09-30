@@ -4,7 +4,7 @@
  if(!button)return;
  const status=document.getElementById('checkout-status');
  const login=document.getElementById('checkout-login');
- const errors={login_required:'Entre na sua conta do site antes de continuar.',invalid_cart:'Confira os livros no carrinho e tente novamente.',too_many_attempts:'Aguarde um minuto antes de tentar novamente.',payment_provider_error:'O Mercado Pago não conseguiu abrir o teste. Tente novamente mais tarde.'};
+ const errors={already_owned:'Este livro já está na sua biblioteca. Você não precisa comprar novamente.',login_required:'Entre na sua conta do site antes de continuar.',invalid_cart:'Confira os livros no carrinho e tente novamente.',too_many_attempts:'Aguarde um minuto antes de tentar novamente.',payment_provider_error:'O Mercado Pago não conseguiu abrir o teste. Tente novamente mais tarde.'};
  const params=new URLSearchParams(location.search);
 
  let busy=false;
@@ -46,7 +46,7 @@
     if(!Array.isArray(cart))cart=[];
     localStorage.setItem('guilherme-livros-cart-v1',JSON.stringify(cart.filter(id=>id!==result.book_id)));
     window.dispatchEvent(new StorageEvent('storage',{key:'guilherme-livros-cart-v1'}));
-    resultStatus.textContent='Pagamento de teste aprovado! O livro foi removido do carrinho. A liberação na biblioteca será ativada na próxima etapa.';
+    resultStatus.textContent=result.access_granted?'Pagamento de teste aprovado! Seu livro já está disponível em Minha biblioteca.':'Pagamento de teste aprovado! O livro foi removido do carrinho. A liberação de teste está restrita às contas autorizadas.';
    }else{
     resultStatus.textContent=['pending','in_process','authorized'].includes(result.status)?'Pagamento de teste aguardando confirmação. O livro continua no carrinho.':'O pagamento de teste não está aprovado. O livro continua no carrinho.';
    }
