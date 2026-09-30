@@ -77,7 +77,7 @@ form.addEventListener('submit', async event => {
   } else if (page === 'login') {
    const {data,error} = await client.auth.signInWithPassword({email: field('reader-email').value.trim().toLowerCase(), password: password.value});
    if (error) throw error;
-   password.value = ''; showAccount(data.user); message('');
+   password.value = ''; location.assign('./biblioteca.html');
   } else if (step === 'email') {
    recoveryEmail = field('reader-email').value.trim().toLowerCase();
    await sendCode(); setStep('code');
