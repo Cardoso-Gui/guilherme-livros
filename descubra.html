@@ -37,11 +37,11 @@
       <div id="catalog-empty" class="catalog-empty" hidden><h3>Nenhuma história por aqui.</h3><p>Tente outro nome ou ajuste os filtros para encontrar um livro.</p><button type="button" class="button">Limpar filtros</button></div>
       <div class="book-grid">
           <article class="book-card featured-book" data-title="O Quinto Herdeiro" data-saga="Legado Elemental" data-theme="Fantasia|Drama|Mistério|Magia|Aventura" data-year="2026" aria-labelledby="herdeiro-title">
-            <div class="book-stage stage-blue"><span class="stage-number" aria-hidden="true">01</span><a class="real-cover-link" href="./o-quinto-herdeiro-capitulo-1.html" aria-label="Ler o primeiro capítulo de O Quinto Herdeiro"><img class="real-cover" src="./assets/o-quinto-herdeiro-capa.jpg" width="768" height="1152" alt="Capa de Legado Elemental — O Quinto Herdeiro, de Guilherme Cardoso: uma mansão sob a tempestade e uma figura diante dos portões." loading="lazy" decoding="async"></a></div>
+            <div class="book-stage stage-blue"><span class="stage-number" aria-hidden="true">01</span><a class="real-cover-link" href="./assets/o-quinto-herdeiro-capa.jpg" data-cover-zoom aria-label="Ampliar capa de O Quinto Herdeiro"><img class="real-cover" src="./assets/o-quinto-herdeiro-capa.jpg" width="768" height="1152" alt="Capa de Legado Elemental — O Quinto Herdeiro, de Guilherme Cardoso: uma mansão sob a tempestade e uma figura diante dos portões." loading="lazy" decoding="async"></a></div>
             <div class="book-info"><p class="eyebrow">LEGADO ELEMENTAL · GUILHERME CARDOSO</p><h3 id="herdeiro-title">O Quinto Herdeiro</h3><p class="preview-label">Primeiro capítulo disponível para leitura gratuita</p><details><summary>Ler sinopse <span aria-hidden="true">+</span></summary><div class="book-details"><p>Na Casa Ignavar, o fogo é motivo de orgulho. O nome, símbolo de poder. E o sangue, uma promessa de grandeza.</p><p>Kael é o quinto herdeiro.</p><p>Ainda assim, cresce cercado por silêncios que não compreende e regras que só parecem existir para ele. Há algo em sua marca que faz os olhares mudarem. Algo que precisa permanecer escondido.</p><p>Entre os muros de uma família que preza tanto o próprio legado, Kael aprende cedo a ocupar pouco espaço — e a guardar perguntas para as quais ninguém parece disposto a dar uma resposta.</p><p>O que pode haver em uma criança para que uma casa tão poderosa prefira não ser vista ao seu lado?</p></div></details><a class="button" style="margin-top:20px" href="./o-quinto-herdeiro-capitulo-1.html">Ler o primeiro capítulo grátis <span aria-hidden="true">↗</span></a></div>
           </article>
           <article class="book-card" data-title="Labirinto Verde" data-saga="Avulso" data-theme="A definir" data-year="A definir" aria-labelledby="labirinto-title">
-            <div class="book-stage stage-green"><span class="stage-number" aria-hidden="true">02</span><div class="book-cover cover-green" role="img" aria-label="Capa tipográfica provisória de Labirinto Verde"><span class="cover-author">GUILHERME</span><span class="cover-rule"></span><span class="cover-title">Labirinto<br><em>Verde</em></span><span class="maze" aria-hidden="true"><i></i></span><span class="cover-foot">UMA HISTÓRIA DE GUILHERME</span></div><span class="cover-note">Capa ilustrativa</span></div>
+            <div class="book-stage stage-green"><span class="stage-number" aria-hidden="true">02</span><div class="book-cover cover-green" data-cover-zoom tabindex="0" role="button" aria-label="Capa tipográfica provisória de Labirinto Verde"><span class="cover-author">GUILHERME</span><span class="cover-rule"></span><span class="cover-title">Labirinto<br><em>Verde</em></span><span class="maze" aria-hidden="true"><i></i></span><span class="cover-foot">UMA HISTÓRIA DE GUILHERME</span></div><span class="cover-note">Capa ilustrativa</span></div>
             <div class="book-info"><p class="eyebrow">LABIRINTO VERDE</p><h3 id="labirinto-title">Labirinto Verde</h3><p>Outro caminho começa na primeira página.</p><details><summary>Sobre a leitura <span aria-hidden="true">+</span></summary><div class="book-details"><p>A sinopse e o primeiro capítulo de <em>Labirinto Verde</em> estarão disponíveis aqui em breve.</p><p>Você poderá conhecer o início gratuitamente antes de decidir pela compra.</p></div></details></div>
           </article>
       </div>
@@ -56,5 +56,65 @@
       <div class="footer-bottom"><small>© 2026 Guilherme Cardoso. Todos os direitos reservados.</small><a class="back-top" href="#">Voltar ao topo ↑</a></div>
     </div>
   </footer>
+
+<style>
+[data-cover-zoom]{cursor:zoom-in}
+[data-cover-zoom]:focus-visible{outline:3px solid #6291c7;outline-offset:6px}
+.cover-dialog{padding:54px 20px 20px;border:1px solid #dce4ef;border-radius:16px;background:#fff;max-width:calc(100vw - 24px);max-height:calc(100dvh - 24px);overflow:auto;box-shadow:0 20px 70px #13294340}
+.cover-dialog::backdrop{background:#101c2dcc;backdrop-filter:blur(4px)}
+.cover-dialog .cover-close{position:absolute;right:12px;top:10px;border:1px solid #cedbec;border-radius:30px;background:#eef4fb;color:#244b7b;padding:9px 16px;font:13px Arial;cursor:pointer;min-height:36px}
+.cover-dialog img{display:block;max-width:min(560px,calc(100vw - 68px));max-height:calc(100dvh - 125px);width:auto;height:auto;object-fit:contain}
+.cover-dialog .cover-preview-placeholder{display:flex;align-items:center;justify-content:center;width:min(420px,calc(100vw - 68px));height:min(560px,65dvh);overflow:hidden}
+.cover-dialog .cover-preview-placeholder .book-cover{transform:scale(1.7);flex-shrink:0}
+@media(max-width:440px){.cover-dialog .cover-preview-placeholder .book-cover{transform:scale(1.35)}}
+</style>
+<dialog class="cover-dialog" aria-label="Capa ampliada">
+ <button type="button" class="cover-close" autofocus>Fechar ×</button>
+ <div class="cover-dialog-content"></div>
+</dialog>
+<script>
+(() => {
+ const dialog = document.querySelector('.cover-dialog');
+ const content = dialog.querySelector('.cover-dialog-content');
+ let trigger, previousOverflow;
+ function openCover(event) {
+   event.preventDefault();
+   trigger = event.currentTarget;
+   const source = trigger.querySelector('img');
+   content.replaceChildren();
+   if (source) {
+     const image = document.createElement('img');
+     image.src = source.src; image.alt = source.alt;
+     content.append(image);
+   } else {
+     const wrapper = document.createElement('div');
+     wrapper.className = 'cover-preview-placeholder';
+     const clone = trigger.cloneNode(true);
+     clone.removeAttribute('data-cover-zoom'); clone.removeAttribute('tabindex');
+     clone.setAttribute('role', 'img');
+     wrapper.append(clone); content.append(wrapper);
+   }
+   previousOverflow = document.body.style.overflow;
+   document.body.style.overflow = 'hidden';
+   dialog.showModal();
+ }
+ document.querySelectorAll('[data-cover-zoom]').forEach(el => {
+   el.addEventListener('click', openCover);
+   if (el.tagName !== 'A') el.addEventListener('keydown', event => {
+     if (event.key === 'Enter' || event.key === ' ') openCover(event);
+   });
+ });
+ dialog.querySelector('button').addEventListener('click', () => dialog.close());
+ dialog.addEventListener('click', event => {
+   const rect = dialog.getBoundingClientRect();
+   if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close();
+ });
+ dialog.addEventListener('close', () => {
+   document.body.style.overflow = previousOverflow;
+   if (trigger) trigger.focus();
+ });
+})();
+</script>
+
 </body>
 </html>
