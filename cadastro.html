@@ -33,11 +33,11 @@
 <form class="register-form" data-auth-form method="post">
 <div><label for="reader-name">Seu nome</label><input id="reader-name" name="name" autocomplete="name" placeholder="Como podemos chamar você?" required maxlength="100"></div>
 <div><label for="reader-email">E-mail</label><input id="reader-email" aria-describedby="signup-status" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" required maxlength="254"></div>
-<div><label for="reader-password">Senha</label><div class="password-wrap"><input id="reader-password" name="password" type="password" autocomplete="new-password" minlength="8" required aria-describedby="password-hint"><button class="password-toggle" type="button" aria-controls="reader-password" aria-label="Mostrar senha" aria-pressed="false">Mostrar</button></div><p class="register-hint" id="password-hint">Use pelo menos 8 caracteres.</p></div>
+<div id="duplicate-email" class="register-notice" role="alert" hidden><strong>Este e-mail já está cadastrado.</strong><br><a href="./entrar.html">Entrar na minha conta</a><span aria-hidden="true"> · </span><a href="./recuperar-senha.html">Esqueci minha senha</a></div><div><label for="reader-password">Senha</label><div class="password-wrap"><input id="reader-password" name="password" type="password" autocomplete="new-password" minlength="8" required aria-describedby="password-hint"><button class="password-toggle" type="button" aria-controls="reader-password" aria-label="Mostrar senha" aria-pressed="false">Mostrar</button></div><p class="register-hint" id="password-hint">Use pelo menos 8 caracteres.</p></div>
 <div><label for="reader-confirm">Confirme a senha</label><div class="password-wrap"><input id="reader-confirm" name="confirm" type="password" autocomplete="new-password" required placeholder="Digite a senha novamente"><button class="password-toggle" type="button" aria-controls="reader-confirm" aria-label="Mostrar confirmação de senha" aria-pressed="false">Mostrar</button></div></div>
 <p class="register-notice">Cadastro em fase de testes. A confirmação por e-mail ainda está limitada aos endereços autorizados no projeto.</p>
 <button class="button" type="submit" disabled>Criar minha conta <span aria-hidden="true">↗</span></button>
-<p class="register-status" role="status" aria-live="polite" id="signup-status"></p><div id="duplicate-email" class="register-notice" hidden><a href="./entrar.html">Entrar na minha conta</a><span aria-hidden="true"> · </span><a href="./recuperar-senha.html">Esqueci minha senha</a></div>
+<p class="register-status" role="status" aria-live="polite" id="signup-status"></p>
 </form><p class="account-switch">Já tem uma conta? <a href="./entrar.html">Entrar</a></p><a class="register-back" href="./descubra.html">Continuar explorando os livros</a></section>
 </main><footer class="site-footer footer-expanded">
     <div class="wrap footer-grid">
@@ -47,4 +47,4 @@
       <div class="footer-bottom"><small>© 2026 Guilherme Cardoso. Todos os direitos reservados.</small><a class="back-top" href="#">Voltar ao topo ↑</a></div>
     </div>
   </footer>
-<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.js"></script><script defer src="./auth.js?v=2"></script></body></html>
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.js"></script><script defer src="./auth.js?v=20260930-email-unico"></script></body></html>
