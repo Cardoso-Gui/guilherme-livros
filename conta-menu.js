@@ -47,6 +47,18 @@
   toggle.setAttribute('aria-controls', nav.id);
   header.insertBefore(toggle, nav);
 
+  const accountButton = header.querySelector('.header-read');
+  if (accountButton) {
+    const mobileAccount = accountButton.cloneNode(true);
+    mobileAccount.classList.remove('button', 'header-read');
+    mobileAccount.classList.add('mobile-account-menu-link');
+    const accountLabel = mobileAccount.querySelector('[data-account-label]');
+    if (accountLabel) accountLabel.textContent = accountLabel.textContent === 'Entrar' ? 'Entrar / Minha conta' : accountLabel.textContent;
+    const arrow = mobileAccount.querySelector('[aria-hidden="true"]');
+    if (arrow) arrow.remove();
+    nav.appendChild(mobileAccount);
+  }
+
   function closeMenu() {
     header.classList.remove('menu-open');
     toggle.setAttribute('aria-expanded', 'false');
