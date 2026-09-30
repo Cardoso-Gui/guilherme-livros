@@ -19,6 +19,9 @@ export async function handle(req:Request):Promise<Response>{
   const user=await identity.json();
   let body;try{body=await req.json();}catch{return reply(400,{error:'invalid_cart'});}
   if(!Array.isArray(body.items)||body.items.length!==1||body.items[0]!=='o-quinto-herdeiro')return reply(400,{error:'invalid_cart'});
+  const access=await call(base+'/rest/v1/book_access?user_id=eq.'+encodeURIComponent(user.id)+'&book_id=eq.o-quinto-herdeiro&select=book_id',{headers:adminHeaders});
+  if(!access.ok)throw Error('access_lookup');
+  if((await access.json()).length)return reply(409,{error:'already_owned'});
   const recent=await call(base+'/rest/v1/checkout_test_orders?user_id=eq.'+encodeURIComponent(user.id)+'&created_at=gte.'+encodeURIComponent(new Date(Date.now()-60000).toISOString())+'&select=id',{headers:adminHeaders});
   if(!recent.ok)throw Error('order_lookup');
   if((await recent.json()).length>=5)return reply(429,{error:'too_many_attempts'});
