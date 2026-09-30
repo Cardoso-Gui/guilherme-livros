@@ -6,3 +6,23 @@
 @media(max-width:900px){.wrap{width:calc(100% - 48px)}.hero{gap:15px;min-height:570px}h1{font-size:46px}.hero-art{height:390px}.art-orbit{width:290px;height:290px}.art-star{right:0;top:0}.paper{width:205px;height:291px}.paper-front{padding:23px}.paper-front p{font-size:27px}.paper-flower{margin-top:7px}.reading-section{gap:40px}.about-inner{gap:30px}.site-footer{gap:18px}.site-footer p{display:none}.book-stage{height:320px}}
 @media(max-width:620px){.wrap{width:calc(100% - 40px)}.site-header{min-height:108px;flex-direction:column;justify-content:center;gap:14px;padding-block:20px}.brand{font-size:23px}.brand-mark{font-size:31px}.brand-caption{font-size:7px}nav{gap:30px;font-size:12px}nav a{padding:5px 0}.hero{grid-template-columns:1fr;padding-block:46px 35px;gap:22px}.hero-copy{text-align:center}.hero .eyebrow{justify-content:center;font-size:8px;letter-spacing:1.5px;margin-bottom:21px}h1{font-size:43px;letter-spacing:-1.9px;line-height:1.15}h1 br{display:none}.intro{font-size:14px;max-width:35ch;margin-inline:auto}.desktop-break{display:none}.button{padding:16px 23px}.hero-art{height:332px;margin-top:8px}.art-orbit{width:265px;height:265px}.paper{height:266px;width:187px}.paper-front{padding:22px}.paper-front p{font-size:24px}.paper-line{margin-block:13px}.paper-flower{font-size:26px}.paper-label{font-size:7px}.paper-bottom{font-size:6px;bottom:21px}.art-star{right:calc(50% - 145px);top:0;font-size:42px}.art-caption{font-size:6px;bottom:0}.books-section{padding-block:48px}.section-heading{display:block;margin-bottom:27px}.section-heading>p{margin-top:15px;font-size:14px}.section-heading>p br{display:none}h2{font-size:33px;letter-spacing:-1px}.eyebrow{font-size:8px;letter-spacing:1.7px}.book-grid{grid-template-columns:1fr;gap:37px}.book-stage{height:330px}.book-info{padding-top:22px}.book-info h3{font-size:28px}.reading-section{grid-template-columns:1fr;padding-block:54px;gap:35px}.reading-steps h3{font-size:22px}.reading-intro .eyebrow{margin-bottom:18px}.reading-steps li{gap:18px}.about-inner{grid-template-columns:1fr;gap:28px;padding-block:45px}.author-monogram{width:105px;height:105px;font-size:86px}.about-inner h2{font-size:33px}.site-footer{padding-block:28px;gap:18px;justify-content:space-between}.site-footer small{margin-left:0}.back-top{width:100%;border-top:1px solid var(--line);padding-top:19px}.book-details{font-size:15px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* Biblioteca pública */
+nav a[aria-current="page"]{color:var(--sage);text-decoration:underline;text-underline-offset:7px;text-decoration-thickness:1px}
+.catalog-link{flex-shrink:0;border-bottom:1px solid #aab4a0}
+.catalog-main{padding-bottom:65px}
+.catalog-heading{max-width:680px;padding:35px 0 65px}
+.catalog-heading>.text-link{margin-bottom:43px;color:var(--muted)}
+.catalog-heading .eyebrow{margin-bottom:22px}
+.catalog-heading h1{margin-bottom:23px}
+.catalog-heading>p:last-child{max-width:48ch;color:var(--muted);font-size:16px;line-height:1.9;margin:0}
+.catalog-section-heading{display:flex;align-items:baseline;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:30px;margin-bottom:30px}
+.catalog-section-heading h2{margin:0;font-size:31px}
+.catalog-section-heading h2 span{color:var(--sage)}
+.catalog-section-heading>p{font-size:12px;color:var(--muted);margin:0}
+.catalog-main .book-grid{align-items:start}
+.catalog-note{display:flex;gap:23px;align-items:center;border-block:1px solid var(--line);padding:30px 0;margin-top:58px}
+.catalog-note>span{font-size:43px;color:#89976f}
+.catalog-note p{font:22px/1.5 var(--serif);margin:0}
+.catalog-note p span{font:13px/1.8 Arial,sans-serif;color:var(--muted)}
+@media(max-width:620px){.catalog-heading{padding-top:21px;padding-bottom:42px}.catalog-heading>.text-link{margin-bottom:30px}.catalog-heading h1{font-size:42px}.catalog-heading>p:last-child{font-size:15px}.catalog-section-heading{align-items:start;gap:12px}.catalog-section-heading h2{font-size:27px}.catalog-section-heading>p{font-size:10px;padding-top:10px;white-space:nowrap}.catalog-link{margin-top:16px}.catalog-note{margin-top:40px;gap:17px}.catalog-note p{font-size:20px}.catalog-note p span{font-size:12px}}
