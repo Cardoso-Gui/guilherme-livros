@@ -430,3 +430,45 @@ body .centered-header .header-read{justify-self:end}
   .centered-header .cart-link,.mobile-menu-toggle{width:38px;height:38px}
   body .centered-header .header-read{width:38px;min-width:38px;height:38px;min-height:38px}
 }
+
+
+/* Refinamento mobile: conta vai para o menu e a marca ganha espaço. */
+.mobile-account-menu-link{display:none}
+@media(max-width:760px){
+  .site-header.main-header.centered-header{
+    grid-template-columns:minmax(0,1fr) auto auto;
+    padding:10px 12px;
+  }
+  .centered-header .brand{
+    min-width:0;
+    overflow:hidden;
+    font-size:clamp(16px,4.6vw,20px);
+  }
+  .centered-header .brand>span:first-of-type{
+    min-width:0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .centered-header .header-account-actions{grid-column:2;gap:0}
+  body .centered-header .header-read{display:none!important}
+  .mobile-menu-toggle{grid-column:3}
+  .centered-header nav .mobile-account-menu-link{
+    display:flex;
+    width:100%;
+    min-height:44px;
+    align-items:center;
+    justify-content:flex-start;
+    padding:11px 14px;
+    margin-top:4px;
+    border-top:1px solid #e4eaf2;
+    border-radius:10px;
+    color:#244b7b;
+    font-size:14px;
+    font-weight:600;
+  }
+  .centered-header nav .mobile-account-menu-link:hover{background:#edf3fa;text-decoration:none}
+}
+@media(max-width:390px){
+  .centered-header .brand{font-size:15px}
+  .centered-header .brand img{width:36px!important;height:36px!important}
+}
