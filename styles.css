@@ -472,3 +472,85 @@ body .centered-header .header-read{justify-self:end}
   .centered-header .brand{font-size:15px}
   .centered-header .brand img{width:36px!important;height:36px!important}
 }
+
+
+/* Home mobile: hero mais curto e leitura chegando mais cedo. */
+@media(max-width:760px){
+  body#inicio .hero{
+    display:flex;
+    flex-direction:column;
+    min-height:0;
+    gap:18px;
+    padding-top:42px;
+    padding-bottom:38px;
+    text-align:center;
+  }
+  body#inicio .hero-copy{width:100%}
+  body#inicio .hero .eyebrow{
+    justify-content:center;
+    margin-bottom:18px;
+    font-size:9px;
+    letter-spacing:1.8px;
+  }
+  body#inicio .hero h1{
+    max-width:9.5em;
+    margin:0 auto 20px;
+    font-size:clamp(43px,12vw,50px);
+    line-height:1.04;
+    letter-spacing:-2px;
+  }
+  body#inicio .hero .intro{
+    max-width:31ch;
+    margin:0 auto 23px;
+    font-size:15px;
+    line-height:1.7;
+  }
+  body#inicio .hero .desktop-break{display:none}
+  body#inicio .hero .button{
+    min-width:220px;
+    min-height:50px;
+    padding:13px 22px;
+  }
+  body#inicio .hero-note{margin-top:16px;font-size:13px}
+  body#inicio .hero-art{
+    width:100%;
+    height:300px;
+    margin-top:4px;
+    overflow:hidden;
+  }
+  body#inicio .hero-art .art-orbit{
+    width:245px;
+    height:245px;
+  }
+  body#inicio .hero-art .art-orbit:after{inset:-12px}
+  body#inicio .hero-art .paper{
+    width:170px;
+    height:230px;
+  }
+  body#inicio .hero-art .paper-front{padding:19px}
+  body#inicio .hero-art .paper-label,
+  body#inicio .hero-art .paper-bottom{font-size:6px;letter-spacing:1.6px}
+  body#inicio .hero-art .paper-line{margin:12px 0;width:20px}
+  body#inicio .hero-art .paper-front p{
+    font-size:23px;
+    line-height:1.1;
+  }
+  body#inicio .hero-art .paper-flower{font-size:21px;margin-top:8px}
+  body#inicio .hero-art .paper-bottom{bottom:16px;right:16px}
+  body#inicio .hero-art .art-star{
+    right:10%;
+    top:8px;
+    font-size:39px;
+  }
+  body#inicio .hero-art .art-caption{
+    bottom:5px;
+    font-size:6px;
+    letter-spacing:1.6px;
+  }
+  body#inicio .books-section{padding-top:48px}
+}
+@media(max-width:390px){
+  body#inicio .hero{padding-top:34px;padding-bottom:32px}
+  body#inicio .hero h1{font-size:42px}
+  body#inicio .hero-art{height:280px}
+}
