@@ -37,6 +37,17 @@
 .book-facts dt{font-size:11px;letter-spacing:1px;color:var(--muted);margin-bottom:6px}
 .book-facts dd{margin:0;font-size:15px;line-height:1.6;overflow-wrap:anywhere}
 @media(max-width:760px){.book-about{grid-template-columns:minmax(0,1fr);padding-block:36px 48px;gap:32px}.book-facts{padding:24px}.book-full-synopsis{font-size:15px}}
+
+.book-purchase{padding-block:48px 64px;border-top:1px solid var(--line);text-align:center}
+.book-purchase-inner{padding:clamp(28px,5vw,52px) 24px;background:#edf3fa;border:1px solid var(--line);border-radius:20px}
+.book-purchase .eyebrow{color:var(--sage);margin-bottom:14px}
+.book-purchase h2{font-size:clamp(30px,4vw,42px);margin-bottom:18px}
+.book-purchase-intro{max-width:48ch;margin:0 auto 24px;color:var(--muted);font-size:15px;line-height:1.8}
+.book-purchase .cart-book-action{padding:0}
+.book-purchase .book-price{font-size:28px;margin-bottom:18px}
+.book-purchase .cart-book-action .button{width:auto;max-width:100%;min-height:52px;justify-content:center;border:0;font-family:inherit;font-size:14px}
+.book-purchase button:focus-visible{outline:3px solid #3c73ac;outline-offset:5px}
+@media(max-width:760px){.book-purchase{padding-block:32px 48px}.book-purchase .cart-book-action .button{width:100%}}
 </style>
 </head>
 <body>
@@ -83,6 +94,19 @@
           <div><dt>Formato</dt><dd>Digital</dd></div>
         </dl>
       </aside>
+    </section>
+
+    <section class="book-purchase wrap" aria-labelledby="purchase-title">
+      <div class="book-purchase-inner">
+        <p class="eyebrow">CONTINUE A HISTÓRIA</p>
+        <h2 id="purchase-title">Entre no universo de <em>Legado Elemental.</em></h2>
+        <p class="book-purchase-intro">Conheça a história de Kael em O Quinto Herdeiro, o primeiro livro da saga. Reserve um momento para essa leitura.</p>
+        <div class="cart-book-action">
+          <p class="book-price" data-book-price="o-quinto-herdeiro">R$ 14,90</p>
+          <button class="button" type="button" data-cart-add="o-quinto-herdeiro">Adicionar ao carrinho</button>
+          <p class="cart-add-feedback" role="status" aria-live="polite"></p>
+        </div>
+      </div>
     </section>
   </main>
   <footer class="site-footer footer-expanded">
