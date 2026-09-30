@@ -120,3 +120,29 @@ nav a[aria-current="page"]{color:var(--sage);text-decoration:underline;text-unde
  .discover-page .book-details{font-size:15px}
  .discover-page .catalog-section-heading{flex-wrap:wrap}
 }
+
+/* Cabeçalho comum às páginas públicas. */
+.site-header.main-header{min-height:112px;display:flex;flex-direction:row;justify-content:space-between;align-items:center;gap:32px;padding-block:22px}
+.main-header .brand{gap:16px;font-size:28px;white-space:nowrap}
+.main-header .brand-mark{display:grid;place-items:center;width:54px;height:54px;padding:0;border:1px solid #cbd3c1;border-radius:50%;background:#e8ecdf;font-size:36px;color:#43553f}
+.main-header .brand-caption{font-size:8px;letter-spacing:2px;margin-top:7px}
+.main-header .header-actions{display:flex;align-items:center;gap:32px}
+.main-header nav{display:flex;align-items:center;gap:8px;font-size:14px}
+.main-header nav a{padding:11px 17px;border-radius:4px;text-decoration:none;line-height:1.5}
+.main-header nav a:hover{background:#eceee4;color:#354b36}
+.main-header nav a[aria-current="page"]{background:#e4e9db;color:#354b36;text-decoration:none}
+.main-header .header-read{padding:13px 19px;font-size:13px;gap:16px;white-space:nowrap}
+@media(max-width:1000px){
+ .main-header .brand{font-size:24px}
+ .main-header .header-actions{gap:14px}
+ .main-header nav a{padding:10px 12px}
+}
+@media(max-width:760px){
+ .site-header.main-header{display:grid;grid-template-columns:1fr;gap:20px;padding-block:22px}
+ .main-header .brand{justify-self:center;font-size:26px}
+ .main-header .header-actions{justify-content:center;flex-wrap:wrap;gap:12px 18px}
+ .main-header nav{gap:3px;font-size:13px}
+ .main-header nav a{padding:9px 13px}
+ .main-header .header-read{padding:11px 15px;font-size:12px}
+}
+@media(max-width:380px){.main-header .header-actions{flex-direction:column}}
