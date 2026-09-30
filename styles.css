@@ -283,3 +283,5 @@ body .centered-header .header-read{justify-self:end}
  .news-grid{grid-template-columns:1fr}
  .destination-page{padding-block:40px 60px}.destination-panel{padding:25px}
 }
+
+@media(max-width:760px){body .centered-header .header-read{width:116px;min-width:116px}}

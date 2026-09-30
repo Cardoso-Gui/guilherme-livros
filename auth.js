@@ -103,7 +103,7 @@ form.addEventListener('submit', async event => {
  }
 });
 if (!window.supabase) { message('Não foi possível carregar o acesso. Atualize a página e tente novamente.'); return; }
-client = window.supabase.createClient(URL, KEY, {
+client = (page !== 'recovery' && window.livrosAuthClient) || window.supabase.createClient(URL, KEY, {
  auth: page === 'recovery'
   ? {persistSession:false, autoRefreshToken:false, detectSessionInUrl:false, storageKey:'livros-recovery'}
   : {persistSession:true, autoRefreshToken:true, detectSessionInUrl:true, storageKey:'livros-auth'}
