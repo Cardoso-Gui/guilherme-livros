@@ -13,6 +13,18 @@ let busy = false, step = 'email', recoveryEmail = '', verifiedRecovery = false, 
 const message = text => { status.textContent = text; };
 const field = id => document.getElementById(id);
 const password = field('reader-password'), confirmation = field('reader-confirm');
+const duplicateNotice = field('duplicate-email');
+function showDuplicateEmail() {
+ message('Este e-mail já está cadastrado. Entre na sua conta.');
+ if (duplicateNotice) duplicateNotice.hidden = false;
+ field('reader-email').setAttribute('aria-invalid', 'true');
+ field('reader-email').focus();
+}
+if (page === 'signup') field('reader-email').addEventListener('input', () => {
+ field('reader-email').removeAttribute('aria-invalid');
+ if (duplicateNotice) duplicateNotice.hidden = true;
+ message('');
+});
 function validate() {
  if (confirmation) confirmation.setCustomValidity(confirmation.value && confirmation.value !== password.value ? 'As senhas precisam ser iguais.' : '');
 }
@@ -55,6 +67,10 @@ form.addEventListener('submit', async event => {
     options: { data: {display_name: field('reader-name').value.trim()}, emailRedirectTo: 'https://cardoso-gui.github.io/guilherme-livros/entrar.html' }
    });
    if (error) throw error;
+   if (!data.session && data.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
+    showDuplicateEmail();
+    return;
+   }
    password.value = ''; confirmation.value = '';
    if (data.session) location.assign('./entrar.html');
    else message('Se o cadastro puder ser concluído, você receberá um e-mail de confirmação. Verifique sua caixa de entrada e o spam. Se já tem uma conta, use Entrar.');
@@ -79,7 +95,8 @@ form.addEventListener('submit', async event => {
    setStep('done'); message('Senha alterada! Você já pode voltar e entrar com sua nova senha.');
   }
  } catch (error) {
-  message(errorText(error));
+  if (page === 'signup' && ['user_already_exists', 'email_exists'].includes(error?.code)) showDuplicateEmail();
+  else message(errorText(error));
  } finally {
   busy = false; submit.disabled = page === 'recovery' && (!RECOVERY_EMAIL_READY || step === 'done');
   form.removeAttribute('aria-busy');
