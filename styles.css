@@ -161,3 +161,19 @@ nav a[aria-current="page"]{color:var(--sage);text-decoration:underline;text-unde
 @media(max-width:540px){.catalog-filters{grid-template-columns:1fr;padding:18px;gap:16px}}
 
 @media(min-width:1100px){.catalog-filters{grid-template-columns:minmax(190px,1.4fr) repeat(4,minmax(130px,1fr))}}
+
+/* Filtros com hierarquia leve e pesquisa em destaque. */
+.catalog-filters{grid-template-columns:repeat(4,minmax(0,1fr));gap:22px 20px;padding:28px 30px 22px;background:#fdfcf8;border:1px solid #e0e3d8;border-radius:18px;box-shadow:0 8px 28px #303b3505}
+.catalog-filters .catalog-search{grid-column:1/-1;position:relative;padding-bottom:22px;border-bottom:1px solid #e8e9e0}
+.catalog-filters label{font-size:11px;letter-spacing:.4px;gap:10px;color:#63705c}
+.catalog-filters input{min-height:58px;border-radius:12px;border-color:#d7ddce;background:#f3f5ed;padding:15px 20px 15px 49px;font-size:16px;box-shadow:inset 0 1px 2px #303b3504}
+.catalog-filters .catalog-search:before{content:'';position:absolute;left:21px;top:44px;width:12px;height:12px;border:1.6px solid #76846b;border-radius:50%;pointer-events:none}
+.catalog-filters .catalog-search:after{content:'';position:absolute;left:33px;top:56px;width:7px;border-top:1.6px solid #76846b;transform:rotate(45deg);transform-origin:left;pointer-events:none}
+.catalog-filters select{min-height:48px;border-radius:9px;background-color:#fdfcf8;border-color:#dce1d4;padding:12px 14px;color:#3e503b;cursor:pointer}
+.catalog-filters select:hover{border-color:#94a286;background-color:#f6f7f0}
+.catalog-filters input::placeholder{color:#7d8577}
+.catalog-filters .filter-clear{border:1px solid #dfe4d6;border-radius:20px;padding:8px 15px;font-size:12px;text-decoration:none;margin-top:0;background:#f3f5ed;transition:background .2s}
+.catalog-filters .filter-clear:hover{background:#e6ecdE}
+.catalog-results{padding-left:4px;margin-top:20px;font-size:12px;letter-spacing:.2px}
+@media(max-width:850px){.catalog-filters{grid-template-columns:repeat(2,minmax(0,1fr));padding:24px;gap:20px}}
+@media(max-width:540px){.catalog-filters{padding:20px 16px;gap:18px 12px;border-radius:14px}.catalog-filters label{font-size:10px;letter-spacing:0}.catalog-filters select{font-size:12px;padding:10px 7px}.catalog-filters input{font-size:16px}.catalog-filters .catalog-search{padding-bottom:18px}}
