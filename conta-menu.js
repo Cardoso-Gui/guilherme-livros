@@ -11,7 +11,11 @@
   );
   window.livrosAuthClient = client;
   let revision = 0;
-  const render = session => { label.textContent = session?.user ? 'Minha conta' : 'Entrar'; };
+  const render = session => {
+   const loggedIn = !!session?.user;
+   label.textContent = loggedIn ? 'Minha conta' : 'Entrar';
+   label.closest('a').setAttribute('href', loggedIn ? './minha-conta.html' : './entrar.html');
+  };
   client.auth.onAuthStateChange((_event, session) => {
    revision++;
    render(session);

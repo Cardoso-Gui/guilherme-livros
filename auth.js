@@ -112,7 +112,7 @@ if (page !== 'recovery') submit.disabled = false;
 function showAccount(user) {
  if (!user) return;
  const accountLabel = document.querySelector('[data-account-label]');
- if (accountLabel) accountLabel.textContent = 'Minha conta';
+ if (accountLabel) { accountLabel.textContent = 'Minha conta'; accountLabel.closest('a').href = './minha-conta.html'; }
  form.hidden = true;
  document.querySelector('.account-view').hidden = false;
  document.querySelector('.account-switch').hidden = true;
@@ -121,7 +121,7 @@ function showAccount(user) {
  field('account-greeting').textContent = 'Olá, ' + (user.user_metadata?.display_name || 'leitor') + '!';
 }
 if (page === 'login') {
- client.auth.getUser().then(({data}) => { if (data.user) showAccount(data.user); }).catch(() => {});
+ client.auth.getUser().then(({data}) => { if (data.user) location.replace('./minha-conta.html'); }).catch(() => {});
  field('sign-out').addEventListener('click', async event => {
   event.currentTarget.disabled = true;
   try {
