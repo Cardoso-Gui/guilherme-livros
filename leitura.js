@@ -3,7 +3,7 @@
   const smaller = document.getElementById('font-smaller');
   const larger = document.getElementById('font-larger');
   const value = document.getElementById('font-value');
-  let size = 20;
+  let size = 16;
   const update = () => {
     chapter.style.setProperty('--reading-size', `${size}px`);
     value.textContent = `${size} px`;
