@@ -6,7 +6,7 @@
  const key=()=>`reading-position:${userId}:o-quinto-herdeiro`;
  function remember(fraction){
   if(!ready||restoring)return;
-  position={user_id:userId,book_id:'o-quinto-herdeiro',chapter_index:index,scroll_fraction:fraction,paragraph_index:anchorIndex,paragraph_offset:anchorOffset,font_size:parseInt(text.style.getPropertyValue('--reading-size'))||16,updated_at:new Date().toISOString()};
+  position={user_id:userId,book_id:'o-quinto-herdeiro',chapter_index:index,scroll_fraction:fraction,paragraph_index:anchorIndex,paragraph_offset:anchorOffset,font_size:parseInt(text.style.getPropertyValue('--reading-size'))||14,updated_at:new Date().toISOString()};
   try{localStorage.setItem(key(),JSON.stringify(position));}catch(_){}
   if(!timer)timer=setTimeout(sync,1000);
  }
