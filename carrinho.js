@@ -46,7 +46,7 @@ function render(){
 }
 document.querySelectorAll('[data-cart-add]').forEach(button=>button.addEventListener('click',async()=>{
  await window.cartReady;
- const id=button.dataset.cartAdd;if(!Object.hasOwn(products,id))return;
+ const id=button.dataset.cartAdd;if(!id||!Object.hasOwn(products,id))return;
  if(cart.includes(id)){location.assign('./carrinho.html');return;}
  cart.push(id);const saved=save();render();
  const status=button.parentElement.querySelector('[role="status"]');if(status)status.textContent=saved?'Livro adicionado! Você pode continuar escolhendo.':'Livro selecionado, mas este navegador não permitiu salvar o carrinho.';
@@ -106,10 +106,9 @@ async function markOwned(ticket=revision){
   const owned=new Set(access.data.map(row=>row.book_id));
   document.querySelectorAll('[data-cart-add]').forEach(button=>{
    if(!owned.has(button.dataset.cartAdd))return;
-   button.removeAttribute('data-cart-add');button.textContent='Na sua biblioteca';
-   button.disabled=true;
-   const parent=button.parentElement;
-   const link=document.createElement('a');link.className='text-link';link.href='./biblioteca.html';link.textContent='Abrir minha biblioteca ↗';parent.append(link);
+   const link=document.createElement('a');
+   link.className=button.className;link.href='./biblioteca.html';link.textContent='Na sua biblioteca';
+   button.replaceWith(link);
   });
   if(cart.some(id=>owned.has(id))){
    cart=cart.filter(id=>!owned.has(id));save();render();
