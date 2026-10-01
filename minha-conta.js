@@ -47,7 +47,7 @@ form.addEventListener('submit', async event => {
 if (!client) { el('account-loading').textContent = 'Não foi possível carregar sua conta. Atualize a página.'; return; }
 client.auth.onAuthStateChange((event, session) => {
  if (event === 'SIGNED_OUT') {
-  user = null; el('settings-content').hidden = true; location.replace('./entrar.html');
+  historyRequest++;el('purchase-history').replaceChildren();user = null; el('settings-content').hidden = true; location.replace('./entrar.html');
  }
 });
 client.auth.getUser().then(({data,error}) => {
@@ -56,7 +56,34 @@ client.auth.getUser().then(({data,error}) => {
  el('account-name').textContent = user.user_metadata?.display_name || 'Leitor';
  el('account-email').textContent = user.email || '';
  el('account-loading').hidden = true; el('settings-content').hidden = false; button.disabled = false;
+ loadHistory();
 }).catch(() => { el('account-loading').textContent = 'Não foi possível carregar sua conta. Tente novamente.'; });
+let historyRequest=0;
+async function loadHistory(){
+ const owner=user?.id;if(!owner)return;
+ const ticket=++historyRequest,area=el('purchase-history'),message=el('purchase-history-status'),retry=el('purchase-history-retry');
+ area.replaceChildren();message.textContent='Carregando suas compras...';retry.hidden=true;
+ try{
+  const result=await client.from('checkout_orders').select('book_id,amount_cents,confirmed_at,created_at').eq('user_id',owner).order('confirmed_at',{ascending:false}).limit(100);
+  if(ticket!==historyRequest||user?.id!==owner)return;
+  if(result.error)throw result.error;
+  if(!result.data.length){message.textContent='Você ainda não tem compras aprovadas.';return;}
+  const dates=new Intl.DateTimeFormat('pt-BR',{timeZone:'America/Sao_Paulo',dateStyle:'short',timeStyle:'short'});
+  const money=new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'});
+  for(const purchase of result.data){
+   const row=document.createElement('article');row.className='purchase-item';
+   const info=document.createElement('div'),title=document.createElement('h3');title.textContent=purchase.book_id==='o-quinto-herdeiro'?'O Quinto Herdeiro':'Livro digital';
+   const details=document.createElement('dl'),label=document.createElement('dt'),value=document.createElement('dd'),time=document.createElement('time');
+   label.textContent='Data da compra';const date=new Date(purchase.confirmed_at||purchase.created_at);
+   time.dateTime=date.toISOString();time.textContent=dates.format(date);value.append(time);details.append(label,value);info.append(title,details);
+   const price=document.createElement('strong');price.className='purchase-value';price.textContent=money.format(purchase.amount_cents/100);
+   row.append(info,price);area.append(row);
+  }
+  message.textContent='Compras aprovadas · horário de Brasília';
+ }catch(_){if(ticket!==historyRequest||user?.id!==owner)return;message.textContent='Não foi possível carregar suas compras. Tente novamente.';retry.hidden=false;}
+}
+el('purchase-history-retry').addEventListener('click',loadHistory);
+
 el('account-signout').addEventListener('click', async event => {
  event.currentTarget.disabled = true;
  try {
