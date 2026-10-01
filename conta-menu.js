@@ -13,8 +13,10 @@
   let revision = 0;
   const render = session => {
    const loggedIn = !!session?.user;
-   label.textContent = loggedIn ? 'Minha conta' : 'Entrar';
-   label.closest('a').setAttribute('href', loggedIn ? './minha-conta.html' : './entrar.html');
+   document.querySelectorAll('[data-account-label]').forEach(accountLabel => {
+    accountLabel.textContent = loggedIn ? 'Minha conta' : 'Entrar';
+    accountLabel.closest('a').setAttribute('href', loggedIn ? './minha-conta.html' : './entrar.html');
+   });
   };
   client.auth.onAuthStateChange((_event, session) => {
    revision++;
@@ -53,7 +55,7 @@
     mobileAccount.classList.remove('button', 'header-read');
     mobileAccount.classList.add('mobile-account-menu-link');
     const accountLabel = mobileAccount.querySelector('[data-account-label]');
-    if (accountLabel) accountLabel.textContent = accountLabel.textContent === 'Entrar' ? 'Entrar / Minha conta' : accountLabel.textContent;
+    if (accountLabel) accountLabel.textContent = header.querySelector('[data-account-label]').textContent;
     const arrow = mobileAccount.querySelector('[aria-hidden="true"]');
     if (arrow) arrow.remove();
     nav.appendChild(mobileAccount);
