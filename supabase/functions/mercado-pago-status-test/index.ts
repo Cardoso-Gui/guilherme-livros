@@ -29,7 +29,12 @@ export async function handle(req:Request):Promise<Response>{
   if(!orderResponse.ok)throw Error('order_lookup');
   const orders=await orderResponse.json(),order=orders[0];
   if(!order)return reply(404,{error:'order_not_found'});
-  if(payment.live_mode!==false||payment.currency_id!=='BRL'||Math.round(Number(payment.transaction_amount)*100)!==order.amount_cents||order.book_id!=='o-quinto-herdeiro')return reply(400,{error:'payment_mismatch'});
+  const sellerResponse=await call('https://api.mercadopago.com/users/me',{headers:{Authorization:'Bearer '+mp}});
+  if(!sellerResponse.ok)throw Error('test_seller_lookup');
+  const seller=await sellerResponse.json();
+  // Test-account balance payments can have live_mode=true. Verify the seller instead.
+  if(!Array.isArray(seller.tags)||!seller.tags.includes('test_user')||String(payment.collector_id)!==String(seller.id))return reply(400,{error:'payment_mismatch'});
+  if(payment.currency_id!=='BRL'||Math.round(Number(payment.transaction_amount)*100)!==order.amount_cents||order.book_id!=='o-quinto-herdeiro')return reply(400,{error:'payment_mismatch'});
   const approved=payment.status==='approved';
   const saved=await call(base+'/rest/v1/checkout_test_orders?id=eq.'+order.id,{method:'PATCH',headers:adminHeaders,body:JSON.stringify({payment_id:String(payment.id),payment_status:payment.status,confirmed_at:approved?new Date().toISOString():null})});
   if(!saved.ok)throw Error('status_save');
