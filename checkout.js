@@ -13,6 +13,7 @@
   if(busy)return;
   busy=true;button.disabled=true;button.textContent='Abrindo checkout...';status.textContent='';login.hidden=true;
   try{
+   await window.cartReady;
    const client=window.livrosAuthClient;
    if(!client)throw Error('checkout_unavailable');
    const {data,error}=await client.auth.getSession();
@@ -36,6 +37,7 @@
   resultStatus.textContent='Conferindo seu pagamento de teste...';
   button.disabled=true;
   try{
+   await window.cartReady;
    const {data,error}=await window.livrosAuthClient.auth.getSession();
    if(error||!data.session){login.hidden=false;throw Error('Entre na mesma conta do site e atualize esta página para confirmar o pagamento.');}
    const response=await fetch('https://xheqlilvylkoxefepbmn.supabase.co/functions/v1/mercado-pago-status-test',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+data.session.access_token},body:JSON.stringify({payment_id:paymentId}),signal:AbortSignal.timeout(30000)});
