@@ -37,8 +37,7 @@ export async function handle(req:Request):Promise<Response>{
    items:[{id:'o-quinto-herdeiro',title:'O Quinto Herdeiro — edição digital',quantity:1,currency_id:'BRL',unit_price:14.90,category_id:'books'}],
    external_reference:id,metadata:{order_id:id,environment:'production'},
    back_urls:{success:site+'?checkout=production&result=success',pending:site+'?checkout=production&result=pending',failure:site+'?checkout=production&result=failure'},
-   auto_return:'approved',notification_url:base+'/functions/v1/mercado-pago-webhook',
-   payer:{email:user.email}
+   auto_return:'approved',notification_url:base+'/functions/v1/mercado-pago-webhook'
   })});
   if(!result.ok){console.error('Mercado Pago preference HTTP',result.status);return reply(502,{error:'payment_provider_error'});}
   const preference=await result.json();
