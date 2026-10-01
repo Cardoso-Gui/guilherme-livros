@@ -31,18 +31,19 @@
 
  const resultStatus=document.getElementById('cart-feedback');
  async function confirmReturn(){
-  if(params.get('checkout')!=='test')return;
+  
   const paymentId=params.get('payment_id')||params.get('collection_id');
-  if(!paymentId){resultStatus.textContent='Não recebemos o identificador do pagamento. O carrinho foi mantido.';return;}
+  
   resultStatus.textContent='Conferindo seu pagamento de teste...';
   button.disabled=true;
   try{
    await window.cartReady;
    const {data,error}=await window.livrosAuthClient.auth.getSession();
-   if(error||!data.session){login.hidden=false;throw Error('Entre na mesma conta do site e atualize esta página para confirmar o pagamento.');}
+   if(error||!data.session){if(!paymentId){resultStatus.textContent='';return;}login.hidden=false;throw Error('Entre na mesma conta do site e atualize esta página para confirmar o pagamento.');}
    const response=await fetch('https://xheqlilvylkoxefepbmn.supabase.co/functions/v1/mercado-pago-status-test',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+data.session.access_token},body:JSON.stringify({payment_id:paymentId}),signal:AbortSignal.timeout(30000)});
    const result=await response.json();
    if(!response.ok)throw Error('Não foi possível confirmar o pagamento agora. Atualize esta página para tentar novamente. Seu carrinho foi mantido.');
+   if(result.status==='no_payment'){resultStatus.textContent='';return;}
    if(result.mode==='test'&&result.approved===true&&result.status==='approved'){
     let cart=JSON.parse(localStorage.getItem('guilherme-livros-cart-v1')||'[]');
     if(!Array.isArray(cart))cart=[];
