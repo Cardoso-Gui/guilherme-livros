@@ -15,10 +15,10 @@ const feedback = text => {const node=document.getElementById('cart-feedback');if
 function save(sync=true){
  const stamp=new Date().toISOString();
  let saved=true;
- try{localStorage.setItem(KEY,JSON.stringify(cart));localStorage.setItem(accountKey,JSON.stringify(cart));localStorage.setItem(KEY+':active',accountKey);if(sync)localStorage.setItem(accountKey+':updated',stamp);}catch(_){saved=false;}
+ try{localStorage.setItem(KEY,JSON.stringify(cart));localStorage.setItem(accountKey,JSON.stringify(cart));localStorage.setItem(KEY+':active',accountKey);if(sync){localStorage.setItem(accountKey+':updated',stamp);localStorage.setItem(accountKey+':dirty','1');}}catch(_){saved=false;}
  if(sync&&cloudReady&&currentUser&&client){
   const row={user_id:currentUser,items:[...cart],updated_at:stamp};
-  lastSaved=(lastSaved||Promise.resolve()).then(()=>currentUser===row.user_id?client.from('account_carts').upsert(row,{onConflict:'user_id'}):({error:null})).then(({error})=>{if(error)feedback('Seu carrinho está salvo neste navegador. Não foi possível sincronizar com sua conta agora.');}).catch(()=>{});
+  lastSaved=(lastSaved||Promise.resolve()).then(()=>currentUser===row.user_id?client.from('account_carts').upsert(row,{onConflict:'user_id'}):({error:null})).then(({error})=>{if(!error&&localStorage.getItem(KEY+':'+row.user_id+':updated')===row.updated_at)localStorage.removeItem(KEY+':'+row.user_id+':dirty');if(error)feedback('Seu carrinho está salvo neste navegador. Não foi possível sincronizar com sua conta agora.');}).catch(()=>{});
   window.cartSynced=lastSaved;
  }
  return saved;
@@ -72,21 +72,30 @@ async function switchAccount(session){
   const remote=await client.from('account_carts').select('items,updated_at').eq('user_id',userId).maybeSingle();
   if(ticket!==revision||currentUser!==userId)return;
   if(remote.error)throw remote.error;
-  let stamp;try{stamp=localStorage.getItem(accountKey+':updated');}catch(_){}
-  if(remote.data&&(!stamp||Date.parse(remote.data.updated_at)>=Date.parse(stamp))){
+  let stamp,dirty=false;try{stamp=localStorage.getItem(accountKey+':updated');dirty=localStorage.getItem(accountKey+':dirty')==='1';}catch(_){}
+  if(remote.data&&!dirty&&(!stamp||Date.parse(remote.data.updated_at)>=Date.parse(stamp))){
    cart=clean(remote.data.items);localStorage.setItem(accountKey+':updated',remote.data.updated_at);
   }
-  cloudReady=true;save(!remote.data||(stamp&&Date.parse(stamp)>Date.parse(remote.data.updated_at)));render();
+  cloudReady=true;save(dirty||!remote.data||(stamp&&Date.parse(stamp)>Date.parse(remote.data.updated_at)));render();
   await markOwned(ticket);
  }catch(_){if(ticket===revision)await markOwned(ticket);}
 }
+let activation=null,requestedUser;
+function activate(session){
+ const id=session?.user?.id||null;
+ if(activation&&requestedUser===id)return activation;
+ requestedUser=id;
+ activation=switchAccount(session);
+ window.cartReady=activation;
+ return activation;
+}
 window.cartReady=client ? client.auth.getSession().then(({data,error})=>{
- if(!error&&revision===0)return switchAccount(data.session);
+ if(error)return;
+ return activation||activate(data.session);
 }).catch(()=>{}) : Promise.resolve();
 client?.auth.onAuthStateChange((_event,session)=>{
- if(session?.user?.id===currentUser&&cloudReady)return;
- const pending=new Promise(resolve=>setTimeout(()=>resolve(switchAccount(session)),0));
- window.cartReady=pending;
+ // Defer database/Auth calls until Supabase finishes its auth callback.
+ window.cartReady=Promise.resolve().then(()=>activate(session));
 });
 async function markOwned(ticket=revision){
  const client=window.livrosAuthClient;if(!client)return;
