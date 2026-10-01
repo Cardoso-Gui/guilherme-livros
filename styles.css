@@ -433,7 +433,7 @@ body .centered-header .header-read{justify-self:end}
 
 
 /* Refinamento mobile: conta vai para o menu e a marca ganha espaço. */
-.mobile-account-menu-link{display:none}
+.main-header nav a.mobile-account-menu-link{display:none}
 @media(max-width:760px){
   .site-header.main-header.centered-header{
     grid-template-columns:minmax(0,1fr) auto auto;
@@ -452,7 +452,7 @@ body .centered-header .header-read{justify-self:end}
   .centered-header .header-account-actions{grid-column:2;gap:0}
   body .centered-header .header-read{display:none!important}
   .mobile-menu-toggle{grid-column:3}
-  .centered-header nav .mobile-account-menu-link{
+  .main-header nav a.mobile-account-menu-link{
     display:flex;
     width:100%;
     min-height:44px;
