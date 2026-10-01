@@ -25,5 +25,5 @@ export async function confirmPayment(id:string,expectedUser?:string){
  const confirmed=await call(c.base+'/rest/v1/rpc/confirm_checkout_payment',{method:'POST',headers:c.headers,body:JSON.stringify({p_order_id:order.id,p_payment_id:String(payment.id),p_status:payment.status})});
  if(!confirmed.ok)throw Error('confirmation_save');
  const granted=await confirmed.json();
- return {mode:'production',status:payment.status,approved:payment.status==='approved',access_granted:granted,book_id:order.book_id,order_id:order.id};
+ return {mode:'production',status:payment.status,approved:payment.status==='approved',access_granted:granted,book_id:order.book_id,book_ids:order.book_ids||[order.book_id],order_id:order.id};
 }

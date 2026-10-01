@@ -1,8 +1,8 @@
 (() => {
 'use strict';
 const KEY = 'guilherme-livros-cart-v1';
-// Display prices only. A future checkout must validate products and prices server-side.
-const products = {'o-quinto-herdeiro': {title:'O Quinto Herdeiro',price:1490,cover:'./assets/o-quinto-herdeiro-capa.jpg'}};
+// Display prices only. Checkout validates the fixed product prices server-side.
+const products = {noah:{title:'Noah: A História Começa',price:990,regularPrice:1490,cover:'./assets/noah-capa.jpg'},'o-quinto-herdeiro': {title:'O Quinto Herdeiro',price:1490,cover:'./assets/o-quinto-herdeiro-capa.jpg'}};
 const money = value => new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(value / 100);
 function clean(value){return Array.isArray(value)?[...new Set(value.filter(id=>Object.hasOwn(products,id)))]:[];}
 let accountKey = localStorage.getItem(KEY+':active') || KEY + ':guest';
@@ -40,7 +40,7 @@ function render(){
   const price=document.createElement('strong');price.textContent=p.price===null?'Preço a definir':money(p.price);
   const remove=document.createElement('button');remove.type='button';remove.className='cart-remove';remove.textContent='Remover';remove.setAttribute('aria-label','Remover '+p.title);
   remove.addEventListener('click',()=>{cart=cart.filter(item=>item!==id);const saved=save();render();feedback(p.title+' removido.'+(saved?'':' A alteração só vale nesta página.'));document.querySelector('.cart-remove, #cart-empty a')?.focus();});
-  info.append(title,format,price);li.append(img,info,remove);list.append(li);
+  info.append(title,format,price);if(p.regularPrice){const offer=document.createElement('p');offer.className='cart-launch-note';const original=document.createElement('s');original.textContent=money(p.regularPrice);offer.append('De ',original,' · Desconto de lançamento: '+money(p.regularPrice-p.price));info.append(offer);}li.append(img,info,remove);list.append(li);
  }
  document.getElementById('cart-total').textContent=cart.some(id=>products[id].price===null)?'A definir':money(cart.reduce((sum,id)=>sum+products[id].price,0));
 }

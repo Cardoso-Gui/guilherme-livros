@@ -1,12 +1,15 @@
 (() => {
  'use strict';
+ const books={'o-quinto-herdeiro':{title:'O Quinto Herdeiro',saga:'Legado Elemental',file:'o-quinto-herdeiro-leitura.json'},noah:{title:'Noah: A História Começa',saga:'Crônicas de Noah',file:'noah-leitura.json'}};
+ const bookId=new URLSearchParams(location.search).get('livro')||'o-quinto-herdeiro';
+ const selectedBook=Object.hasOwn(books,bookId)?books[bookId]:null;
  const client=window.livrosAuthClient, status=document.getElementById('reading-status'), panel=document.getElementById('private-reader'), text=document.getElementById('capitulo'), title=document.getElementById('chapter-title'), select=document.getElementById('chapter-select'), previous=document.getElementById('previous-chapter'), next=document.getElementById('next-chapter');
  let chapters=[], index=0, userId='', ready=false, restoring=false, timer, queued=Promise.resolve(), position=null,anchorIndex=null,anchorOffset=0;
  const clear=()=>{ready=false;clearTimeout(timer);chapters=[];text.replaceChildren();panel.hidden=true;};
- const key=()=>`reading-position:${userId}:o-quinto-herdeiro`;
+ const key=()=>`reading-position:${userId}:${bookId}`;
  function remember(fraction){
   if(!ready||restoring)return;
-  position={user_id:userId,book_id:'o-quinto-herdeiro',chapter_index:index,scroll_fraction:fraction,paragraph_index:anchorIndex,paragraph_offset:anchorOffset,font_size:parseInt(text.style.getPropertyValue('--reading-size'))||14,updated_at:new Date().toISOString()};
+  position={user_id:userId,book_id:bookId,chapter_index:index,scroll_fraction:fraction,paragraph_index:anchorIndex,paragraph_offset:anchorOffset,font_size:parseInt(text.style.getPropertyValue('--reading-size'))||14,updated_at:new Date().toISOString()};
   try{localStorage.setItem(key(),JSON.stringify(position));}catch(_){}
   if(!timer)timer=setTimeout(sync,1000);
  }
@@ -49,14 +52,17 @@
  client?.auth.onAuthStateChange((event)=>{if(event==='SIGNED_OUT'){clear();status.hidden=false;status.textContent='Sua sessão terminou. Entre novamente para continuar.';}});
  async function init(){
   try{
+   if(!selectedBook){status.textContent='Livro não encontrado.';return;}
+   document.title=selectedBook.title+' — Leitura | Guilherme Cardoso';
+   document.querySelector('.chapter-heading .eyebrow').textContent=selectedBook.saga+' · '+selectedBook.title;
    if(!client)throw new Error();
    const user=await client.auth.getUser();
    if(user.error||!user.data.user){status.innerHTML='Entre na sua conta para ler. <a href="./entrar.html">Entrar</a>';return;}
    userId=user.data.user.id;
-   const access=await client.from('book_access').select('book_id').eq('book_id','o-quinto-herdeiro');
+   const access=await client.from('book_access').select('book_id').eq('book_id',bookId);
    if(access.error)throw access.error;
    if(!access.data.length){status.textContent='Este livro ainda não está liberado para sua conta.';return;}
-   const download=await client.storage.from('livros-privados').download('o-quinto-herdeiro-leitura.json');
+   const download=await client.storage.from('livros-privados').download(selectedBook.file);
    if(download.error)throw download.error;
    const book=JSON.parse(await download.data.text());
    if(!Array.isArray(book.chapters)||!book.chapters.length)throw new Error();
@@ -70,7 +76,7 @@
     const raw=localStorage.getItem(key());
     if(raw!==null){const value=JSON.parse(raw);saved=typeof value==='number'?{chapter_index:value,scroll_fraction:0,updated_at:'1970-01-01'}:value;}
    }catch(_){}
-   const remote=await client.from('reading_progress').select('chapter_index,scroll_fraction,paragraph_index,paragraph_offset,font_size,updated_at').eq('user_id',userId).eq('book_id','o-quinto-herdeiro').maybeSingle();
+   const remote=await client.from('reading_progress').select('chapter_index,scroll_fraction,paragraph_index,paragraph_offset,font_size,updated_at').eq('user_id',userId).eq('book_id',bookId).maybeSingle();
    if(!remote.error&&remote.data&&(!saved||Date.parse(remote.data.updated_at)>Date.parse(saved.updated_at)))saved=remote.data;
    const finalUser=await client.auth.getUser();
    if(finalUser.error||finalUser.data.user?.id!==userId)throw new Error();

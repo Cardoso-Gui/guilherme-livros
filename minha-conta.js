@@ -64,7 +64,7 @@ async function loadHistory(){
  const ticket=++historyRequest,area=el('purchase-history'),message=el('purchase-history-status'),retry=el('purchase-history-retry');
  area.replaceChildren();message.textContent='Carregando suas compras...';retry.hidden=true;
  try{
-  const result=await client.from('checkout_orders').select('book_id,amount_cents,confirmed_at,created_at').eq('user_id',owner).order('confirmed_at',{ascending:false}).limit(100);
+  const result=await client.from('checkout_orders').select('book_id,book_ids,amount_cents,confirmed_at,created_at').eq('user_id',owner).order('confirmed_at',{ascending:false}).limit(100);
   if(ticket!==historyRequest||user?.id!==owner)return;
   if(result.error)throw result.error;
   if(!result.data.length){message.textContent='Você ainda não tem compras aprovadas.';return;}
@@ -72,7 +72,7 @@ async function loadHistory(){
   const money=new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'});
   for(const purchase of result.data){
    const row=document.createElement('article');row.className='purchase-item';
-   const info=document.createElement('div'),title=document.createElement('h3');title.textContent=purchase.book_id==='o-quinto-herdeiro'?'O Quinto Herdeiro':'Livro digital';
+   const info=document.createElement('div'),title=document.createElement('h3');title.textContent=(purchase.book_ids||[purchase.book_id]).map(id=>({'o-quinto-herdeiro':'O Quinto Herdeiro',noah:'Noah: A História Começa'}[id]||'Livro digital')).join(' + ');
    const details=document.createElement('dl'),label=document.createElement('dt'),value=document.createElement('dd'),time=document.createElement('time');
    label.textContent='Data da compra';const date=new Date(purchase.confirmed_at||purchase.created_at);
    time.dateTime=date.toISOString();time.textContent=dates.format(date);value.append(time);details.append(label,value);info.append(title,details);

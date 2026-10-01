@@ -4,7 +4,7 @@
  if(!button)return;
  const status=document.getElementById('checkout-status');
  const login=document.getElementById('checkout-login');
- const errors={already_owned:'Este livro já está na sua biblioteca. Você não precisa comprar novamente.',login_required:'Entre na sua conta do site antes de continuar.',invalid_cart:'Confira os livros no carrinho e tente novamente.',too_many_attempts:'Aguarde um minuto antes de tentar novamente.',payment_provider_error:'O Mercado Pago não conseguiu abrir o pagamento. Tente novamente mais tarde.'};
+ const errors={already_owned:'Um dos livros já está na sua biblioteca. Você não precisa comprar novamente.',login_required:'Entre na sua conta do site antes de continuar.',invalid_cart:'Confira os livros no carrinho e tente novamente.',too_many_attempts:'Aguarde um minuto antes de tentar novamente.',payment_provider_error:'O Mercado Pago não conseguiu abrir o pagamento. Tente novamente mais tarde.'};
  const params=new URLSearchParams(location.search);
  const loginDialog=document.createElement('dialog');
  loginDialog.setAttribute('aria-labelledby','checkout-login-title');
@@ -65,13 +65,13 @@
    if(result.mode==='production'&&result.approved===true&&result.status==='approved'&&result.access_granted===true){
     let cart=JSON.parse(localStorage.getItem('guilherme-livros-cart-v1')||'[]');
     if(!Array.isArray(cart))cart=[];
-    localStorage.setItem('guilherme-livros-cart-v1',JSON.stringify(cart.filter(id=>id!==result.book_id)));
+    localStorage.setItem('guilherme-livros-cart-v1',JSON.stringify(cart.filter(id=>!(result.book_ids||[result.book_id]).includes(id))));
     window.dispatchEvent(new StorageEvent('storage',{key:'guilherme-livros-cart-v1'}));
-    resultStatus.textContent='Pagamento aprovado! Seu livro já está disponível em Minha biblioteca.';
+    resultStatus.textContent='Pagamento aprovado! Seus livros já estão disponíveis em Minha biblioteca.';
    }else{
     pending=['pending','in_process','authorized'].includes(result.status);
     if(pending&&polls++<12)setTimeout(confirmReturn,15000);
-    resultStatus.textContent=pending?'Pagamento aguardando confirmação. O livro continua no carrinho.':'O pagamento não está aprovado. O livro continua no carrinho.';
+    resultStatus.textContent=pending?'Pagamento aguardando confirmação. Os livros continuam no carrinho.':'O pagamento não está aprovado. Os livros continuam no carrinho.';
    }
   }catch(error){resultStatus.textContent=error.message||'Não foi possível confirmar o pagamento. Seu carrinho foi mantido.';}
   finally{confirming=false;button.disabled=busy||pending;}
