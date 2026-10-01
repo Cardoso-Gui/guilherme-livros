@@ -86,6 +86,24 @@
 @media(max-width:1200px){#novidades .news-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:850px){#novidades .news-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:550px){#novidades .news-grid{grid-template-columns:1fr}}
+
+#novidades .news-grid .news-preview{position:relative;padding:20px;gap:0;cursor:pointer;transition:transform .18s,box-shadow .18s,border-color .18s}
+#novidades .news-grid .news-preview:hover{transform:translateY(-3px);border-color:#9bb7d8;box-shadow:0 10px 24px #254e7b12}
+#novidades .news-preview:focus-within{outline:3px solid #7a9fc5;outline-offset:3px}
+#novidades .news-preview h3{font-size:22px;line-height:1.3;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;margin-bottom:12px}
+#novidades .news-preview>p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;font-size:14px;line-height:1.7}
+#novidades .news-open{border:0;background:transparent;color:#254e7b;font:600 14px/1.5 Arial,sans-serif;text-align:left;padding:14px 0 0;margin-top:auto;min-height:44px;cursor:pointer}
+#novidades .news-open::after{content:"";position:absolute;inset:0}
+#novidades .news-open:focus-visible{outline:none}
+#novidades .news-dialog{box-sizing:border-box;width:min(720px,calc(100% - 32px));max-height:85dvh;overflow:auto;border:1px solid #cfdded;border-radius:22px;padding:0;background:#fff;color:#283442;box-shadow:0 24px 90px #142e4940}
+#novidades .news-dialog::backdrop{background:#14283f80;backdrop-filter:blur(4px)}
+#novidades .news-dialog-top{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:14px 24px;background:white;border-bottom:1px solid var(--line);z-index:1;font-size:13px;color:#526175}
+#novidades .news-dialog-close{border:1px solid #c7d6e9;border-radius:50%;width:44px;height:44px;background:#f4f7fc;color:#254e7b;font-size:24px;cursor:pointer}
+#novidades .news-dialog-content{padding:28px 32px 32px}
+#novidades .news-dialog h3{font-size:clamp(26px,4vw,36px);line-height:1.2;margin:14px 0 22px}
+#novidades .news-dialog p{font-size:16px;line-height:1.85;color:#526175;margin:0 0 18px}
+#novidades .news-dialog .news-actions{margin-top:24px}
+@media(max-width:600px){#novidades .news-dialog-content{padding:22px}#novidades .news-dialog-top{padding:10px 16px}}
 </style><link rel="stylesheet" href="./suporte.css?v=footer-2"></head><body id="novidades"><a class="skip-link" href="#conteudo">Pular para o conteúdo</a><header class="site-header main-header centered-header wrap"><a class="brand" href="./index.html" aria-label="Guilherme Cardoso, página inicial"><img src="./assets/logo-gc.png" alt="" width="76" height="76" style="width:76px;height:76px;object-fit:contain;flex-shrink:0"><span>Guilherme Cardoso<span class="brand-caption">AUTOR &amp; HISTÓRIAS</span></span></a><nav aria-label="Navegação principal"><a href="./index.html">Início</a><a href="./novidades.html" aria-current="page">Novidades</a><a href="./descubra.html">Todos os livros</a><a href="./biblioteca.html">Minha biblioteca</a></nav><div class="header-account-actions"><a class="cart-link" href="./carrinho.html" aria-label="Carrinho, 0 livros"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 3h2l2.4 11.5a2 2 0 0 0 2 1.5h8.2a2 2 0 0 0 2-1.6L21 7H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span data-cart-count aria-hidden="true">0</span></a><a class="button header-read" href="./entrar.html"><span data-account-label>Entrar</span> <span aria-hidden="true">↗</span></a></div></header><main id="conteudo" class="wrap destination-page news-board">
   <div class="news-masthead"><p class="eyebrow">O JORNAL DAS NOSSAS HISTÓRIAS</p><h1>Entre <em>páginas.</em></h1><p class="destination-intro">Avisos, bastidores e novidades dos livros e deste espaço de leitura.</p><div class="news-edition"><span>Mural de atualizações</span><span>Atualizado em <time datetime="2026-09-30">30 de setembro de 2026</time></span></div></div>
 
@@ -150,5 +168,30 @@
  addButtons(['Todos','Literatura','Atualizações'],topics,buttons,value=>{selected=value;sub='Toda a literatura';});
  addButtons(['Toda a literatura','Lançamentos','Próximas histórias'],subtopics,subButtons,value=>{sub=value;});
  order.addEventListener('change',()=>{page=1;apply();});controls.hidden=false;apply();
+})();
+</script><script>
+(() => {
+ const dialog=document.createElement('dialog');
+ dialog.className='news-dialog';dialog.setAttribute('aria-labelledby','news-dialog-title');
+ dialog.innerHTML='<div class="news-dialog-top"><span>Entre páginas · Notícia completa</span><button type="button" class="news-dialog-close" aria-label="Fechar notícia" autofocus>×</button></div><div class="news-dialog-content"></div>';
+ document.body.append(dialog);
+ const body=dialog.querySelector('.news-dialog-content');
+ let opener=null,previousOverflow='';
+ dialog.querySelector('.news-dialog-close').addEventListener('click',()=>dialog.close());
+ dialog.addEventListener('click',event=>{if(event.target===dialog){const box=dialog.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)dialog.close();}});
+ dialog.addEventListener('close',()=>{document.body.style.overflow=previousOverflow;opener?.focus();body.replaceChildren();});
+ document.querySelectorAll('.news-grid article').forEach(card=>{
+  const full=Array.from(card.children).map(child=>child.cloneNode(true));
+  const title=card.querySelector('h3'),meta=card.querySelector('.news-meta'),excerpt=card.querySelector('p');
+  const button=document.createElement('button');button.type='button';button.className='news-open';button.textContent='Ler notícia ↗';button.setAttribute('aria-label','Ler notícia: '+title.textContent);button.setAttribute('aria-haspopup','dialog');
+  button.addEventListener('click',()=>{
+   opener=button;body.replaceChildren(...full.map(child=>child.cloneNode(true)));
+   body.querySelector('h3').id='news-dialog-title';
+   previousOverflow=document.body.style.overflow;document.body.style.overflow='hidden';
+   dialog.showModal();dialog.scrollTop=0;
+  });
+  card.replaceChildren(meta,title,...(excerpt?[excerpt]:[]),button);
+  card.classList.add('news-preview');
+ });
 })();
 </script></body></html>
