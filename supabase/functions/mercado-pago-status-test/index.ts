@@ -19,6 +19,19 @@ export async function handle(req:Request):Promise<Response>{
   const user=await identity.json();
 
   let body;try{body=await req.json();}catch{return reply(400,{error:'invalid_payment'});}
+  if(!body.payment_id){
+   const recent=await call(base+'/rest/v1/checkout_test_orders?user_id=eq.'+encodeURIComponent(user.id)+'&order=created_at.desc&limit=1&select=id,payment_id',{headers:adminHeaders});
+   if(!recent.ok)throw Error('order_lookup');
+   const order=(await recent.json())[0];
+   if(!order)return reply(200,{mode:'test',status:'no_payment',approved:false});
+   const found=await call('https://api.mercadopago.com/v1/payments/search?external_reference='+encodeURIComponent(order.id)+'&sort=date_created&criteria=desc&limit=10',{headers:{Authorization:'Bearer '+mp}});
+   if(!found.ok)throw Error('payment_search');
+   const results=(await found.json()).results||[];
+   const matched=results.filter((p:any)=>String(p.external_reference)===order.id);
+   const candidate=matched.find((p:any)=>p.status==='approved')||matched[0];
+   if(!candidate)return reply(200,{mode:'test',status:'no_payment',approved:false});
+   body.payment_id=String(candidate.id);
+  }
   if(!/^\d{1,30}$/.test(String(body.payment_id||'')))return reply(400,{error:'invalid_payment'});
   const paymentResponse=await call('https://api.mercadopago.com/v1/payments/'+body.payment_id,{headers:{Authorization:'Bearer '+mp}});
   if(!paymentResponse.ok)return reply(502,{error:'payment_not_found'});
