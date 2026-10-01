@@ -6,11 +6,23 @@ const products = {'o-quinto-herdeiro': {title:'O Quinto Herdeiro',price:1490,cov
 const money = value => new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(value / 100);
 function clean(value){return Array.isArray(value)?[...new Set(value.filter(id=>Object.hasOwn(products,id)))]:[];}
 let accountKey = localStorage.getItem(KEY+':active') || KEY + ':guest';
-let cart = [];
+let cart = [],cloudReady=false,revision=0,lastSaved=null;
+let currentUser = accountKey===KEY+':guest'?null:accountKey.slice(KEY.length+1);
+const client=window.livrosAuthClient;
 try {cart=clean(JSON.parse(localStorage.getItem(KEY)||'[]'));} catch (_) {}
 if(localStorage.getItem(accountKey)===null)localStorage.setItem(accountKey,JSON.stringify(cart));
 const feedback = text => {const node=document.getElementById('cart-feedback');if(node)node.textContent=text;};
-function save(){try {localStorage.setItem(KEY,JSON.stringify(cart));localStorage.setItem(accountKey,JSON.stringify(cart));localStorage.setItem(KEY+':active',accountKey);return true;}catch(_){return false;}}
+function save(sync=true){
+ const stamp=new Date().toISOString();
+ let saved=true;
+ try{localStorage.setItem(KEY,JSON.stringify(cart));localStorage.setItem(accountKey,JSON.stringify(cart));localStorage.setItem(KEY+':active',accountKey);if(sync)localStorage.setItem(accountKey+':updated',stamp);}catch(_){saved=false;}
+ if(sync&&cloudReady&&currentUser&&client){
+  const row={user_id:currentUser,items:[...cart],updated_at:stamp};
+  lastSaved=(lastSaved||Promise.resolve()).then(()=>currentUser===row.user_id?client.from('account_carts').upsert(row,{onConflict:'user_id'}):({error:null})).then(({error})=>{if(error)feedback('Seu carrinho está salvo neste navegador. Não foi possível sincronizar com sua conta agora.');}).catch(()=>{});
+  window.cartSynced=lastSaved;
+ }
+ return saved;
+}
 function render(){
  document.querySelectorAll('[data-cart-count]').forEach(node=>{node.textContent=String(cart.length);node.closest('a').setAttribute('aria-label','Carrinho, '+cart.length+(cart.length===1?' livro':' livros'));});
  document.querySelectorAll('[data-book-price]').forEach(node=>{const p=products[node.dataset.bookPrice];if(p)node.textContent=p.price===null?'Preço a definir':money(p.price);});
@@ -32,7 +44,8 @@ function render(){
  }
  document.getElementById('cart-total').textContent=cart.some(id=>products[id].price===null)?'A definir':money(cart.reduce((sum,id)=>sum+products[id].price,0));
 }
-document.querySelectorAll('[data-cart-add]').forEach(button=>button.addEventListener('click',()=>{
+document.querySelectorAll('[data-cart-add]').forEach(button=>button.addEventListener('click',async()=>{
+ await window.cartReady;
  const id=button.dataset.cartAdd;if(!Object.hasOwn(products,id))return;
  if(cart.includes(id)){location.assign('./carrinho.html');return;}
  cart.push(id);const saved=save();render();
@@ -40,33 +53,47 @@ document.querySelectorAll('[data-cart-add]').forEach(button=>button.addEventList
 }));
 window.addEventListener('storage',event=>{if(event.key===KEY||event.key===null){try{cart=clean(JSON.parse(localStorage.getItem(KEY)||'[]'));}catch(_){cart=[];}save();render();}});
 render();
-let currentUser = accountKey===KEY+':guest'?null:accountKey.slice(KEY.length+1);
-function switchAccount(session){
+async function switchAccount(session){
+ const ticket=++revision;
  const userId=session?.user?.id||null;
  const nextKey=KEY+':'+(userId||'guest');
- if(nextKey===accountKey && currentUser===userId)return;
- localStorage.setItem(accountKey,JSON.stringify(cart));
- const stored=localStorage.getItem(nextKey);
- const guest=clean(JSON.parse(localStorage.getItem(KEY+':guest')||'[]'));
- cart=stored===null ? (userId?guest:[]) : clean(JSON.parse(stored));
- if(userId && stored===null)localStorage.setItem(KEY+':guest','[]');
- currentUser=userId;accountKey=nextKey;save();render();
+ const changed=nextKey!==accountKey;
+ cloudReady=false;
+ if(changed){
+  try{localStorage.setItem(accountKey,JSON.stringify(cart));}catch(_){}
+  let guest=[],stored=null;
+  try{stored=localStorage.getItem(nextKey);guest=clean(JSON.parse(localStorage.getItem(KEY+':guest')||'[]'));}catch(_){}
+  cart=stored===null ? (userId?guest:[]) : clean(JSON.parse(stored));
+  if(userId&&guest.length){cart=clean([...cart,...guest]);localStorage.setItem(KEY+':guest','[]');localStorage.setItem(nextKey+':updated',new Date().toISOString());}
+  currentUser=userId;accountKey=nextKey;save(false);render();
+ }
+ if(!userId)return;
+ try{
+  const remote=await client.from('account_carts').select('items,updated_at').eq('user_id',userId).maybeSingle();
+  if(ticket!==revision||currentUser!==userId)return;
+  if(remote.error)throw remote.error;
+  let stamp;try{stamp=localStorage.getItem(accountKey+':updated');}catch(_){}
+  if(remote.data&&(!stamp||Date.parse(remote.data.updated_at)>=Date.parse(stamp))){
+   cart=clean(remote.data.items);localStorage.setItem(accountKey+':updated',remote.data.updated_at);
+  }
+  cloudReady=true;save(!remote.data||(stamp&&Date.parse(stamp)>Date.parse(remote.data.updated_at)));render();
+  await markOwned(ticket);
+ }catch(_){if(ticket===revision)await markOwned(ticket);}
 }
-const client=window.livrosAuthClient;
 window.cartReady=client ? client.auth.getSession().then(({data,error})=>{
- if(!error)switchAccount(data.session);
- return markOwned();
+ if(!error&&revision===0)return switchAccount(data.session);
 }).catch(()=>{}) : Promise.resolve();
 client?.auth.onAuthStateChange((_event,session)=>{
- // Avoid awaiting Auth calls inside the Supabase callback.
- setTimeout(()=>{try{switchAccount(session);markOwned();}catch(_){}},0);
+ if(session?.user?.id===currentUser&&cloudReady)return;
+ const pending=new Promise(resolve=>setTimeout(()=>resolve(switchAccount(session)),0));
+ window.cartReady=pending;
 });
-async function markOwned(){
+async function markOwned(ticket=revision){
  const client=window.livrosAuthClient;if(!client)return;
  try{
   const identity=await client.auth.getUser();if(identity.error||!identity.data.user)return;
   const access=await client.from('book_access').select('book_id');
-  if(access.error)return;
+  if(access.error||ticket!==revision||identity.data.user.id!==currentUser)return;
   const owned=new Set(access.data.map(row=>row.book_id));
   document.querySelectorAll('[data-cart-add]').forEach(button=>{
    if(!owned.has(button.dataset.cartAdd))return;
