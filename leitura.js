@@ -1,17 +1,27 @@
 (() => {
-  const chapter = document.getElementById('capitulo');
-  const smaller = document.getElementById('font-smaller');
-  const larger = document.getElementById('font-larger');
-  const value = document.getElementById('font-value');
-  let size = 16;
-  const update = () => {
-    chapter.style.setProperty('--reading-size', `${size}px`);
-    value.textContent = `${size} px`;
-    smaller.disabled = size <= 16;
-    larger.disabled = size >= 28;
-  };
-  smaller.addEventListener('click', () => { size = Math.max(16, size - 2); update(); });
-  larger.addEventListener('click', () => { size = Math.min(28, size + 2); update(); });
-  document.getElementById('reader-controls').hidden = false;
+ 'use strict';
+ const chapter=document.getElementById('capitulo'),smaller=document.getElementById('font-smaller'),larger=document.getElementById('font-larger'),value=document.getElementById('font-value');
+ if(!chapter||!smaller||!larger||!value)return;
+ let size=16,key='reader-font:preview';
+ const valid=n=>Number.isInteger(n)&&n>=16&&n<=28;
+ function update(save=false){
+  const paragraphs=[...chapter.querySelectorAll('p')],anchor=paragraphs.find(p=>p.getBoundingClientRect().bottom>140);
+  const before=anchor?.getBoundingClientRect().top;
+  chapter.style.setProperty('--reading-size',size+'px');value.textContent=size+' px';smaller.disabled=size<=16;larger.disabled=size>=28;
+  if(save){
+   if(anchor)window.scrollBy({top:anchor.getBoundingClientRect().top-before,behavior:'instant'});
+   try{localStorage.setItem(key,String(size));}catch(_){}
+   window.dispatchEvent(new CustomEvent('reading-font-change',{detail:{size}}));
+  }
+ }
+ smaller.addEventListener('click',()=>{size=Math.max(16,size-2);update(true);});
+ larger.addEventListener('click',()=>{size=Math.min(28,size+2);update(true);});
+ window.addEventListener('reader-preferences',event=>{
+  key='reader-font:'+event.detail.user_id;
+  let saved;try{saved=Number(localStorage.getItem(key));}catch(_){}
+  size=valid(event.detail.font_size)?event.detail.font_size:valid(saved)?saved:16;
   update();
+ });
+ if(!window.livrosAuthClient){try{const stored=Number(localStorage.getItem(key));if(valid(stored))size=stored;}catch(_){}}
+ document.getElementById('reader-controls').hidden=false;update();
 })();
