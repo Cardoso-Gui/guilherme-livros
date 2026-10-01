@@ -2,7 +2,7 @@
  'use strict';
  const area=document.getElementById('library-content');
  const client=window.livrosAuthClient;
- const books={'o-quinto-herdeiro':{title:'O Quinto Herdeiro',cover:'./assets/o-quinto-herdeiro-capa.jpg'},noah:{title:'Noah: A História Começa',cover:'./assets/noah-capa.jpg'}};
+ const books={'o-quinto-herdeiro':{title:'O Quinto Herdeiro',cover:'./assets/o-quinto-herdeiro-capa.jpg'},noah:{title:'Noah: A História Começa',cover:'./assets/noah-capa.jpg?v=2'}};
  let revision=0;
  async function init(){
   const ticket=++revision;

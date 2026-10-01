@@ -2,7 +2,7 @@
 'use strict';
 const KEY = 'guilherme-livros-cart-v1';
 // Display prices only. Checkout validates the fixed product prices server-side.
-const products = {noah:{title:'Noah: A História Começa',price:990,regularPrice:1490,cover:'./assets/noah-capa.jpg'},'o-quinto-herdeiro': {title:'O Quinto Herdeiro',price:1490,cover:'./assets/o-quinto-herdeiro-capa.jpg'}};
+const products = {noah:{title:'Noah: A História Começa',price:990,regularPrice:1490,cover:'./assets/noah-capa.jpg?v=2'},'o-quinto-herdeiro': {title:'O Quinto Herdeiro',price:1490,cover:'./assets/o-quinto-herdeiro-capa.jpg'}};
 const money = value => new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(value / 100);
 function clean(value){return Array.isArray(value)?[...new Set(value.filter(id=>Object.hasOwn(products,id)))]:[];}
 let accountKey = localStorage.getItem(KEY+':active') || KEY + ':guest';
