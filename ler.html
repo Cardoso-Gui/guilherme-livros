@@ -1,9 +1,120 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Leitura — O Quinto Herdeiro</title><link rel="stylesheet" href="./styles.css?v=cart-1"><link rel="stylesheet" href="./biblioteca.css?v=1"><meta name="robots" content="noindex,nofollow"><link rel="stylesheet" href="./leitura.css?v=font-14"><link rel="stylesheet" href="./suporte.css?v=instagram-1"></head><body class="private-reader-page"><a class="skip-link" href="#conteudo">Pular para o conteúdo</a><header class="site-header main-header centered-header wrap"><a class="brand" href="./index.html" aria-label="Guilherme Cardoso, página inicial"><img src="./assets/logo-gc.png" alt="" width="76" height="76" style="width:76px;height:76px;object-fit:contain;flex-shrink:0"><span>Guilherme Cardoso<span class="brand-caption">AUTOR &amp; HISTÓRIAS</span></span></a><nav aria-label="Navegação principal"><a href="./index.html">Início</a><a href="./novidades.html">Novidades</a><a href="./descubra.html">Todos os livros</a><a href="./biblioteca.html" aria-current="page">Minha biblioteca</a></nav><div class="header-account-actions"><a class="cart-link" href="./carrinho.html" aria-label="Carrinho, 0 livros"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 3h2l2.4 11.5a2 2 0 0 0 2 1.5h8.2a2 2 0 0 0 2-1.6L21 7H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span data-cart-count aria-hidden="true">0</span></a><a class="button header-read" href="./entrar.html"><span data-account-label>Entrar</span> <span aria-hidden="true">↗</span></a></div></header><main id="conteudo" class="reader-main"><p id="reading-status" role="status">Abrindo seu livro…</p><section id="private-reader" hidden><div class="reader-settings"><div class="chapter-picker"><label for="chapter-select">Sumário</label><select id="chapter-select"></select></div><div class="reader-toolbar" id="reader-controls"><span>Tamanho do texto</span><div class="font-controls"><button id="font-smaller" aria-label="Diminuir texto">A−</button><output id="font-value">14 px</output><button id="font-larger" aria-label="Aumentar texto">A+</button></div></div></div><div class="chapter-heading"><p class="eyebrow">LEGADO ELEMENTAL · O QUINTO HERDEIRO</p><h1 id="chapter-title" tabindex="-1"></h1><p class="reader-byline">Por Guilherme Cardoso</p></div><article id="capitulo" class="chapter-text"></article><nav class="book-navigation" aria-label="Capítulos"><button id="previous-chapter">← Anterior</button><span id="chapter-position"></span><button id="next-chapter">Próximo →</button></nav></section></main><footer class="site-footer footer-expanded">
- <div class="wrap footer-grid">
-  <div class="footer-identity"><a class="footer-brand" href="./index.html">Guilherme Cardoso<span>.</span></a><p>Histórias para ler no seu tempo.</p><a class="footer-instagram" href="https://www.instagram.com/gui.cardoso.p/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Guilherme Cardoso, @gui.cardoso.p (abre em nova aba)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>@gui.cardoso.p</span><span aria-hidden="true">↗</span></a></div>
-  <nav class="footer-nav" aria-label="Navegação do rodapé"><h2>Explore</h2><a href="./index.html">Início</a><a href="./novidades.html">Novidades</a><a href="./descubra.html">Todos os livros</a><a href="./biblioteca.html">Minha biblioteca</a></nav>
-  <div class="footer-reading"><h2>Uma nova história</h2><p>Deixe o acaso escolher sua próxima leitura.</p><a class="text-link" data-surprise-reading href="./o-quinto-herdeiro-capitulo-1.html">Surpreenda-me <span aria-hidden="true">↗</span></a><p class="footer-free-note">Primeiro capítulo grátis, sem cadastro.</p></div>
-  <div class="footer-support"><div><h2>Precisa de ajuda?</h2><p>Dúvidas sobre o site, sua leitura ou pagamento?</p></div><a href="mailto:gui.cardoso.p@outlook.com?subject=Ajuda%20com%20o%20site%20ou%20pagamento">gui.cardoso.p@outlook.com <span aria-hidden="true">↗</span></a></div>
-  <div class="footer-bottom"><small>© 2026 Guilherme Cardoso. Todos os direitos reservados.</small><a class="back-top" href="#">Voltar ao topo ↑</a></div>
- </div>
-</footer><script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.js"></script><script defer src="./conta-menu.js?v=settings-1"></script><script defer src="./carrinho.js?v=noah-launch-1"></script><script defer src="./livro.js?v=noah-launch-1"></script><script defer src="./leitura.js?v=font-14"></script><script defer src="./surpreenda-me.js?v=noah-launch-1"></script></body></html>
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Conheça os livros de Guilherme. Um espaço para descobrir sua próxima história e leia o primeiro capítulo de O Quinto Herdeiro gratuitamente." name="description"/>
+<meta content="#ffffff" name="theme-color"/>
+<title>Compras e leitura — Guilherme Cardoso</title>
+<link href="./styles.css?v=cart-1" rel="stylesheet"/>
+<style>@media(max-width:760px){.main-header .header-actions{flex-wrap:wrap}.main-header nav a{min-width:60px}}.account-switch{text-align:center;font-size:14px;line-height:1.8;color:#657080;margin:22px 0 0}.account-switch a{color:#244b7b;text-decoration:underline;text-underline-offset:4px;font-weight:600}
+/* Ajustes exclusivos da página inicial. */
+body#inicio .book-grid{align-items:start}
+body#inicio .book-card{min-width:0}
+body#inicio .book-info{min-width:0}
+body#inicio .book-info>p.home-book-format{font-size:12px;margin-bottom:14px}
+body#inicio .cart-book-action{margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
+body#inicio .cart-book-action .button{display:flex;width:100%;min-height:48px}
+body#inicio .home-sample-link{display:inline-flex;margin-top:16px;font-size:13px;line-height:1.6}
+body#inicio .cart-add-feedback:empty{display:none}
+body#inicio summary{min-height:44px;cursor:pointer}
+body#inicio a:focus-visible,body#inicio button:focus-visible,body#inicio summary:focus-visible{outline:3px solid #7a9fc5;outline-offset:4px}
+@media(min-width:761px){body#inicio .book-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}body#inicio .book-card{display:grid;grid-template-columns:minmax(140px,.8fr) minmax(0,1fr);gap:24px}}
+@media(max-width:760px){body#inicio .book-card{display:block}body#inicio .book-info{padding-top:22px}body#inicio .about-inner{gap:24px}body#inicio .about-inner h2{font-size:30px}body#inicio .about-inner p{font-size:15px;line-height:1.8}}
+
+/* Textos legíveis e ações com área de clique confortável. */
+body#inicio main .eyebrow,body#inicio .book-info .eyebrow{font-size:12px;letter-spacing:1.5px;line-height:1.7;color:#44566d}
+body#inicio .book-info>p:not(.eyebrow),body#inicio .reading-intro>p:not(.eyebrow),body#inicio .reading-steps p,body#inicio .about-inner p:not(.eyebrow){font-size:16px;line-height:1.8;color:#526175}
+body#inicio .book-info>p.home-book-format{font-size:14px}
+body#inicio .button{font-size:16px;font-weight:600;min-height:50px;padding:13px 22px;gap:14px;line-height:1.5;white-space:normal}
+body#inicio .book-info .button{display:flex;width:100%}
+body#inicio .button.home-secondary{background:#fff;color:#244b7b;border:1px solid #a6bdd7;box-shadow:none}
+body#inicio .button.home-secondary:hover{background:#e9f0f9;border-color:#244b7b;text-decoration:none}
+body#inicio .home-sample-link{margin-top:14px}
+body#inicio .text-link{font-size:15px;line-height:1.6;min-height:44px;align-items:center;gap:12px}
+body#inicio summary{display:flex;align-items:center;justify-content:space-between;font-size:15px;line-height:1.6;padding:12px 0;min-height:48px}
+body#inicio .book-price{font-size:20px}
+body#inicio .hero-note{font-size:14px;color:#526175}
+body#inicio .cart-add-feedback{font-size:14px}
+body#inicio .cover-note{font-size:12px}
+body#inicio .footer-grid p,body#inicio .footer-nav a,body#inicio .footer-reading .text-link{font-size:15px;line-height:1.8}
+body#inicio .footer-grid h2{font-size:13px;letter-spacing:1px}
+body#inicio .footer-bottom small,body#inicio .back-top{font-size:13px}
+body#inicio .main-header nav a{font-size:15px}
+@media(max-width:760px){body#inicio .hero .intro{font-size:16px}body#inicio .main-header nav a{font-size:16px}body#inicio .hero .eyebrow{font-size:11px}body#inicio .catalog-link{font-size:15px}body#inicio .about-inner p{font-size:16px}}
+
+/* Home compacta: menos espaço, mesmos textos legíveis. */
+body#inicio .hero{min-height:0;padding-block:32px;gap:32px}
+body#inicio .hero-art{height:340px}
+body#inicio .hero .eyebrow{margin-bottom:14px}
+body#inicio .hero h1{font-size:clamp(42px,4vw,60px);margin-bottom:18px}
+body#inicio .hero .intro{margin-bottom:20px}
+body#inicio .hero-note{margin-top:12px}
+body#inicio .books-section{padding-block:32px}
+body#inicio .section-heading{margin-bottom:22px}
+body#inicio .section-heading .eyebrow{margin-bottom:8px}
+body#inicio .section-heading h2{font-size:clamp(28px,3vw,36px)}
+body#inicio .book-grid{gap:24px}
+body#inicio .book-card{gap:18px}
+body#inicio .book-stage{height:245px;border-radius:12px}
+body#inicio .book-stage .real-cover-link{height:200px;max-width:80%}
+body#inicio .book-stage .real-cover{max-height:100%;width:auto}
+body#inicio .book-stage .book-cover{transform:scale(.72) rotate(5deg)}
+body#inicio .book-info{padding-top:0}
+body#inicio .book-info .eyebrow{margin-bottom:6px}
+body#inicio .book-info h3{font-size:27px;margin-bottom:10px}
+body#inicio .book-info>p:not(.eyebrow){margin-bottom:12px;line-height:1.65}
+body#inicio .book-info>p.home-book-format{margin-bottom:10px}
+body#inicio .cart-book-action{margin-top:12px;padding-top:12px}
+body#inicio .book-price{margin-bottom:8px}
+body#inicio .home-sample-link{margin-top:10px}
+body#inicio .reading-section{padding-block:36px;gap:36px}
+body#inicio .reading-intro .eyebrow{margin-bottom:12px}
+body#inicio .reading-intro h2{font-size:clamp(29px,3vw,36px);margin-bottom:16px}
+body#inicio .reading-steps li{padding-block:14px}
+body#inicio .reading-steps h3{margin-bottom:6px}
+body#inicio .about-inner{padding-block:36px;gap:32px;grid-template-columns:150px minmax(0,1fr)}
+body#inicio .author-monogram{width:140px;height:140px}
+body#inicio .about-inner .eyebrow{margin-bottom:10px}
+body#inicio .about-inner h2{font-size:32px;margin-bottom:14px}
+body#inicio .about-inner p:not(.eyebrow){margin-bottom:12px}
+body#inicio #comece-a-ler{padding-block:36px!important}
+body#inicio #comece-a-ler h2{font-size:34px!important}
+body#inicio .site-footer{padding-top:32px}
+@media(max-width:1100px) and (min-width:761px){body#inicio .book-card{grid-template-columns:130px minmax(0,1fr)}body#inicio .book-stage{height:210px}body#inicio .book-stage .real-cover-link{height:165px}body#inicio .book-stage .book-cover{transform:scale(.58) rotate(5deg)}}
+@media(max-width:760px){
+ body#inicio .hero{padding-block:28px;gap:0}
+ body#inicio .hero-art{display:none}
+ body#inicio .hero h1{font-size:42px}
+ body#inicio .hero .intro{margin-bottom:18px}
+ body#inicio .book-grid{gap:24px}
+ body#inicio .book-card{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;align-items:start}
+ body#inicio .book-stage{height:190px}
+ body#inicio .book-stage .real-cover-link{height:150px;max-width:85%}
+ body#inicio .book-stage .book-cover{transform:scale(.5) rotate(5deg)}
+ body#inicio .cover-note{font-size:10px;right:5px;bottom:6px}
+ body#inicio .book-info h3{font-size:25px}
+ body#inicio .book-info .eyebrow{font-size:11px}
+ body#inicio .reading-section{grid-template-columns:1fr;gap:20px;padding-block:30px}
+ body#inicio .about-inner{grid-template-columns:90px minmax(0,1fr);gap:18px;padding-block:30px}
+ body#inicio .author-monogram{width:90px;height:90px}
+ body#inicio .about-inner h2{font-size:28px}
+}
+@media(max-width:480px){body#inicio .book-card{grid-template-columns:1fr;gap:14px}body#inicio .book-stage{height:190px}body#inicio .book-stage .real-cover-link{height:160px}body#inicio .book-stage .book-cover{transform:scale(.54) rotate(5deg)}body#inicio .cover-note{font-size:12px;right:12px;bottom:10px}body#inicio .about-inner{grid-template-columns:1fr;gap:16px}body#inicio .reading-steps li{padding-block:12px}}
+</style><link href="./suporte.css?v=instagram-1" rel="stylesheet"/><link href="./oferta.css?v=1" rel="stylesheet"/><link href="./amazon.css?v=1" rel="stylesheet"/></head>
+<body class="amazon-transition" id="inicio">
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<header class="site-header main-header centered-header wrap"><a aria-label="Guilherme Cardoso, página inicial" class="brand" href="./index.html"><img alt="" height="76" src="./assets/logo-gc.png" style="width:76px;height:76px;object-fit:contain;flex-shrink:0" width="76"/><span>Guilherme Cardoso<span class="brand-caption">AUTOR &amp; HISTÓRIAS</span></span></a><nav aria-label="Navegação principal"><a aria-current="page" href="./index.html">Início</a><a href="./novidades.html">Novidades</a><a href="./descubra.html">Todos os livros</a></nav></header>
+<main class="wrap destination-page" id="conteudo"><p class="eyebrow">UMA NOVA ETAPA</p><h1>Nossas histórias, <em>no Kindle.</em></h1><p>As novas vendas serão realizadas pela Amazon. Os links estarão disponíveis no catálogo assim que os livros forem publicados por lá.</p><p>Você pode continuar lendo os primeiros capítulos gratuitamente, sem cadastro.</p><a class="button" href="./descubra.html">Explorar os livros ↗</a><h2>Já comprou pelo site?</h2><p>Para receber seu EPUB ou pedir ajuda com uma compra anterior, entre em contato pelo e-mail abaixo, informando o livro e o e-mail usado na compra.</p><a class="text-link" href="mailto:gui.cardoso.p@outlook.com?subject=Livro%20comprado%20no%20site">gui.cardoso.p@outlook.com ↗</a></main>
+<footer class="site-footer footer-expanded">
+<div class="wrap footer-grid">
+<div class="footer-identity"><a class="footer-brand" href="./index.html">Guilherme Cardoso<span>.</span></a><p>Histórias para ler no seu tempo.</p><a aria-label="Instagram de Guilherme Cardoso, @gui.cardoso.p (abre em nova aba)" class="footer-instagram" href="https://www.instagram.com/gui.cardoso.p/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" fill="none" height="19" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24" width="19"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" fill="currentColor" r="1" stroke="none"></circle></svg><span>@gui.cardoso.p</span><span aria-hidden="true">↗</span></a></div>
+<nav aria-label="Navegação do rodapé" class="footer-nav"><h2>Explore</h2><a href="./index.html">Início</a><a href="./novidades.html">Novidades</a><a href="./descubra.html">Todos os livros</a></nav>
+<div class="footer-reading"><h2>Uma nova história</h2><p>Deixe o acaso escolher sua próxima leitura.</p><a class="text-link" data-surprise-reading="" href="./o-quinto-herdeiro-capitulo-1.html">Surpreenda-me <span aria-hidden="true">↗</span></a><p class="footer-free-note">Primeiro capítulo grátis, sem cadastro.</p></div>
+<div class="footer-support"><div><h2>Precisa de ajuda?</h2><p>Dúvidas sobre os livros ou compras anteriores no site?</p></div><a href="mailto:gui.cardoso.p@outlook.com?subject=Ajuda%20com%20o%20site%20ou%20pagamento">gui.cardoso.p@outlook.com <span aria-hidden="true">↗</span></a></div>
+<div class="footer-bottom"><small>© 2026 Guilherme Cardoso. Todos os direitos reservados.</small><a class="back-top" href="#">Voltar ao topo ↑</a></div>
+</div>
+</footer>
+<script defer="" src="./surpreenda-me.js?v=noah-launch-1"></script></body>
+</html>

@@ -1,25 +1,12 @@
-# Guilherme — Livros
+# Guilherme Cardoso — livros
 
-Estrutura inicial do site de autor e livros de Guilherme.
+Site estático publicado pelo GitHub Pages a partir de main, na raiz.
 
-## Site
+## Modelo de vendas
+Desde 5 de outubro de 2026, o site é um catálogo com sinopses e prévias gratuitas. Novas compras serão feitas na Amazon. Ainda não foram fornecidos links oficiais; os botões mostram “Em breve na Amazon”. Ao receber cada URL, substituir o botão data-amazon-book correspondente por link para a página oficial, com target=_blank e rel=noopener noreferrer. Não inventar ASINs nem usar busca genérica como página de compra.
 
-https://cardoso-gui.github.io/guilherme-livros/
+## Sistema anterior
+Login, cadastro, carrinho e biblioteca internos foram retirados. URLs antigas exibem orientação e contato para compras anteriores. Os registros e arquivos privados foram preservados. A função mercado-pago-checkout retorna 410 e não cria novos pedidos; webhook e status permanecem para pedidos anteriores. Não reativar o sistema antigo ao lançar livros.
 
-## Estrutura
-
-- `index.html`: página inicial provisória.
-- `styles.css`: estilos básicos responsivos.
-- `assets/`: imagens, capas e outros arquivos futuros.
-- `.nojekyll`: publicação dos arquivos estáticos sem processamento Jekyll.
-
-## Publicação
-
-GitHub Pages configurado em Settings → Pages, com Deploy from a branch, branch `main` e pasta `/ (root)`.
-As alterações enviadas à branch `main` são publicadas automaticamente. Nenhuma instalação ou etapa de build é necessária.
-
-## Desenvolvimento
-
-Abra `index.html` no navegador. Use caminhos relativos para manter compatibilidade com o endereço do projeto no GitHub Pages.
-
-O design completo e o conteúdo dos dois últimos lançamentos serão implementados em uma próxima etapa.
+## Conteúdo
+Somente os primeiros capítulos são públicos. Nunca enviar EPUBs ou manuscritos completos para este repositório. Labirinto Verde tem data prevista de 20/10/2026 na Amazon, sem promessa de horário exato.
