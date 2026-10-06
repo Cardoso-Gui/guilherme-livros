@@ -126,6 +126,9 @@ body#inicio .home-amazon-status{font-size:14px;line-height:1.6;color:#526175;tex
  body#inicio .home-reading-actions{margin-top:18px}
 }
 @media(prefers-reduced-motion:reduce){body#inicio .books-section .real-cover-link{transition:none}body#inicio .books-section .real-cover-link:hover{transform:none}}
+
+/* Alinha as ações dos dois livros sem fixar a altura dos textos. */
+@media(min-width:1051px){body#inicio .books-section .book-grid{align-items:stretch}body#inicio .books-section .book-card{align-items:stretch}body#inicio .books-section .book-info{display:flex;flex-direction:column}body#inicio .home-reading-actions{margin-top:auto;padding-top:8px}}
 </style><link href="./suporte.css?v=instagram-1" rel="stylesheet"/><link href="./oferta.css?v=1" rel="stylesheet"/><link href="./amazon.css?v=1" rel="stylesheet"/></head>
 <body id="inicio">
 <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -180,4 +183,5 @@ body#inicio .home-amazon-status{font-size:14px;line-height:1.6;color:#526175;tex
 </footer>
 <script defer="" src="./surpreenda-me.js?v=noah-launch-1"></script></body>
 </html>
+
 
