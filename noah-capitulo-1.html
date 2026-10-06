@@ -44,7 +44,7 @@ html[data-reader-theme="dark"] .noah-reader .footer-grid p,html[data-reader-them
 html[data-reader-theme="dark"] .noah-reader .brand img{background:#fff;border-radius:10px}
 html[data-reader-theme="dark"] .noah-reader ::selection{background:#476d9b;color:#fff}
 @media(max-width:520px){.noah-reader .reader-toolbar{display:grid;grid-template-columns:1fr auto}.noah-reader .reader-theme-toggle{grid-column:1/-1;justify-self:start}}
-</style><script>try{if(localStorage.getItem('reader-theme:noah-preview')==='dark')document.documentElement.dataset.readerTheme='dark';}catch(_){}</script></head>
+</style><script>try{if(localStorage.getItem('reader-theme:noah-preview')==='dark')document.documentElement.dataset.readerTheme='dark';}catch(_){}</script><style>.noah-reader .preview-end .reread{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;max-width:380px;min-height:50px;margin:10px auto 0;padding:12px 18px;border:1px solid #a6bdd7;border-radius:999px;background:#fff;color:#244b7b;font:600 16px/1.5 Arial,sans-serif;text-decoration:none}.noah-reader .preview-end .reread:hover{background:#e4eef9}.noah-reader .preview-end .reread span{font-size:20px}html[data-reader-theme="dark"] .noah-reader .preview-end .reread{background:#24374e;color:#e4eaf2;border-color:#526b8b}html[data-reader-theme="dark"] .noah-reader .preview-end .reread:hover{background:#304b6b}</style></head>
 <body class="reader-page noah-reader" id="inicio">
 <a class="skip-link" href="#capitulo">Pular para o capítulo</a>
 <header class="site-header main-header centered-header wrap"><a aria-label="Guilherme Cardoso, página inicial" class="brand" href="./index.html"><img alt="" height="76" src="./assets/logo-gc.png" style="width:76px;height:76px;object-fit:contain;flex-shrink:0" width="76"/><span>Guilherme Cardoso<span class="brand-caption">AUTOR &amp; HISTÓRIAS</span></span></a><nav aria-label="Navegação principal"><a href="./index.html">Início</a><a href="./novidades.html">Novidades</a><a href="./descubra.html">Todos os livros</a></nav></header>
@@ -71,8 +71,8 @@ html[data-reader-theme="dark"] .noah-reader ::selection{background:#476d9b;color
 <p class="eyebrow">FIM DO PRIMEIRO CAPÍTULO</p>
 <h2 id="preview-end-title">A história está<br/> só começando.</h2>
 <p>Você chegou ao fim desta prévia gratuita de <em>Noah: A História Começa</em>. Acompanhe pelo catálogo a chegada da edição Kindle à Amazon.</p>
-<div class="reader-end-actions"><a class="button" href="./noah.html">Conhecer o livro completo</a><button class="button amazon-pending" type="button" disabled data-amazon-book="noah">Em breve na Amazon</button></div>
-<a class="reread" href="#capitulo">Reler o capítulo ↑</a>
+<div class="reader-end-actions"><a class="button" href="./noah.html">Ver detalhes do livro</a><button class="button amazon-pending" type="button" disabled data-amazon-book="noah">Em breve na Amazon</button></div>
+<a class="reread" href="#capitulo"><span aria-hidden="true">↑</span> Reler o capítulo</a>
 </section>
 </main>
 <footer class="site-footer footer-expanded">
@@ -112,5 +112,6 @@ html[data-reader-theme="dark"] .noah-reader ::selection{background:#476d9b;color
  document.getElementById('reader-controls').hidden=false;update();
 })();</script><script>(()=>{const button=document.getElementById('reader-theme-toggle');function render(){const dark=document.documentElement.dataset.readerTheme==='dark';button.setAttribute('aria-pressed',String(dark));}button.hidden=false;render();button.addEventListener('click',()=>{const dark=document.documentElement.dataset.readerTheme!=='dark';document.documentElement.dataset.readerTheme=dark?'dark':'light';try{localStorage.setItem('reader-theme:noah-preview',dark?'dark':'light');}catch(_){}render();});})();</script></body>
 </html>
+
 
 
