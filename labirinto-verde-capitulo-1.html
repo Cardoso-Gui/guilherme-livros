@@ -9,12 +9,46 @@
 <title>Chegada — Labirinto Verde | Guilherme Cardoso</title>
 <link href="./styles.css?v=cart-1" rel="stylesheet"/>
 <link href="./leitura.css?v=font-14" rel="stylesheet"/>
-<script defer="" src="./leitura.js?v=font-14"></script>
-<style>@media(max-width:760px){.main-header .header-actions{flex-wrap:wrap}.main-header nav a{min-width:60px}}.account-switch{text-align:center;font-size:14px;line-height:1.8;color:#657080;margin:22px 0 0}.account-switch a{color:#244b7b;text-decoration:underline;text-underline-offset:4px;font-weight:600}</style><link href="./suporte.css?v=instagram-1" rel="stylesheet"/><link href="./amazon.css?v=1" rel="stylesheet"/></head>
-<body class="reader-page" id="inicio">
+
+<style>@media(max-width:760px){.main-header .header-actions{flex-wrap:wrap}.main-header nav a{min-width:60px}}.account-switch{text-align:center;font-size:14px;line-height:1.8;color:#657080;margin:22px 0 0}.account-switch a{color:#244b7b;text-decoration:underline;text-underline-offset:4px;font-weight:600}</style><link href="./suporte.css?v=instagram-1" rel="stylesheet"/><link href="./amazon.css?v=1" rel="stylesheet"/><style>
+.enhanced-reader .reader-main{width:min(680px,calc(100% - 40px))}
+.enhanced-reader .reader-back{padding-top:24px}
+.enhanced-reader .reader-back-button{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:10px 18px;border:1px solid #c5d5e8;border-radius:999px;background:#eef4fb;color:#244b7b;font:600 14px/1.5 Arial,sans-serif}
+.enhanced-reader .reader-back-button:hover{background:#dfeaf7}.enhanced-reader .reader-back-button span{font-size:20px}
+.enhanced-reader .chapter-heading{padding:40px 0 28px}.enhanced-reader .chapter-heading .eyebrow{font-size:12px;line-height:1.7;margin-bottom:20px}.enhanced-reader .reader-byline,.enhanced-reader .reading-time{font-size:14px}
+.enhanced-reader .reader-toolbar{padding:12px 16px;background:#f4f7fc;border:1px solid #dce6f2;border-radius:16px;font-size:14px;margin-bottom:28px;flex-wrap:wrap}
+.enhanced-reader .font-controls button{border:1px solid #c5d5e8;background:#fff;color:#244b7b;border-radius:50%;font:600 18px/1 Arial,sans-serif}
+.enhanced-reader .font-controls button:hover:not(:disabled){background:#e4eef9}.enhanced-reader .font-controls button:focus-visible{outline-color:#6291c7}
+.enhanced-reader .chapter-text{font-size:var(--reading-size,18px);line-height:1.85;color:#283647}
+.enhanced-reader .chapter-text p{text-align:left;hyphens:none;margin-bottom:1.35em}
+.enhanced-reader .preview-end{background:#f4f7fc;border:1px solid #dce6f2;border-radius:20px;padding:32px 24px;margin:48px 0}
+.enhanced-reader .preview-end>p:not(.eyebrow){font-size:16px;line-height:1.75}.enhanced-reader .preview-end h2{font-size:clamp(30px,6vw,38px)}
+.enhanced-reader .reader-end-actions{display:grid;gap:10px;max-width:380px;margin:auto}.enhanced-reader .reader-end-actions .button{justify-content:center;text-align:center;min-height:50px;font:600 16px/1.5 Arial,sans-serif;padding:12px 18px;white-space:normal}
+.enhanced-reader .reread{font-size:14px;min-height:44px;padding:12px}
+@media(max-width:760px){.enhanced-reader .site-header.main-header.centered-header{display:flex;flex-direction:column;gap:10px;min-height:0}.enhanced-reader .centered-header nav{position:static;display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center;opacity:1;visibility:visible;pointer-events:auto;transform:none;box-shadow:none;margin:0;padding:4px;gap:4px}.enhanced-reader .centered-header nav a{width:auto;min-height:44px;padding:8px 10px;font-size:14px}}
+@media(max-width:440px){.enhanced-reader .chapter-heading{padding-top:32px}.enhanced-reader .preview-end{padding:28px 18px}.enhanced-reader .reader-toolbar{gap:8px;padding:12px}.enhanced-reader .font-controls{gap:6px}}
+</style><style>
+.enhanced-reader .chapter-text p{text-align:justify;text-align-last:start;hyphens:auto}
+.enhanced-reader .reader-theme-toggle{min-height:44px;padding:10px 16px;border:1px solid #c5d5e8;border-radius:999px;background:#fff;color:#244b7b;font:600 14px/1.5 Arial,sans-serif;cursor:pointer}
+.enhanced-reader .reader-theme-toggle[hidden]{display:none}.enhanced-reader .reader-theme-toggle:hover{background:#e4eef9}.enhanced-reader .reader-theme-toggle:focus-visible{outline:3px solid #6291c7;outline-offset:3px}
+html[data-reader-theme="dark"]{color-scheme:dark;background:#111923}
+html[data-reader-theme="dark"] .enhanced-reader{background:#111923;color:#e4eaf2;--ink:#e4eaf2;--muted:#b9c6d6;--sage:#9fc5f3;--line:#36465a}
+html[data-reader-theme="dark"] .enhanced-reader .chapter-text{color:#e4eaf2}
+html[data-reader-theme="dark"] .enhanced-reader .main-header,html[data-reader-theme="dark"] .enhanced-reader .main-header nav,html[data-reader-theme="dark"] .enhanced-reader .site-footer{background:#162231;color:#e4eaf2;border-color:#36465a;box-shadow:none}
+html[data-reader-theme="dark"] .enhanced-reader .reader-toolbar,html[data-reader-theme="dark"] .enhanced-reader .preview-end{background:#1b293a;border-color:#36465a;color:#b9c6d6}
+html[data-reader-theme="dark"] .enhanced-reader .reader-back-button,html[data-reader-theme="dark"] .enhanced-reader .reader-theme-toggle,html[data-reader-theme="dark"] .enhanced-reader .font-controls button{background:#24374e;color:#e4eaf2;border-color:#526b8b}
+html[data-reader-theme="dark"] .enhanced-reader .reader-back-button:hover,html[data-reader-theme="dark"] .enhanced-reader .reader-theme-toggle:hover,html[data-reader-theme="dark"] .enhanced-reader .font-controls button:hover:not(:disabled){background:#304b6b}
+html[data-reader-theme="dark"] .enhanced-reader .reader-end-actions a.button{background:#a5cafa;color:#14273e}
+html[data-reader-theme="dark"] .enhanced-reader .amazon-pending:disabled{background:#243246;color:#b9c6d6;border-color:#526b8b}
+html[data-reader-theme="dark"] .enhanced-reader .footer-grid p,html[data-reader-theme="dark"] .enhanced-reader .footer-grid a,html[data-reader-theme="dark"] .enhanced-reader .footer-grid h2,html[data-reader-theme="dark"] .enhanced-reader .main-header nav a,html[data-reader-theme="dark"] .enhanced-reader .brand-caption{color:#c5d6eb}
+html[data-reader-theme="dark"] .enhanced-reader .brand img{background:#fff;border-radius:10px}
+html[data-reader-theme="dark"] .enhanced-reader ::selection{background:#476d9b;color:#fff}
+@media(max-width:520px){.enhanced-reader .reader-toolbar{display:grid;grid-template-columns:1fr auto}.enhanced-reader .reader-theme-toggle{grid-column:1/-1;justify-self:start}}
+</style><script>try{if(localStorage.getItem('reader-theme:labirinto-verde-preview')==='dark')document.documentElement.dataset.readerTheme='dark';}catch(_){}</script><style>.enhanced-reader .preview-end .reread{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;max-width:380px;min-height:50px;margin:10px auto 0;padding:12px 18px;border:1px solid #a6bdd7;border-radius:999px;background:#fff;color:#244b7b;font:600 16px/1.5 Arial,sans-serif;text-decoration:none}.enhanced-reader .preview-end .reread:hover{background:#e4eef9}.enhanced-reader .preview-end .reread span{font-size:20px}html[data-reader-theme="dark"] .enhanced-reader .preview-end .reread{background:#24374e;color:#e4eaf2;border-color:#526b8b}html[data-reader-theme="dark"] .enhanced-reader .preview-end .reread:hover{background:#304b6b}</style></head>
+<body class="reader-page enhanced-reader" id="inicio">
 <a class="skip-link" href="#capitulo">Pular para o capítulo</a>
 <header class="site-header main-header centered-header wrap"><a aria-label="Guilherme Cardoso, página inicial" class="brand" href="./index.html"><img alt="" height="76" src="./assets/logo-gc.png" style="width:76px;height:76px;object-fit:contain;flex-shrink:0" width="76"/><span>Guilherme Cardoso<span class="brand-caption">AUTOR &amp; HISTÓRIAS</span></span></a><nav aria-label="Navegação principal"><a href="./index.html">Início</a><a href="./novidades.html">Novidades</a><a href="./descubra.html">Todos os livros</a></nav></header>
-<main class="reader-main">
+<main class="reader-main"><div class="reader-back"><a class="reader-back-button" href="./labirinto-verde.html"><span aria-hidden="true">←</span> Voltar ao livro</a></div>
 <header class="chapter-heading">
 <p class="eyebrow">LABIRINTO VERDE · GUILHERME CARDOSO</p>
 <p class="chapter-number">Capítulo I</p>
@@ -23,10 +57,10 @@
 <p class="reading-time">Cerca de 10 minutos de leitura</p>
 </header>
 <div class="reader-toolbar" hidden="" id="reader-controls">
-<span>Tamanho do texto</span>
+<button class="reader-theme-toggle" id="reader-theme-toggle" type="button" aria-pressed="false" hidden>Modo escuro</button><span>Tamanho do texto</span>
 <div aria-label="Tamanho do texto" class="font-controls" role="group">
 <button aria-controls="capitulo" aria-label="Diminuir tamanho do texto" id="font-smaller" type="button">A−</button>
-<output aria-atomic="true" aria-live="polite" id="font-value">14 px</output>
+<output aria-atomic="true" aria-live="polite" id="font-value">18 px</output>
 <button aria-controls="capitulo" aria-label="Aumentar tamanho do texto" id="font-larger" type="button">A+</button>
 </div>
 </div>
@@ -52,18 +86,48 @@
 <p class="eyebrow">FIM DO PRIMEIRO CAPÍTULO</p>
 <h2 id="preview-end-title">A história está<br/> só começando.</h2>
 <p>Você chegou ao fim desta prévia gratuita de <em>Labirinto Verde</em>. O lançamento da edição Kindle está previsto para <strong>20/10/2026</strong>.</p>
-<a class="button" href="./descubra.html">Explorar os livros <span aria-hidden="true">↗</span></a>
-<a class="reread" href="#capitulo">Reler o capítulo ↑</a>
+<div class="reader-end-actions"><a class="button" href="./labirinto-verde.html">Ver detalhes do livro</a><button class="button amazon-pending" type="button" disabled data-amazon-book="labirinto-verde">Em breve na Amazon</button></div>
+<a class="reread" href="#capitulo"><span aria-hidden="true">↑</span> Reler o capítulo</a>
 </section>
 </main>
 <footer class="site-footer footer-expanded">
 <div class="wrap footer-grid">
 <div class="footer-identity"><a class="footer-brand" href="./index.html">Guilherme Cardoso<span>.</span></a><p>Histórias para ler no seu tempo.</p><a aria-label="Instagram de Guilherme Cardoso, @gui.cardoso.p (abre em nova aba)" class="footer-instagram" href="https://www.instagram.com/gui.cardoso.p/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" fill="none" height="19" stroke="currentColor" stroke-width="1.7" viewbox="0 0 24 24" width="19"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" fill="currentColor" r="1" stroke="none"></circle></svg><span>@gui.cardoso.p</span><span aria-hidden="true">↗</span></a></div>
 <nav aria-label="Navegação do rodapé" class="footer-nav"><h2>Explore</h2><a href="./index.html">Início</a><a href="./novidades.html">Novidades</a><a href="./descubra.html">Todos os livros</a></nav>
-<div class="footer-reading"><h2>Uma nova história</h2><p>Deixe o acaso escolher sua próxima leitura.</p><a class="text-link" data-surprise-reading="" href="./noah-capitulo-1.html">Surpreenda-me <span aria-hidden="true">↗</span></a><p class="footer-free-note">Primeiro capítulo grátis, sem cadastro.</p></div>
+<div class="footer-reading"><h2>Uma nova história</h2><p>Deixe o acaso escolher sua próxima leitura.</p><a class="text-link" data-surprise-reading="" href="./labirinto-verde-capitulo-1.html">Surpreenda-me <span aria-hidden="true">↗</span></a><p class="footer-free-note">Primeiro capítulo grátis, sem cadastro.</p></div>
 <div class="footer-support"><div><h2>Precisa de ajuda?</h2><p>Dúvidas sobre os livros ou compras anteriores no site?</p></div><a href="mailto:gui.cardoso.p@outlook.com?subject=Ajuda%20com%20o%20site%20ou%20pagamento">gui.cardoso.p@outlook.com <span aria-hidden="true">↗</span></a></div>
 <div class="footer-bottom"><small>© 2026 Guilherme Cardoso. Todos os direitos reservados.</small><a class="back-top" href="#">Voltar ao topo ↑</a></div>
 </div>
 </footer>
-<script defer="" src="./surpreenda-me.js?v=noah-launch-1"></script></body>
+<script defer="" src="./surpreenda-me.js?v=noah-launch-1"></script><script>(() => {
+ 'use strict';
+ const chapter=document.getElementById('capitulo'),smaller=document.getElementById('font-smaller'),larger=document.getElementById('font-larger'),value=document.getElementById('font-value');
+ if(!chapter||!smaller||!larger||!value)return;
+ let size=18,key='reader-font:labirinto-verde-preview-v2';
+ const valid=n=>[16,18,20,22,24].includes(n);
+ function update(save=false){
+  const paragraphs=[...chapter.querySelectorAll('p')],anchor=paragraphs.find(p=>p.getBoundingClientRect().bottom>140);
+  const before=anchor?.getBoundingClientRect().top;
+  chapter.style.setProperty('--reading-size',size+'px');value.textContent=size+' px';smaller.disabled=size<=16;larger.disabled=size>=24;
+  if(save){
+   if(anchor)window.scrollBy({top:anchor.getBoundingClientRect().top-before,behavior:'instant'});
+   try{localStorage.setItem(key,String(size));}catch(_){}
+   window.dispatchEvent(new CustomEvent('reading-font-change',{detail:{size}}));
+  }
+ }
+ smaller.addEventListener('click',()=>{size=Math.max(16,size-2);update(true);});
+ larger.addEventListener('click',()=>{size=Math.min(24,size+2);update(true);});
+ window.addEventListener('reader-preferences',event=>{
+  key='reader-font:'+event.detail.user_id;
+  let saved;try{saved=Number(localStorage.getItem(key));}catch(_){}
+  size=valid(event.detail.font_size)?event.detail.font_size:valid(saved)?saved:18;
+  update();
+ });
+ if(!window.livrosAuthClient){try{const stored=Number(localStorage.getItem(key));if(valid(stored))size=stored;}catch(_){}}
+ document.getElementById('reader-controls').hidden=false;update();
+})();</script><script>(()=>{const button=document.getElementById('reader-theme-toggle');function render(){const dark=document.documentElement.dataset.readerTheme==='dark';button.setAttribute('aria-pressed',String(dark));}button.hidden=false;render();button.addEventListener('click',()=>{const dark=document.documentElement.dataset.readerTheme!=='dark';document.documentElement.dataset.readerTheme=dark?'dark':'light';try{localStorage.setItem('reader-theme:labirinto-verde-preview',dark?'dark':'light');}catch(_){}render();});})();</script></body>
 </html>
+
+
+
+
