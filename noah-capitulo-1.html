@@ -27,7 +27,24 @@
 .noah-reader .reread{font-size:14px;min-height:44px;padding:12px}
 @media(max-width:760px){.noah-reader .site-header.main-header.centered-header{display:flex;flex-direction:column;gap:10px;min-height:0}.noah-reader .centered-header nav{position:static;display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center;opacity:1;visibility:visible;pointer-events:auto;transform:none;box-shadow:none;margin:0;padding:4px;gap:4px}.noah-reader .centered-header nav a{width:auto;min-height:44px;padding:8px 10px;font-size:14px}}
 @media(max-width:440px){.noah-reader .chapter-heading{padding-top:32px}.noah-reader .preview-end{padding:28px 18px}.noah-reader .reader-toolbar{gap:8px;padding:12px}.noah-reader .font-controls{gap:6px}}
-</style></head>
+</style><style>
+.noah-reader .chapter-text p{text-align:justify;text-align-last:start;hyphens:auto}
+.noah-reader .reader-theme-toggle{min-height:44px;padding:10px 16px;border:1px solid #c5d5e8;border-radius:999px;background:#fff;color:#244b7b;font:600 14px/1.5 Arial,sans-serif;cursor:pointer}
+.noah-reader .reader-theme-toggle[hidden]{display:none}.noah-reader .reader-theme-toggle:hover{background:#e4eef9}.noah-reader .reader-theme-toggle:focus-visible{outline:3px solid #6291c7;outline-offset:3px}
+html[data-reader-theme="dark"]{color-scheme:dark;background:#111923}
+html[data-reader-theme="dark"] .noah-reader{background:#111923;color:#e4eaf2;--ink:#e4eaf2;--muted:#b9c6d6;--sage:#9fc5f3;--line:#36465a}
+html[data-reader-theme="dark"] .noah-reader .chapter-text{color:#e4eaf2}
+html[data-reader-theme="dark"] .noah-reader .main-header,html[data-reader-theme="dark"] .noah-reader .main-header nav,html[data-reader-theme="dark"] .noah-reader .site-footer{background:#162231;color:#e4eaf2;border-color:#36465a;box-shadow:none}
+html[data-reader-theme="dark"] .noah-reader .reader-toolbar,html[data-reader-theme="dark"] .noah-reader .preview-end{background:#1b293a;border-color:#36465a;color:#b9c6d6}
+html[data-reader-theme="dark"] .noah-reader .reader-back-button,html[data-reader-theme="dark"] .noah-reader .reader-theme-toggle,html[data-reader-theme="dark"] .noah-reader .font-controls button{background:#24374e;color:#e4eaf2;border-color:#526b8b}
+html[data-reader-theme="dark"] .noah-reader .reader-back-button:hover,html[data-reader-theme="dark"] .noah-reader .reader-theme-toggle:hover,html[data-reader-theme="dark"] .noah-reader .font-controls button:hover:not(:disabled){background:#304b6b}
+html[data-reader-theme="dark"] .noah-reader .reader-end-actions a.button{background:#a5cafa;color:#14273e}
+html[data-reader-theme="dark"] .noah-reader .amazon-pending:disabled{background:#243246;color:#b9c6d6;border-color:#526b8b}
+html[data-reader-theme="dark"] .noah-reader .footer-grid p,html[data-reader-theme="dark"] .noah-reader .footer-grid a,html[data-reader-theme="dark"] .noah-reader .footer-grid h2,html[data-reader-theme="dark"] .noah-reader .main-header nav a,html[data-reader-theme="dark"] .noah-reader .brand-caption{color:#c5d6eb}
+html[data-reader-theme="dark"] .noah-reader .brand img{background:#fff;border-radius:10px}
+html[data-reader-theme="dark"] .noah-reader ::selection{background:#476d9b;color:#fff}
+@media(max-width:520px){.noah-reader .reader-toolbar{display:grid;grid-template-columns:1fr auto}.noah-reader .reader-theme-toggle{grid-column:1/-1;justify-self:start}}
+</style><script>try{if(localStorage.getItem('reader-theme:noah-preview')==='dark')document.documentElement.dataset.readerTheme='dark';}catch(_){}</script></head>
 <body class="reader-page noah-reader" id="inicio">
 <a class="skip-link" href="#capitulo">Pular para o capítulo</a>
 <header class="site-header main-header centered-header wrap"><a aria-label="Guilherme Cardoso, página inicial" class="brand" href="./index.html"><img alt="" height="76" src="./assets/logo-gc.png" style="width:76px;height:76px;object-fit:contain;flex-shrink:0" width="76"/><span>Guilherme Cardoso<span class="brand-caption">AUTOR &amp; HISTÓRIAS</span></span></a><nav aria-label="Navegação principal"><a href="./index.html">Início</a><a href="./novidades.html">Novidades</a><a href="./descubra.html">Todos os livros</a></nav></header>
@@ -40,7 +57,7 @@
 <p class="reading-time">Cerca de 8 minutos de leitura</p>
 </header>
 <div class="reader-toolbar" hidden="" id="reader-controls">
-<span>Tamanho do texto</span>
+<button class="reader-theme-toggle" id="reader-theme-toggle" type="button" aria-pressed="false" hidden>Modo escuro</button><span>Tamanho do texto</span>
 <div aria-label="Tamanho do texto" class="font-controls" role="group">
 <button aria-controls="capitulo" aria-label="Diminuir tamanho do texto" id="font-smaller" type="button">A−</button>
 <output aria-atomic="true" aria-live="polite" id="font-value">18 px</output>
@@ -93,6 +110,7 @@
  });
  if(!window.livrosAuthClient){try{const stored=Number(localStorage.getItem(key));if(valid(stored))size=stored;}catch(_){}}
  document.getElementById('reader-controls').hidden=false;update();
-})();</script></body>
+})();</script><script>(()=>{const button=document.getElementById('reader-theme-toggle');function render(){const dark=document.documentElement.dataset.readerTheme==='dark';button.setAttribute('aria-pressed',String(dark));}button.hidden=false;render();button.addEventListener('click',()=>{const dark=document.documentElement.dataset.readerTheme!=='dark';document.documentElement.dataset.readerTheme=dark?'dark':'light';try{localStorage.setItem('reader-theme:noah-preview',dark?'dark':'light');}catch(_){}render();});})();</script></body>
 </html>
+
 
