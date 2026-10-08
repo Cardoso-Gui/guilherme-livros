@@ -145,11 +145,19 @@ body#inicio .home-upcoming .eyebrow{margin-bottom:10px}
 body#inicio .home-upcoming p:not(.eyebrow){font-size:16px;line-height:1.8;color:#526175;max-width:65ch}
 body#inicio .home-upcoming .home-release{font-weight:600;font-size:14px}
 @media(max-width:760px){body#inicio .about-inner{grid-template-columns:1fr;gap:28px;padding-block:36px}body#inicio .about-inner .author-monogram{max-width:200px}body#inicio .home-upcoming{grid-template-columns:1fr;gap:24px;padding-block:32px}body#inicio .home-upcoming-cover{width:180px}body#inicio .home-author-actions{flex-direction:column;align-items:stretch}body#inicio .site-header.main-header.centered-header{display:flex;flex-direction:column;gap:10px;min-height:0}body#inicio .centered-header nav{position:static;display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center;opacity:1;visibility:visible;pointer-events:auto;transform:none;box-shadow:none;margin:0;padding:4px;gap:4px}body#inicio .centered-header nav a{width:auto;min-height:44px;padding:8px 10px;font-size:14px}}
+</style><style>
+/* Aviso compacto de disponibilidade, exclusivo da página inicial. */
+body#inicio .amazon-announcement{margin-top:18px}
+body#inicio .amazon-announcement-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 24px;border:1px solid #d5e1ef;border-radius:16px;background:#f0f5fb}
+body#inicio .amazon-announcement p{margin:0;color:#244b7b;font-size:16px;line-height:1.6}
+body#inicio .amazon-announcement .button{flex-shrink:0;min-height:44px;padding:9px 18px;font-size:14px;text-decoration:none}
+@media(max-width:600px){body#inicio .amazon-announcement-inner{flex-direction:column;align-items:flex-start;gap:12px;padding:18px}body#inicio .amazon-announcement .button{width:100%;justify-content:center}}
 </style></head>
 <body id="inicio">
 <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 <header class="site-header main-header centered-header wrap"><a aria-label="Guilherme Cardoso, página inicial" class="brand" href="./index.html"><img alt="" height="76" src="./assets/logo-gc.png" style="width:76px;height:76px;object-fit:contain;flex-shrink:0" width="76"/><span>Guilherme Cardoso<span class="brand-caption">AUTOR &amp; HISTÓRIAS</span></span></a><nav aria-label="Navegação principal"><a aria-current="page" href="./index.html">Início</a><a href="./novidades.html">Novidades</a><a href="./descubra.html">Todos os livros</a></nav></header>
 <main id="conteudo">
+<aside class="wrap amazon-announcement" aria-label="Livros disponíveis na Amazon"><div class="amazon-announcement-inner"><p><strong>Noah</strong> e <strong>O Quinto Herdeiro</strong> já estão na Amazon.</p><a class="button" href="#livros">Conheça os livros <span aria-hidden="true">→</span></a></div></aside>
 <section aria-labelledby="hero-title" class="hero wrap">
 <div class="hero-copy"><p class="eyebrow"><span></span> UM ESPAÇO PARA LER SEM PRESSA</p>
 <h1 id="hero-title">Toda história começa<br/> com uma <em>página.</em></h1>
