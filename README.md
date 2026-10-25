@@ -33,3 +33,21 @@ Com Node.js 22 ou superior: `npm install --no-save --package-lock=false playwrig
 - Para comparar duas execuções no mesmo navegador e máquina: `node tests/compare-renderings.cjs test-results/baseline test-results/after`. O comparador exige igualdade do layout e informa pixels diferentes; isso não prova igualdade entre renderizadores. Capture o baseline duas vezes para medir ruído antes de atribuir diferenças à alteração.
 
 O workflow executa as duas suítes em PRs que mudam HTML, CSS, JavaScript ou testes e publica as evidências como artefato. A publicação só deve ocorrer depois dos checks aplicáveis.
+
+## Painel privado e cliques Amazon
+
+`painel.html` é uma entrada separada, sem link nos menus públicos. O login usa a conta existente do Supabase; `analytics_is_owner` confirma a autorização no servidor antes da consulta a `amazon_click_daily`, que também exige RLS. Não há criação de contas nem recuperação de senha neste painel. A sessão fica apenas em memória e o logout usa escopo local, preservando sessões de outros dispositivos.
+
+O painel mostra eventos de clique (não visitantes únicos, vendas ou compras), no fuso `America/Sao_Paulo`. Hoje, sete dias e trinta dias incluem a data atual. Os filtros personalizados aceitam até 366 dias; o cliente pagina consultas acima de mil linhas. Não há números demonstrativos no código de produção.
+
+`assets/js/amazon-click.js` observa os 17 links existentes, inclusive os links clonados pelos modais de notícias. Apenas cliques primários/teclado e `auxclick` do botão do meio enviam `{book_slug}` para o endpoint confirmado. O script valida slug e destino Amazon; não impede a navegação, não repete requisições e não grava cookies, identificadores de visitante ou armazenamento local. Os identificadores em `analytics-config.js` são públicos; nunca colocar chaves privilegiadas nesse arquivo.
+
+O cliente Supabase está fixado em `package.json`/`pnpm-lock.yaml` e é incluído somente no bundle do painel. Para atualizar o bundle: `pnpm install --frozen-lockfile --ignore-scripts` e `pnpm run build:dashboard`. O script também gera os avisos de licença. O site público não carrega esse bundle.
+
+`node tests/analytics.cjs` usa respostas simuladas e bloqueia a rede restante: cobre os 17 links, teclado, botão do meio, falhas, acesso negado, datas, estados vazios/erro e logout com requisição em andamento. Os números das screenshots desse teste são fixtures locais. Não executar POSTs válidos de teste contra o contador em produção.
+
+O aplicativo não coleta identificadores de visitantes nem IPs. A infraestrutura Supabase/Cloudflare pode processar metadados e emitir cookies; o coletor usa explicitamente `credentials: 'omit'` para não enviá-los nem retê-los. A sessão autenticada do painel é separada da coleta pública.
+
+As fontes do backend estão em `supabase/functions/amazon-click/` e na migração `20261025005939_amazon_click_analytics.sql`, **já aplicada** no projeto existente. Não reaplicar a migração ou o fixture SQL durante a publicação do site. A configuração mantém `verify_jwt = true`. O backend limita cada livro a 120 eventos aceitos por minuto; falhas ou limites não impedem o link Amazon. Consulte [o contrato e as limitações](docs/amazon-analytics-backend.md).
+
+Os testes HTTP de leitura/negação, os testes locais do handler e os testes transacionais de banco são distintos. Não foi produzido clique válido artificial em produção nem criado login em nome do proprietário. O primeiro clique legítimo e o login real ficam para o proprietário concluir a aceitação ponta a ponta. Não foram habilitados serviços pagos; as cotas do plano existente continuam aplicáveis.

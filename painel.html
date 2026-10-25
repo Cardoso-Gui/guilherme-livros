@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="referrer" content="no-referrer" />
+    <title>Painel do autor — Guilherme Cardoso</title>
+    <link rel="stylesheet" href="./assets/css/dashboard.css" />
+    <script defer src="./assets/js/analytics-config.js"></script>
+    <script defer src="./assets/js/dashboard.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Pular para o conteúdo</a>
+    <header class="header shell">
+      <a class="brand" href="./index.html"
+        ><img src="./assets/logo-gc.png" width="48" height="48" alt="" /><span
+          >Guilherme Cardoso<small>PAINEL DO AUTOR</small></span
+        ></a
+      >
+      <div class="header-actions">
+        <a href="./index.html">Voltar ao site</a
+        ><button id="logout" type="button" hidden>Sair</button>
+      </div>
+    </header>
+    <main id="main" class="shell">
+      <section class="intro">
+        <p class="eyebrow">ENTRE PÁGINAS E LEITORES</p>
+        <h1>Um olhar sobre<br />seus livros.</h1>
+        <p>Acompanhe os cliques que levam seus leitores à Amazon.</p>
+      </section>
+      <p id="status" role="status" aria-live="polite"></p>
+      <section
+        id="login-section"
+        class="login-card"
+        aria-labelledby="login-title"
+      >
+        <span class="eyebrow">ACESSO RESERVADO</span>
+        <h2 id="login-title">Entre no seu painel</h2>
+        <p>
+          Use sua conta existente. As estatísticas são exclusivas do
+          proprietário.
+        </p>
+        <form id="login-form">
+          <label for="email">Email</label
+          ><input
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="username"
+            required
+          />
+          <label for="password">Senha</label
+          ><input
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            required
+          />
+          <button class="primary" id="login-submit" type="submit">
+            Entrar
+          </button>
+        </form>
+        <p class="small">
+          A sessão fica apenas nesta aba e termina ao recarregar ou fechar a
+          página.
+        </p>
+      </section>
+      <section id="dashboard" hidden aria-label="Estatísticas de cliques">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">VISÃO GERAL</p>
+            <h2>Os últimos dias</h2>
+          </div>
+          <button id="refresh" type="button">Atualizar dados</button>
+        </div>
+        <div class="metrics" id="metrics">
+          <article>
+            <h3>Hoje</h3>
+            <strong id="total-today">—</strong><span>cliques na Amazon</span>
+          </article>
+          <article>
+            <h3>Últimos 7 dias</h3>
+            <strong id="total-week">—</strong><span>incluindo hoje</span>
+          </article>
+          <article>
+            <h3>Últimos 30 dias</h3>
+            <strong id="total-month">—</strong><span>incluindo hoje</span>
+          </article>
+        </div>
+        <section class="chart-card" aria-labelledby="chart-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">AO LONGO DO TEMPO</p>
+              <h2 id="chart-title">Cliques por dia</h2>
+            </div>
+          </div>
+          <form id="range-form" class="filters">
+            <label
+              >Período<select id="period">
+                <option value="7">Últimos 7 dias</option>
+                <option value="30" selected>Últimos 30 dias</option>
+                <option value="custom">Escolher datas</option>
+              </select></label
+            >
+            <div id="custom-dates" class="custom-dates" hidden>
+              <label>De<input id="date-from" type="date" /></label
+              ><label>Até<input id="date-to" type="date" /></label>
+            </div>
+            <button type="submit">Aplicar</button>
+          </form>
+          <p id="range-label" class="small"></p>
+          <p id="empty" hidden>Nenhum clique registrado neste período.</p>
+          <div
+            id="chart"
+            class="chart"
+            aria-label="Gráfico de cliques por dia"
+          ></div>
+          <details id="daily-details" hidden>
+            <summary>Ver os dados em tabela</summary>
+            <div class="table-scroll">
+              <table>
+                <caption>
+                  Cliques por dia no período selecionado
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Data</th>
+                    <th scope="col">Cliques</th>
+                  </tr>
+                </thead>
+                <tbody id="daily-rows"></tbody>
+              </table>
+            </div>
+          </details>
+        </section>
+        <section aria-labelledby="books-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">CADA HISTÓRIA CONTA</p>
+              <h2 id="books-title">Por livro</h2>
+            </div>
+            <p class="small">No período selecionado</p>
+          </div>
+          <div id="books" class="books"></div>
+        </section>
+        <button id="retry" type="button" hidden>Tentar novamente</button>
+      </section>
+      <noscript
+        ><p>
+          Ative o JavaScript para entrar e consultar as estatísticas.
+        </p></noscript
+      >
+      <footer>
+        <p>
+          Os números representam eventos de clique, não pessoas únicas nem
+          compras.
+        </p>
+        <p id="timezone-note">As datas seguem o fuso informado pelo serviço.</p>
+      </footer>
+    </main>
+  </body>
+</html>

@@ -6,6 +6,11 @@ on:
       - '**.css'
       - '**.js'
       - 'tests/**'
+      - 'tools/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - 'supabase/functions/amazon-click/**'
       - '.github/workflows/public-navigation.yml'
 permissions:
   contents: read
@@ -18,7 +23,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm install --no-save --package-lock=false playwright@1.56.1
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.25.0
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Verify dashboard bundle is current
+        run: |
+          pnpm run build:dashboard
+          git diff --exit-code -- assets/js/dashboard.js assets/js/dashboard.LICENSE.txt
       - run: npx playwright install --with-deps chromium
       - name: Check public navigation at mobile, tablet and desktop widths
         run: |
@@ -28,6 +40,8 @@ jobs:
         run: |
           node tests/site-regression.cjs
           node tests/news-pagination.cjs
+          node tests/analytics.cjs
+          node --test supabase/functions/amazon-click/handler.test.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
