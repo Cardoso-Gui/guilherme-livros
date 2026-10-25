@@ -1,0 +1,119 @@
+.discover-page .book-grid {
+  align-items: stretch;
+}
+.discover-page .book-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.discover-page .book-info .book-meta {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #657080;
+  margin-bottom: 12px;
+}
+.book-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+.book-tags span {
+  border-radius: 20px;
+  background: #eef4fb;
+  border: 1px solid #dce6f2;
+  padding: 4px 9px;
+  color: #365a85;
+  font-size: 10px;
+  line-height: 1.5;
+}
+.synopsis-open {
+  margin-top: auto;
+  border: 1px solid #cedbec;
+  border-radius: 24px;
+  background: #f4f7fc;
+  color: #244b7b;
+  padding: 12px 16px;
+  min-height: 44px;
+  cursor: pointer;
+  font:
+    13px/1.5 Arial,
+    sans-serif;
+  text-align: center;
+}
+.synopsis-open:hover {
+  background: #e3edf9;
+}
+.synopsis-open:focus-visible,
+.synopsis-close:focus-visible {
+  outline: 3px solid #6291c7;
+  outline-offset: 3px;
+}
+.synopsis-dialog {
+  width: min(660px, calc(100vw - 32px));
+  max-width: none;
+  max-height: calc(100dvh - 32px);
+  padding: 0;
+  border: 1px solid #dce4ef;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 20px 70px #13294340;
+  overflow: auto;
+  color: #292f38;
+}
+.synopsis-dialog::backdrop {
+  background: #101c2dcc;
+  backdrop-filter: blur(4px);
+}
+.synopsis-bar {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid #e2e8f0;
+  z-index: 1;
+}
+.synopsis-bar p {
+  margin: 0;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #657080;
+}
+.synopsis-close {
+  border: 1px solid #cedbec;
+  border-radius: 24px;
+  background: #eef4fb;
+  color: #244b7b;
+  padding: 9px 16px;
+  cursor: pointer;
+  min-height: 40px;
+}
+.synopsis-body {
+  padding: 28px 32px;
+}
+.synopsis-body h2 {
+  font-size: 34px;
+  margin-bottom: 20px;
+}
+.synopsis-body .book-details {
+  font-size: 16px;
+  line-height: 1.85;
+  max-width: none;
+  color: #566477;
+  padding: 0;
+}
+@media (max-width: 540px) {
+  .synopsis-body {
+    padding: 24px 20px;
+  }
+  .synopsis-body h2 {
+    font-size: 29px;
+  }
+  .synopsis-bar {
+    padding: 12px 16px;
+  }
+}

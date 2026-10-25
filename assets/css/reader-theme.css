@@ -1,0 +1,211 @@
+.noah-reader .chapter-text p {
+  text-align: justify;
+  text-align-last: start;
+  hyphens: auto;
+}
+.noah-reader .reader-theme-toggle {
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid #c5d5e8;
+  border-radius: 999px;
+  background: #fff;
+  color: #244b7b;
+  font:
+    600 14px/1.5 Arial,
+    sans-serif;
+  cursor: pointer;
+}
+.noah-reader .reader-theme-toggle[hidden] {
+  display: none;
+}
+.noah-reader .reader-theme-toggle:hover {
+  background: #e4eef9;
+}
+.noah-reader .reader-theme-toggle:focus-visible {
+  outline: 3px solid #6291c7;
+  outline-offset: 3px;
+}
+html[data-reader-theme="dark"] {
+  color-scheme: dark;
+  background: #111923;
+}
+html[data-reader-theme="dark"] .noah-reader {
+  background: #111923;
+  color: #e4eaf2;
+  --ink: #e4eaf2;
+  --muted: #b9c6d6;
+  --sage: #9fc5f3;
+  --line: #36465a;
+}
+html[data-reader-theme="dark"] .noah-reader .chapter-text {
+  color: #e4eaf2;
+}
+html[data-reader-theme="dark"] .noah-reader .main-header,
+html[data-reader-theme="dark"] .noah-reader .main-header nav,
+html[data-reader-theme="dark"] .noah-reader .site-footer {
+  background: #162231;
+  color: #e4eaf2;
+  border-color: #36465a;
+  box-shadow: none;
+}
+html[data-reader-theme="dark"] .noah-reader .reader-toolbar,
+html[data-reader-theme="dark"] .noah-reader .preview-end {
+  background: #1b293a;
+  border-color: #36465a;
+  color: #b9c6d6;
+}
+html[data-reader-theme="dark"] .noah-reader .reader-back-button,
+html[data-reader-theme="dark"] .noah-reader .reader-theme-toggle,
+html[data-reader-theme="dark"] .noah-reader .font-controls button {
+  background: #24374e;
+  color: #e4eaf2;
+  border-color: #526b8b;
+}
+html[data-reader-theme="dark"] .noah-reader .reader-back-button:hover,
+html[data-reader-theme="dark"] .noah-reader .reader-theme-toggle:hover,
+html[data-reader-theme="dark"]
+  .noah-reader
+  .font-controls
+  button:hover:not(:disabled) {
+  background: #304b6b;
+}
+html[data-reader-theme="dark"] .noah-reader .reader-end-actions a.button {
+  background: #a5cafa;
+  color: #14273e;
+}
+html[data-reader-theme="dark"] .noah-reader .amazon-pending:disabled {
+  background: #243246;
+  color: #b9c6d6;
+  border-color: #526b8b;
+}
+html[data-reader-theme="dark"] .noah-reader .footer-grid p,
+html[data-reader-theme="dark"] .noah-reader .footer-grid a,
+html[data-reader-theme="dark"] .noah-reader .footer-grid h2,
+html[data-reader-theme="dark"] .noah-reader .main-header nav a,
+html[data-reader-theme="dark"] .noah-reader .brand-caption {
+  color: #c5d6eb;
+}
+html[data-reader-theme="dark"] .noah-reader .brand img {
+  background: #fff;
+  border-radius: 10px;
+}
+html[data-reader-theme="dark"] .noah-reader ::selection {
+  background: #476d9b;
+  color: #fff;
+}
+@media (max-width: 520px) {
+  .noah-reader .reader-toolbar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+  .noah-reader .reader-theme-toggle {
+    grid-column: 1/-1;
+    justify-self: start;
+  }
+}
+
+.enhanced-reader .chapter-text p {
+  text-align: justify;
+  text-align-last: start;
+  hyphens: auto;
+}
+.enhanced-reader .reader-theme-toggle {
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid #c5d5e8;
+  border-radius: 999px;
+  background: #fff;
+  color: #244b7b;
+  font:
+    600 14px/1.5 Arial,
+    sans-serif;
+  cursor: pointer;
+}
+.enhanced-reader .reader-theme-toggle[hidden] {
+  display: none;
+}
+.enhanced-reader .reader-theme-toggle:hover {
+  background: #e4eef9;
+}
+.enhanced-reader .reader-theme-toggle:focus-visible {
+  outline: 3px solid #6291c7;
+  outline-offset: 3px;
+}
+html[data-reader-theme="dark"] {
+  color-scheme: dark;
+  background: #111923;
+}
+html[data-reader-theme="dark"] .enhanced-reader {
+  background: #111923;
+  color: #e4eaf2;
+  --ink: #e4eaf2;
+  --muted: #b9c6d6;
+  --sage: #9fc5f3;
+  --line: #36465a;
+}
+html[data-reader-theme="dark"] .enhanced-reader .chapter-text {
+  color: #e4eaf2;
+}
+html[data-reader-theme="dark"] .enhanced-reader .main-header,
+html[data-reader-theme="dark"] .enhanced-reader .main-header nav,
+html[data-reader-theme="dark"] .enhanced-reader .site-footer {
+  background: #162231;
+  color: #e4eaf2;
+  border-color: #36465a;
+  box-shadow: none;
+}
+html[data-reader-theme="dark"] .enhanced-reader .reader-toolbar,
+html[data-reader-theme="dark"] .enhanced-reader .preview-end {
+  background: #1b293a;
+  border-color: #36465a;
+  color: #b9c6d6;
+}
+html[data-reader-theme="dark"] .enhanced-reader .reader-back-button,
+html[data-reader-theme="dark"] .enhanced-reader .reader-theme-toggle,
+html[data-reader-theme="dark"] .enhanced-reader .font-controls button {
+  background: #24374e;
+  color: #e4eaf2;
+  border-color: #526b8b;
+}
+html[data-reader-theme="dark"] .enhanced-reader .reader-back-button:hover,
+html[data-reader-theme="dark"] .enhanced-reader .reader-theme-toggle:hover,
+html[data-reader-theme="dark"]
+  .enhanced-reader
+  .font-controls
+  button:hover:not(:disabled) {
+  background: #304b6b;
+}
+html[data-reader-theme="dark"] .enhanced-reader .reader-end-actions a.button {
+  background: #a5cafa;
+  color: #14273e;
+}
+html[data-reader-theme="dark"] .enhanced-reader .amazon-pending:disabled {
+  background: #243246;
+  color: #b9c6d6;
+  border-color: #526b8b;
+}
+html[data-reader-theme="dark"] .enhanced-reader .footer-grid p,
+html[data-reader-theme="dark"] .enhanced-reader .footer-grid a,
+html[data-reader-theme="dark"] .enhanced-reader .footer-grid h2,
+html[data-reader-theme="dark"] .enhanced-reader .main-header nav a,
+html[data-reader-theme="dark"] .enhanced-reader .brand-caption {
+  color: #c5d6eb;
+}
+html[data-reader-theme="dark"] .enhanced-reader .brand img {
+  background: #fff;
+  border-radius: 10px;
+}
+html[data-reader-theme="dark"] .enhanced-reader ::selection {
+  background: #476d9b;
+  color: #fff;
+}
+@media (max-width: 520px) {
+  .enhanced-reader .reader-toolbar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+  .enhanced-reader .reader-theme-toggle {
+    grid-column: 1/-1;
+    justify-self: start;
+  }
+}

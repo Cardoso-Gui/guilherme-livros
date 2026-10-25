@@ -4,7 +4,8 @@ on:
     paths:
       - '**.html'
       - '**.css'
-      - 'tests/mobile-navigation.cjs'
+      - '**.js'
+      - 'tests/**'
       - '.github/workflows/public-navigation.yml'
 permissions:
   contents: read
@@ -23,6 +24,10 @@ jobs:
         run: |
           python3 -m http.server 8765 > /tmp/site-server.log 2>&1 &
           node tests/mobile-navigation.cjs
+      - name: Check catalog, news, readers and retired URLs
+        run: |
+          node tests/site-regression.cjs
+          node tests/news-pagination.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:

@@ -1,0 +1,27 @@
+.discover-page .featured-book .book-info .chapter-preview {
+  border: 1px solid #b9cde7;
+  border-radius: 22px;
+  background: #eaf1fa;
+  color: #244b7b;
+  min-height: 38px;
+  padding: 8px 10px;
+  font:
+    500 12px/1.5 Arial,
+    sans-serif;
+  text-align: center;
+  white-space: normal;
+  gap: 5px;
+  text-decoration: none;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+.discover-page .featured-book .book-info .chapter-preview:hover {
+  background: #dce8f7;
+  border-color: #8faed3;
+  text-decoration: none;
+}
+.discover-page .featured-book .book-info .chapter-preview span {
+  font-size: 14px;
+  flex-shrink: 0;
+}

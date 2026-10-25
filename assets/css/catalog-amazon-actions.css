@@ -1,0 +1,14 @@
+.home-reading-actions .amazon-buy,
+.cart-book-action .amazon-buy {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 50px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.home-reading-actions .amazon-buy {
+  margin-top: 10px;
+}

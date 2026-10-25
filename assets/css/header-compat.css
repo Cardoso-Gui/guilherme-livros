@@ -1,0 +1,21 @@
+@media (max-width: 760px) {
+  .main-header .header-actions {
+    flex-wrap: wrap;
+  }
+  .main-header nav a {
+    min-width: 60px;
+  }
+}
+.account-switch {
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #657080;
+  margin: 22px 0 0;
+}
+.account-switch a {
+  color: #244b7b;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-weight: 600;
+}

@@ -1,0 +1,45 @@
+/* Cards acompanham a maior altura da grade e mantêm as ações alinhadas. */
+body.discover-page .book-grid {
+  align-items: stretch;
+  grid-auto-rows: 1fr;
+}
+body.discover-page .book-card {
+  height: 100%;
+}
+body.discover-page .book-card .book-stage {
+  flex-shrink: 0;
+}
+body.discover-page .book-card .book-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+body.discover-page .book-card .book-info > *,
+body.discover-page .book-card .book-info > p:not(.eyebrow) {
+  margin-block: 0;
+}
+body.discover-page .book-card .cart-book-action {
+  margin-top: auto;
+}
+body.discover-page .book-card .cart-add-feedback,
+body.discover-page .book-card .cart-add-feedback:empty {
+  display: block;
+  min-height: 36px;
+  margin: 0;
+  font-size: 12px;
+  line-height: 18px;
+}
+body.discover-page .book-card .synopsis-open {
+  width: 100%;
+  margin: 0;
+  min-height: 44px;
+}
+@media (max-width: 540px) {
+  body.discover-page .book-grid {
+    grid-auto-rows: auto;
+  }
+  body.discover-page .book-card {
+    height: auto;
+  }
+}
