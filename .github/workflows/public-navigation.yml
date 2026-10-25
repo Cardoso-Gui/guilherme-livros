@@ -41,6 +41,7 @@ jobs:
           node tests/site-regression.cjs
           node tests/news-pagination.cjs
           node tests/analytics.cjs
+          node tests/footer-panel.cjs
           node --test supabase/functions/amazon-click/handler.test.mjs
       - uses: actions/upload-artifact@v4
         if: always()
