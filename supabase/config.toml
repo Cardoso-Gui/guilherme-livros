@@ -1,0 +1,3 @@
+# Records the existing gateway setting; this task does not redeploy backend functions.
+[functions.amazon-click]
+verify_jwt = true
