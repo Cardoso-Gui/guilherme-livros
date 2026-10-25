@@ -2704,3 +2704,20 @@ body .centered-header .header-read {
     height: 280px;
   }
 }
+
+/* Atalho discreto para o painel; a autorizacao continua no backend. */
+.footer-actions { display: flex; align-items: center; gap: 8px; }
+.footer-panel-link {
+  position: relative; display: inline-flex; align-items: center; justify-content: center;
+  flex: 0 0 44px; width: 44px; height: 44px; margin-block: -22px;
+  color: #5e6d80; border-radius: 4px;
+}
+.footer-panel-link:hover { color: #244b7b; background: #dfe8f2; }
+.footer-panel-link:focus-visible { outline: 2px solid #244b7b; outline-offset: 2px; }
+.footer-panel-tooltip {
+  position: absolute; bottom: calc(100% + 4px); right: 0; white-space: nowrap;
+  padding: 5px 8px; border-radius: 4px; background: #244b7b; color: #fff;
+  font: 12px/1.4 Arial, sans-serif; pointer-events: none; visibility: hidden;
+}
+.footer-panel-link:hover .footer-panel-tooltip,
+.footer-panel-link:focus-visible .footer-panel-tooltip { visibility: visible; }
