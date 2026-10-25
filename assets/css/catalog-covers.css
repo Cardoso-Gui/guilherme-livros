@@ -1,0 +1,87 @@
+.discover-page .book-stage,
+.discover-page .featured-book .book-stage {
+  height: 205px;
+}
+.discover-page .featured-book .real-cover-link,
+.discover-page .real-cover-link {
+  height: 170px;
+}
+.discover-page .book-cover {
+  height: 170px;
+  width: 120px;
+  padding: 12px;
+}
+.discover-page .cover-title {
+  font-size: 19px;
+}
+.discover-page .cover-rule {
+  margin: 8px auto;
+}
+.discover-page .maze {
+  width: 35px;
+  height: 35px;
+  margin: 9px auto;
+}
+.discover-page .book-info {
+  padding: 18px;
+}
+.discover-page .book-info h3 {
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+.discover-page .featured-book .book-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.discover-page .featured-book .book-info > * {
+  grid-column: 1/-1;
+  margin-block: 0;
+}
+.discover-page .featured-book .book-info .synopsis-open {
+  grid-column: 1;
+  padding: 8px 10px;
+  min-height: 38px;
+  font-size: 12px;
+  margin-top: 2px;
+}
+.discover-page .featured-book .book-info .chapter-preview {
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #244b7b;
+  white-space: nowrap;
+  text-underline-offset: 4px;
+}
+.chapter-preview:hover {
+  text-decoration: underline;
+}
+.discover-page .cart-book-action {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  padding: 0 18px 18px;
+}
+.discover-page .cart-book-action .book-price {
+  margin: 0;
+  white-space: nowrap;
+  font-size: 16px;
+}
+body.discover-page .cart-book-action .button {
+  min-height: 42px;
+  font-size: 12px;
+  padding: 10px 12px;
+  line-height: 1.4;
+  box-shadow: none;
+}
+.discover-page .cart-add-feedback {
+  grid-column: 1/-1;
+  margin: 0;
+}
+.discover-page .cart-add-feedback:empty {
+  display: none;
+}

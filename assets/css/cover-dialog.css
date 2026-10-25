@@ -1,0 +1,59 @@
+[data-cover-zoom] {
+  cursor: zoom-in;
+}
+[data-cover-zoom]:focus-visible {
+  outline: 3px solid #6291c7;
+  outline-offset: 6px;
+}
+.cover-dialog {
+  padding: 54px 20px 20px;
+  border: 1px solid #dce4ef;
+  border-radius: 16px;
+  background: #fff;
+  max-width: calc(100vw - 24px);
+  max-height: calc(100dvh - 24px);
+  overflow: auto;
+  box-shadow: 0 20px 70px #13294340;
+}
+.cover-dialog::backdrop {
+  background: #101c2dcc;
+  backdrop-filter: blur(4px);
+}
+.cover-dialog .cover-close {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  border: 1px solid #cedbec;
+  border-radius: 30px;
+  background: #eef4fb;
+  color: #244b7b;
+  padding: 9px 16px;
+  font: 13px Arial;
+  cursor: pointer;
+  min-height: 36px;
+}
+.cover-dialog img {
+  display: block;
+  max-width: min(560px, calc(100vw - 68px));
+  max-height: calc(100dvh - 125px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+.cover-dialog .cover-preview-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(420px, calc(100vw - 68px));
+  height: min(560px, 65dvh);
+  overflow: hidden;
+}
+.cover-dialog .cover-preview-placeholder .book-cover {
+  transform: scale(1.7);
+  flex-shrink: 0;
+}
+@media (max-width: 440px) {
+  .cover-dialog .cover-preview-placeholder .book-cover {
+    transform: scale(1.35);
+  }
+}

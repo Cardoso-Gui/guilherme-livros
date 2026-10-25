@@ -1,0 +1,222 @@
+/* Catálogo compacto com textos e controles legíveis. */
+body.discover-page .catalog-heading {
+  padding: 24px 0;
+  gap: 12px 28px;
+}
+body.discover-page .catalog-heading > .text-link {
+  margin-bottom: 8px;
+}
+body.discover-page .catalog-heading .eyebrow {
+  margin-bottom: 8px;
+  font-size: 12px;
+  letter-spacing: 1.3px;
+}
+body.discover-page .catalog-heading h1 {
+  font-size: clamp(34px, 4vw, 48px);
+  line-height: 1.15;
+}
+body.discover-page .catalog-heading > p:last-child {
+  font-size: 16px;
+  line-height: 1.7;
+}
+body.discover-page .catalog-section-heading {
+  padding-top: 18px;
+  margin-bottom: 16px;
+  gap: 14px;
+}
+body.discover-page .catalog-section-heading h2 {
+  font-size: 26px;
+}
+body.discover-page .catalog-section-heading > p {
+  font-size: 14px;
+}
+body.discover-page .catalog-filters {
+  grid-template-columns: minmax(0, 2fr) repeat(4, minmax(0, 1fr));
+  padding: 16px;
+  gap: 12px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+body.discover-page .catalog-filters .catalog-search {
+  grid-column: auto;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+body.discover-page .catalog-search:before,
+body.discover-page .catalog-search:after {
+  display: none;
+}
+body.discover-page .catalog-filters label {
+  font-size: 13px;
+  gap: 6px;
+  letter-spacing: 0;
+}
+body.discover-page .catalog-filters input,
+body.discover-page .catalog-filters select {
+  min-height: 44px;
+  font-size: 15px;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+body.discover-page .catalog-filters .filter-clear {
+  grid-column: 1/-1;
+  justify-self: end;
+  min-height: 44px;
+  font-size: 14px;
+  padding: 8px 16px;
+}
+body.discover-page .catalog-results {
+  font-size: 14px;
+  margin: 12px 0 16px;
+}
+body.discover-page .book-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+body.discover-page .book-stage,
+body.discover-page .featured-book .book-stage {
+  height: 180px;
+}
+body.discover-page .real-cover-link,
+body.discover-page .featured-book .real-cover-link {
+  height: 150px;
+}
+body.discover-page .book-cover {
+  height: 150px;
+  width: 106px;
+  padding: 10px;
+}
+body.discover-page .cover-title {
+  font-size: 18px;
+}
+body.discover-page .cover-note {
+  font-size: 12px;
+}
+body.discover-page .book-info {
+  padding: 16px;
+}
+body.discover-page .featured-book .book-info {
+  display: flex;
+  gap: 8px;
+}
+body.discover-page .book-info h3 {
+  font-size: 25px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+body.discover-page .book-info .eyebrow {
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+body.discover-page .book-info .book-meta {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+body.discover-page .book-info > p:not(.eyebrow) {
+  font-size: 15px;
+  line-height: 1.65;
+  margin-bottom: 12px;
+}
+body.discover-page .book-tags {
+  gap: 5px;
+  margin-bottom: 10px;
+}
+body.discover-page .book-tags span {
+  font-size: 12px;
+  padding: 4px 8px;
+}
+body.discover-page .cart-book-action {
+  grid-template-columns: 1fr;
+  padding: 0 16px 16px;
+  gap: 8px;
+}
+body.discover-page .cart-book-action .book-price {
+  font-size: 18px;
+}
+body.discover-page .cart-book-action .button,
+body.discover-page .synopsis-open {
+  font-size: 15px;
+  min-height: 44px;
+  padding: 10px 14px;
+  line-height: 1.5;
+}
+body.discover-page .cart-book-action a.button {
+  display: flex;
+}
+body.discover-page .text-link {
+  font-size: 15px;
+  min-height: 44px;
+  align-items: center;
+  gap: 12px;
+}
+body.discover-page .catalog-note {
+  margin-top: 26px;
+  padding: 20px 0;
+  gap: 16px;
+}
+body.discover-page .catalog-note p {
+  font-size: 15px;
+  line-height: 1.7;
+}
+body.discover-page .catalog-main {
+  padding-bottom: 32px;
+}
+body.discover-page .main-header nav a {
+  font-size: 15px;
+}
+body.discover-page .footer-grid p,
+body.discover-page .footer-nav a {
+  font-size: 15px;
+  line-height: 1.8;
+}
+body.discover-page .footer-bottom small,
+body.discover-page .back-top {
+  font-size: 13px;
+}
+@media (max-width: 1050px) {
+  body.discover-page .catalog-filters {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  body.discover-page .catalog-search {
+    grid-column: 1/-1 !important;
+  }
+  body.discover-page .book-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  body.discover-page .catalog-heading {
+    display: block;
+  }
+  body.discover-page .catalog-heading h1 {
+    margin-bottom: 12px;
+  }
+  body.discover-page .catalog-section-heading {
+    display: block;
+  }
+  body.discover-page .catalog-section-heading > p {
+    margin-top: 8px;
+  }
+  body.discover-page .catalog-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  body.discover-page .main-header nav a {
+    font-size: 16px;
+  }
+}
+@media (max-width: 540px) {
+  body.discover-page .book-grid {
+    grid-template-columns: 1fr;
+  }
+  body.discover-page .catalog-filters {
+    padding: 12px;
+  }
+  body.discover-page .catalog-filters select {
+    font-size: 14px;
+    padding: 10px 8px;
+  }
+}

@@ -1,0 +1,119 @@
+#novidades .upcoming-feature {
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 36px;
+  padding: 32px 0;
+}
+#novidades .upcoming-feature .news-cover {
+  display: flex;
+  padding: 22px;
+  background: #e8eef7;
+}
+#novidades .upcoming-feature .news-cover img {
+  max-width: 180px;
+}
+#novidades .upcoming-feature .news-feature-copy > p {
+  font-size: 16px;
+  line-height: 1.75;
+  max-width: 65ch;
+}
+#novidades .upcoming-feature .upcoming-date {
+  font-weight: 600;
+  color: #244b7b;
+}
+#novidades .news-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+#novidades .news-grid .news-preview {
+  padding: 24px;
+}
+#novidades .news-preview > p {
+  font-size: 16px;
+}
+#novidades .news-follow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+  padding: 28px;
+  border: 1px solid #dce6f2;
+  border-radius: 18px;
+  background: #f4f7fc;
+}
+#novidades .news-follow h2 {
+  font-size: 28px;
+  margin: 0 0 8px;
+}
+#novidades .news-follow p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #526175;
+}
+@media (max-width: 850px) {
+  #novidades .news-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  #novidades .news-grid {
+    grid-template-columns: 1fr;
+  }
+  #novidades .upcoming-feature {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  #novidades .upcoming-feature .news-cover img {
+    max-width: 170px;
+  }
+  #novidades .upcoming-feature .news-actions {
+    flex-direction: column;
+  }
+  #novidades .upcoming-feature .news-actions .button {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+  #novidades .news-follow {
+    padding: 22px;
+  }
+}
+@media (max-width: 760px) {
+  #novidades .site-header.main-header.centered-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 0;
+  }
+  #novidades .centered-header nav {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 4px;
+    gap: 4px;
+  }
+  #novidades .centered-header nav a {
+    width: auto;
+    min-height: 44px;
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #novidades .news-preview {
+    transition: none;
+  }
+  #novidades .news-preview:hover {
+    transform: none;
+  }
+}

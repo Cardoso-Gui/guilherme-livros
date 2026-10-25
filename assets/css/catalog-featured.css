@@ -1,0 +1,68 @@
+/* Capas e leitura gratuita em destaque, sem alterar os filtros. */
+body.discover-page .book-grid .book-card .book-stage {
+  height: 310px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body.discover-page .book-grid .book-card .real-cover-link {
+  height: 260px;
+  max-width: 82%;
+  transform: none;
+  box-shadow: 8px 12px 20px #25372a26;
+}
+body.discover-page .book-grid .book-card .real-cover-link:hover {
+  transform: translateY(-4px);
+}
+body.discover-page .book-grid .book-card .real-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+body.discover-page .book-grid .book-card .cart-book-action {
+  gap: 8px;
+  padding: 8px 16px 20px;
+}
+body.discover-page .book-grid .book-card .catalog-read-primary {
+  justify-content: center;
+  text-align: center;
+  font-size: 16px;
+  min-height: 50px;
+}
+body.discover-page .catalog-book-details {
+  display: flex;
+  justify-content: center;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+body.discover-page .book-grid .book-card .synopsis-open {
+  background: transparent;
+  border: 0;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  box-shadow: none;
+  color: #244b7b;
+}
+body.discover-page .catalog-amazon-status {
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #526175;
+}
+@media (max-width: 540px) {
+  body.discover-page .book-grid .book-card .book-stage {
+    height: 290px;
+  }
+  body.discover-page .book-grid .book-card .real-cover-link {
+    height: 250px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.discover-page .book-grid .book-card .real-cover-link {
+    transition: none;
+  }
+  body.discover-page .book-grid .book-card .real-cover-link:hover {
+    transform: none;
+  }
+}

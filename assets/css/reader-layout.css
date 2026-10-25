@@ -1,0 +1,303 @@
+.noah-reader .reader-main {
+  width: min(680px, calc(100% - 40px));
+}
+.noah-reader .reader-back {
+  padding-top: 24px;
+}
+.noah-reader .reader-back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 1px solid #c5d5e8;
+  border-radius: 999px;
+  background: #eef4fb;
+  color: #244b7b;
+  font:
+    600 14px/1.5 Arial,
+    sans-serif;
+}
+.noah-reader .reader-back-button:hover {
+  background: #dfeaf7;
+}
+.noah-reader .reader-back-button span {
+  font-size: 20px;
+}
+.noah-reader .chapter-heading {
+  padding: 40px 0 28px;
+}
+.noah-reader .chapter-heading .eyebrow {
+  font-size: 12px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.noah-reader .reader-byline,
+.noah-reader .reading-time {
+  font-size: 14px;
+}
+.noah-reader .reader-toolbar {
+  padding: 12px 16px;
+  background: #f4f7fc;
+  border: 1px solid #dce6f2;
+  border-radius: 16px;
+  font-size: 14px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.noah-reader .font-controls button {
+  border: 1px solid #c5d5e8;
+  background: #fff;
+  color: #244b7b;
+  border-radius: 50%;
+  font:
+    600 18px/1 Arial,
+    sans-serif;
+}
+.noah-reader .font-controls button:hover:not(:disabled) {
+  background: #e4eef9;
+}
+.noah-reader .font-controls button:focus-visible {
+  outline-color: #6291c7;
+}
+.noah-reader .chapter-text {
+  font-size: var(--reading-size, 18px);
+  line-height: 1.85;
+  color: #283647;
+}
+.noah-reader .chapter-text p {
+  text-align: left;
+  hyphens: none;
+  margin-bottom: 1.35em;
+}
+.noah-reader .preview-end {
+  background: #f4f7fc;
+  border: 1px solid #dce6f2;
+  border-radius: 20px;
+  padding: 32px 24px;
+  margin: 48px 0;
+}
+.noah-reader .preview-end > p:not(.eyebrow) {
+  font-size: 16px;
+  line-height: 1.75;
+}
+.noah-reader .preview-end h2 {
+  font-size: clamp(30px, 6vw, 38px);
+}
+.noah-reader .reader-end-actions {
+  display: grid;
+  gap: 10px;
+  max-width: 380px;
+  margin: auto;
+}
+.noah-reader .reader-end-actions .button {
+  justify-content: center;
+  text-align: center;
+  min-height: 50px;
+  font:
+    600 16px/1.5 Arial,
+    sans-serif;
+  padding: 12px 18px;
+  white-space: normal;
+}
+.noah-reader .reread {
+  font-size: 14px;
+  min-height: 44px;
+  padding: 12px;
+}
+@media (max-width: 760px) {
+  .noah-reader .site-header.main-header.centered-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 0;
+  }
+  .noah-reader .centered-header nav {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 4px;
+    gap: 4px;
+  }
+  .noah-reader .centered-header nav a {
+    width: auto;
+    min-height: 44px;
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 440px) {
+  .noah-reader .chapter-heading {
+    padding-top: 32px;
+  }
+  .noah-reader .preview-end {
+    padding: 28px 18px;
+  }
+  .noah-reader .reader-toolbar {
+    gap: 8px;
+    padding: 12px;
+  }
+  .noah-reader .font-controls {
+    gap: 6px;
+  }
+}
+
+.enhanced-reader .reader-main {
+  width: min(680px, calc(100% - 40px));
+}
+.enhanced-reader .reader-back {
+  padding-top: 24px;
+}
+.enhanced-reader .reader-back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 1px solid #c5d5e8;
+  border-radius: 999px;
+  background: #eef4fb;
+  color: #244b7b;
+  font:
+    600 14px/1.5 Arial,
+    sans-serif;
+}
+.enhanced-reader .reader-back-button:hover {
+  background: #dfeaf7;
+}
+.enhanced-reader .reader-back-button span {
+  font-size: 20px;
+}
+.enhanced-reader .chapter-heading {
+  padding: 40px 0 28px;
+}
+.enhanced-reader .chapter-heading .eyebrow {
+  font-size: 12px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.enhanced-reader .reader-byline,
+.enhanced-reader .reading-time {
+  font-size: 14px;
+}
+.enhanced-reader .reader-toolbar {
+  padding: 12px 16px;
+  background: #f4f7fc;
+  border: 1px solid #dce6f2;
+  border-radius: 16px;
+  font-size: 14px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.enhanced-reader .font-controls button {
+  border: 1px solid #c5d5e8;
+  background: #fff;
+  color: #244b7b;
+  border-radius: 50%;
+  font:
+    600 18px/1 Arial,
+    sans-serif;
+}
+.enhanced-reader .font-controls button:hover:not(:disabled) {
+  background: #e4eef9;
+}
+.enhanced-reader .font-controls button:focus-visible {
+  outline-color: #6291c7;
+}
+.enhanced-reader .chapter-text {
+  font-size: var(--reading-size, 18px);
+  line-height: 1.85;
+  color: #283647;
+}
+.enhanced-reader .chapter-text p {
+  text-align: left;
+  hyphens: none;
+  margin-bottom: 1.35em;
+}
+.enhanced-reader .preview-end {
+  background: #f4f7fc;
+  border: 1px solid #dce6f2;
+  border-radius: 20px;
+  padding: 32px 24px;
+  margin: 48px 0;
+}
+.enhanced-reader .preview-end > p:not(.eyebrow) {
+  font-size: 16px;
+  line-height: 1.75;
+}
+.enhanced-reader .preview-end h2 {
+  font-size: clamp(30px, 6vw, 38px);
+}
+.enhanced-reader .reader-end-actions {
+  display: grid;
+  gap: 10px;
+  max-width: 380px;
+  margin: auto;
+}
+.enhanced-reader .reader-end-actions .button {
+  justify-content: center;
+  text-align: center;
+  min-height: 50px;
+  font:
+    600 16px/1.5 Arial,
+    sans-serif;
+  padding: 12px 18px;
+  white-space: normal;
+}
+.enhanced-reader .reread {
+  font-size: 14px;
+  min-height: 44px;
+  padding: 12px;
+}
+@media (max-width: 760px) {
+  .enhanced-reader .site-header.main-header.centered-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 0;
+  }
+  .enhanced-reader .centered-header nav {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 4px;
+    gap: 4px;
+  }
+  .enhanced-reader .centered-header nav a {
+    width: auto;
+    min-height: 44px;
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 440px) {
+  .enhanced-reader .chapter-heading {
+    padding-top: 32px;
+  }
+  .enhanced-reader .preview-end {
+    padding: 28px 18px;
+  }
+  .enhanced-reader .reader-toolbar {
+    gap: 8px;
+    padding: 12px;
+  }
+  .enhanced-reader .font-controls {
+    gap: 6px;
+  }
+}
